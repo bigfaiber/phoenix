@@ -1,0 +1,180 @@
+@import '../../../../../sass/variables.scss';
+@import '../../../../../sass/mixin.scss';
+
+.head {
+    background: #fff;
+    .action{
+        background-color: $gold;
+        border: none;
+        border-radius: 25px;
+        color: #fff;
+        cursor: pointer;
+        display: block;
+        font-family: Arial;
+        font-size: 15px;
+        letter-spacing: 0.5px;
+        margin: 30px auto 50px;
+        padding: 7px 50px 6px 50px;
+        position: relative;
+        &:hover, &:active, &:focus{
+            outline: none;
+            text-decoration: none;
+        }
+    }
+    .title {
+      color: $gold;
+      font-family: $font-OpenSans-SB;
+      margin: 30px 0;
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .account-info {
+        padding: 20px;
+        width: 100%;
+        -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+        -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+        box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+        .account-title {
+          color: $gold;
+          font-family: $font-OpenSans-SB;
+          text-align: left;
+        }
+        td {
+          span {
+            margin-left: 10px;
+          }
+          &:first-child {
+            color: $gold;
+            font-family: $font-OpenSans-SB;
+          }
+        }
+      }
+    }
+    .user_detail{
+        background-color: #fff;
+        padding: 30px 0;
+        text-align: center;
+        width: 25%;
+        .image{
+            display: block;
+            position: relative;
+            .user_image{
+                border-radius: 50%;
+                margin-bottom: 13px;
+            }
+        }
+        .detail{
+            display: inline-block;
+            padding: 0 15px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+            .name{
+                color: #825520;
+                font-size: 20px;
+                margin: 4px 0;
+            }
+            .stability {
+                color: #825520;
+                font-size: 15px;
+                margin: 0;
+            }
+            .stars{
+                margin: 2px 0px 6px;
+                text-align: center;
+            }
+        }
+    }
+    .stats {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 75%;
+      .tachometer {
+          padding-top: 40px;
+          position: relative;
+          width: 35%;
+          .tachometer_image {
+              display: block;
+              margin: 0 auto;
+              width: 100%;
+          }
+          .needle_image {
+              bottom: 63px;
+              left: 47%;
+              position: absolute;
+              width: 96px;
+              transform-origin: 12px 37px;
+          }
+          h3 {
+              font-family: $font-OpenSans-SB;
+              margin-top: 23px;
+              font-size: 25px;
+          }
+      }
+      .graph-content {
+          padding: 0 40px !important;
+          width: 60%;
+      }
+    }
+}
+
+@media (max-width: 40em) {
+  .head {
+    .container {
+      flex-direction: column;
+    }
+    .stats {
+      flex-direction: column;
+      width: 100%;
+      .tachometer {
+          padding-top: 20px;
+          width: 100%;
+          .tachometer_image {
+              width: 296px;
+          }
+          .needle_image {
+              bottom: 50px;
+              left: 47.5%;
+              width: 101px;
+              transform-origin: 13px 37px;
+          }
+          h3 {
+              font-size: 21px;
+          }
+      }
+      .graph-content {
+          padding: 0 !important;
+          width: 100%;
+      }
+    }
+    .user_detail{
+      width: 100%;
+        .image{
+            display: block;
+            margin: 0 auto;
+            .user_image{
+                border-radius: 50%;
+            }
+        }
+        .detail{
+            margin: 5px 0 5px;
+            .stars{
+                text-align: center;
+                .image{
+                    display: inline-block;
+                }
+            }
+            .name{
+                text-align: center;
+            }
+            .stability {
+                text-align: center;
+            }
+        }
+    }
+  }
+}

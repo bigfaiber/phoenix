@@ -1,0 +1,30 @@
+.new_link {
+  background-color: #E6E6E6;
+  cursor: pointer;
+  height: 100px;
+  text-align: center;
+  width: 100%;
+  span{
+      left: -43px;
+      margin: 0;
+      position: absolute;
+      right: 0;
+      top: 36px;
+      font-size: 17px;
+  }
+  .image{
+      height: 43px;
+      position: absolute;
+      right: 81px;
+      top: 27px;
+      width: auto;
+  }
+}
+
+@media ( max-width: 320px ) {
+  .new_link {
+    .image {
+      right: 63px;
+    }
+  }
+}

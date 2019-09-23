@@ -1,0 +1,61 @@
+<div class="step_modal modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                <embed #pdf_viewer><br>
+
+                <button type="button" name="button" [class.action_disabled]="requestSent" class="action" (click)="downloadDoc()">Descargar</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<section class="user_profile">
+
+    <section class="projects container text-center">
+
+        <h3 class="title">Historial de Comprobantes de pago</h3>
+
+        <h1 *ngIf="receipts.length==0" class="empty_message">Aquí aparecerán los recibos, en el momento no hay ninguno</h1>
+
+        <div class="content_projects row">
+
+            <div class="new_project col-md-4 desktop_action" *ngFor="let rec of receipts; let i = index">
+                <a class="new_link" (click)="showReceipt(i,openModalButton)">
+                    <span>{{rec.day}} {{rec.month}} {{rec.year}}</span>
+                </a>
+            </div>
+
+            <div class="new_project col-md-4 mobile_action" *ngFor="let rec of receipts; let i = index">
+                <a class="new_link" (click)="downloadMobileReceipt(i,ref_link)">
+                    <span>{{rec.day}} {{rec.month}} {{rec.year}}</span>
+                </a>
+            </div>
+
+            <a #ref_link target="_self" download hidden></a>
+
+            <button hidden #openModalButton data-toggle="modal" data-target="#paymentModal"></button>
+
+        </div>
+
+        <button type="button" name="button" class="action" (click)="getBack()">Volver</button>
+
+    </section>
+
+</section>

@@ -1,0 +1,30 @@
+@import "./fonts.scss";
+
+$white: #FFF;
+$black: #000;
+$green: #72d099;
+
+/* Fonts */
+
+$font-Arial: 'ArialMedium', arial;
+$font-OpenSans: 'Open-Sans-Regular', times;
+$font-OpenSans-B: 'Open-Sans-Bold', times;
+$font-OpenSans-SB: 'Open-Sans-SemiBold', times;
+
+
+/* Fonts sizes */
+$font-size-base: 16px;
+$font-size-small: ceil(($font-size-base * 0.85)); // ~12px
+
+/* Colors */
+$gold: #D0A26B;
+$dark-gold: #79562B;
+$medium-gold: #8C6636;
+$dark-blue: #1A2C35;
+
+/* Breakpoints */
+$laptop-L-maxSize: 1920px;
+$laptop-M-maxSize: 1600px;
+$laptop-S-maxSize: 1024px;
+$tablet-L-maxSize: 768px;
+$mobile-L-maxSize: 715px;

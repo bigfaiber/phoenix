@@ -1,0 +1,19 @@
+<div [chart]="chart"></div>
+<div *ngIf="description==0">
+  <div class="text">
+    *Tasas efectivas anuales de rendimientos de CDT's a 360 días vs. la tasa promedio
+    de rendimientos de Phoenix.
+  </div>
+  <div class="text">
+    Información transmitida por los establecimientos de crédito a la Superintendencia Financiera de Colombia.
+  </div>
+  <div class="text">
+    Mayor información <a href="https://www.superfinanciera.gov.co/publicacion/61300" target="_blank">aquí</a>
+  </div>
+</div>
+<div *ngIf="description==1">
+  <div class="text">
+    *Tasas efectivas anuales de rendimientos de CDT's a 360 días vs. la tasa promedio
+    de rendimientos de Phoenix. Mayor información <a href="https://www.superfinanciera.gov.co/publicacion/61300" target="_blank">aquí</a>
+  </div>
+</div>

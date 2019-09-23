@@ -1,0 +1,410 @@
+<div class="step_modal modal fade" id="step1Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-body modal_content">
+
+                <div class="close-modal" data-dismiss="modal" aria-label="Close" (click)="stopVideo()">
+                  <i class="material-icons">clear</i>
+                </div>
+
+                <iframe #top_video width="100%" height="100%" src="" allowfullscreen>
+                </iframe>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<app-menu></app-menu>
+
+<div class="home_content">
+
+    <section class="top-banner">
+
+        <div class="content_top_banner">
+
+            <h2 class="title">Te ayudamos a <span>construir</span> tus <span>sueños</span> con financiación <span>responsable</span></h2>
+
+            <div class="testimonial show-testimonial" style="margin: 0 auto" (click)="resetTopVideo(openModalButton)">
+
+                <img src="assets/images/videos_thumbnails/thumb_cliente3.png" alt="Testimonio 1" title="Testimonio 1" class="img-fluid">
+
+                <div class="click-video">
+                  <i class="material-icons">play_arrow</i>
+                </div>
+
+            </div>
+
+            <span #openModalButton data-toggle="modal" data-target="#step1Modal"></span>
+
+            <span class="banner_info">Consigue financiación personal o de tu negocio a través de nosotros.</span>
+            <span class="banner_info">Sin costos adicionales, solo pagas tu crédito.</span>
+
+            <div class="testimonial hide-testimonial" style="margin: 0 auto" (click)="resetTopVideo(openModalButton)">
+
+                <img src="assets/images/videos_thumbnails/thumb_cliente3.png" alt="Testimonio 1" title="Testimonio 1" class="img-fluid">
+
+                <div class="click-video">
+                  <i class="material-icons">play_arrow</i>
+                </div>
+
+            </div>
+
+            <a routerLink="/registro-cliente" class="action" (click)="dreamTracker()">Cumple tu sueño</a>
+        </div>
+
+    </section>
+
+    <section class="how_does_it_work" >
+
+        <div class="content_how_does_it_work">
+
+            <h2 class="title">¿Cómo funciona? <span class="subtitle">En 3 sencillos pasos obtienes lo que siempre has soñado</span></h2>
+
+            <section class="steps" #steps_container>
+
+                <div class="step" *ngIf="stepsShowing.step1" [@stepState]>
+
+                    <img src="assets/images/home/inscribe_icon.png" alt="Enroll Icon" title="Enroll Icon">
+
+                    <h3 class="step_name">1. Inscribe tu sueño y regístrate.</h3>
+
+                    <p class="step_description">
+                        Sigue los pasos para ingresar a la plataforma y que los inversionistas puedan conocerte mejor.
+                    </p>
+
+                </div>
+
+                <div class="step" *ngIf="stepsShowing.step2" [@stepState]>
+
+                    <img src="assets/images/home/asesoria_icon.png" alt="Enroll Icon" title="Enroll Icon">
+
+                    <h3 class="step_name">2. Obtén asesoría gratuita por parte de nosotros.</h3>
+
+                    <p class="step_description">
+                        Una vez inscribas tu sueño y estés dentro de la plataforma, vas a recibir asesoría por parte de nosotros completamente gratis.
+                    </p>
+
+                </div>
+
+                <div class="step" *ngIf="stepsShowing.step3" [@stepState]>
+
+                    <img src="assets/images/home/sueno_icon.png" alt="Enroll Icon" title="Enroll Icon">
+
+                    <h3 class="step_name">3. Recibe inversión para cumplir tu sueño.</h3>
+
+                    <p class="step_description">
+                        Los inversionistas que están con nosotros, todo el tiempo están buscando diferentes sueños para ayudar a volverlos realidad. Sin costos adicionales, solo pagas tu crédito.
+                    </p>
+
+                </div>
+
+            </section>
+
+            <a class="section_action" routerLink="/registro-cliente">Cumple tu sueño</a>
+
+            <section class="current-portfolio" #statistics_container>
+
+                <div class="top-border left-border"></div>
+                <div class="top-border right-border"></div>
+
+                <h2 class="title">Cartera Actual</h2>
+
+                <div class="data-content data-margin-b">
+
+                  <div class="single-data">
+
+                      <img src="assets/images/new-home/Desk/people.png" width="65">
+
+                      <div class="quantity">
+                        {{portfolioValues.customers}}
+                      </div>
+
+                      <div class="label">
+                        Clientes
+                      </div>
+
+                  </div>
+
+                  <div class="single-data">
+
+                      <img src="assets/images/new-home/Desk/money.png" width="65">
+
+                      <div class="quantity">
+                        ${{portfolioValues.activeBusiness|number}}
+                      </div>
+
+                      <div class="label">
+                        Negocios Activos
+                      </div>
+
+                  </div>
+
+                  <div class="single-data">
+
+                      <img src="assets/images/new-home/Desk/percentage.png" width="65">
+
+                      <div class="quantity">
+                        {{portfolioValues.rate}}% n.m.v
+                      </div>
+
+                      <div class="label">
+                        Tasa de Interés Promedio
+                      </div>
+
+                  </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <div class="dreams-data" #dream_stats_container>
+          <div class="left-data">
+            <div class="content">
+              <h3 class="title">Mayor sueño realizado:</h3>
+              <div class="data-line">
+                <div class="img">
+                  <img src="assets/images/new-home/Desk/tienda_dorada.png" width="62">
+                </div>
+                <div class="data">
+                  <span class="value">${{portfolioValues.investors|number}}</span>
+                  <span class="label gold">Inversión de un activo</span>
+                </div>
+              </div>
+              <div class="data-line">
+                <div class="img">
+                  <img src="assets/images/new-home/Desk/man.png" width="25" alt="">
+                </div>
+                <div class="data">
+                  <span class="value gold">35 Años</span>
+                  <span class="label">Perfil: Hombre</span>
+                  <span class="label">Profesión: Importador de ropa</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="right-data">
+            <div class="content">
+              <h3 class="title">Menor sueño realizado:</h3>
+              <div class="data-line">
+                <div class="img">
+                  <img src="assets/images/new-home/Desk/palmera_dorada.png" width="62">
+                </div>
+                <div class="data">
+                  <span class="value">${{portfolioValues.cash|number}}</span>
+                  <span class="label gold">Viaje</span>
+                </div>
+              </div>
+              <div class="data-line">
+                <div class="img">
+                  <img src="assets/images/new-home/Desk/woman.png" width="25" alt="">
+                </div>
+                <div class="data">
+                  <span class="value gold">45 Años</span>
+                  <span class="label">Perfil: Mujer</span>
+                  <span class="label">Profesión: Abogado</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content_how_does_it_work">
+
+            <section class="current-portfolio">
+
+                <div class="top-border top-border-fix left-border"></div>
+                <div class="top-border top-border-fix right-border"></div>
+
+                <h2 class="title">Otros sueños realizados</h2>
+
+                <div class="data-content">
+
+                  <div class="single-data remove-mh">
+
+                      <img src="assets/images/new-home/Desk/billing.png" width="65">
+
+                      <div class="label">
+                        Capital de trabajo
+                      </div>
+
+                  </div>
+
+                  <div class="single-data remove-mh">
+
+                      <img src="assets/images/new-home/Desk/hand.png" width="65">
+
+                      <div class="label">
+                        Libre inversión
+                      </div>
+
+                  </div>
+
+                  <div class="single-data remove-mh">
+
+                      <img src="assets/images/new-home/Desk/houses.png" width="65">
+
+                      <div class="label">
+                        Vivienda
+                      </div>
+
+                  </div>
+
+                  <div class="single-data remove-mh">
+
+                      <img src="assets/images/new-home/Desk/education.png" width="65">
+
+                      <div class="label">
+                        Estudio
+                      </div>
+
+                  </div>
+
+                </div>
+
+                <div class="data-content data-margin-b">
+
+                  <div class="single-data remove-mh">
+
+                      <img src="assets/images/new-home/Desk/car.png" width="65">
+
+                      <div class="label">
+                        Vehículo
+                      </div>
+
+                  </div>
+
+                  <div class="single-data remove-mh">
+
+                      <img src="assets/images/new-home/Desk/travel.png" width="65">
+
+                      <div class="label">
+                        Viajes
+                      </div>
+
+                  </div>
+
+                  <div class="single-data remove-mh">
+
+                      <img src="assets/images/new-home/Desk/cash.png" width="65">
+
+                      <div class="label">
+                        Unificación de deudas
+                      </div>
+
+                  </div>
+
+                </div>
+
+            </section>
+
+            <section class="current-customers" #map_container>
+
+                <h2 class="title">Clientes Actuales</h2>
+
+                <div class="data-content">
+
+                    <div class="map">
+
+                      <div class="map-container">
+                        <img class="len" src="assets/images/new-home/Desk/lupa_mapa.png" *ngIf="showLen" [@appearingAnim]>
+                        <img src="assets/images/new-home/Desk/mapa_general.png">
+                      </div>
+
+                    </div>
+
+                    <div class="pie-chart">
+
+                      <h6>CLIENTES</h6>
+
+                      <div class="content">
+
+                        <div class="women">
+                          <img src="assets/images/new-home/Desk/woman.png" width="16px" *ngFor="let w of womenAmount" [@appearingAnimNoDelay]>
+                        </div>
+
+                        <div class="chart">
+                          <div [chart]="chart3"></div>
+                        </div>
+
+                        <div class="men">
+                          <img src="assets/images/new-home/Desk/man.png" width="15px" *ngFor="let w of menAmount" [@appearingAnimNoDelay]>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="testimonials" #dreams_container>
+
+                <h2 class="title">Sueños hechos realidad</h2>
+
+                <!-- <div class="pie" [chart]="customerPieChart"></div> -->
+
+                <section class="videos row">
+
+                    <div class="testimonial col-md-6" (click)="resetBottomLeftVideo(openModalButton)">
+
+                        <img src="assets/images/videos_thumbnails/testimonial_cli_1.png" alt="Testimonio 1" title="Testimonio 1" class="img-fluid">
+
+                        <div class="click-video">
+                          <i class="material-icons">play_arrow</i>
+                        </div>
+
+                    </div>
+
+                    <div class="testimonial col-md-6" (click)="resetBottomMiddleVideo(openModalButton)">
+
+                        <img src="assets/images/videos_thumbnails/testimonial_cli_2.png" alt="Testimonio 2" title="Testimonio 2" class="img-fluid">
+
+                        <div class="click-video">
+                          <i class="material-icons">play_arrow</i>
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+            <a routerLink="/registro-cliente" class="section_action">Cumple tu sueño</a>
+
+        </div>
+
+    </section>
+
+    <section class="become_investor">
+
+        <!-- <img src="assets/images/optimized/img_cta.jpg" alt="Background Become an Investor" title="Background Become an Investor" class="img-fluid d-none d-md-block">
+        <img src="assets/images/home/img_cta_movil.jpg" alt="Background Become an Investor" title="Background Become an Investor" class="img-fluid d-block d-sm-none"> -->
+
+        <div class="content_become_investor container">
+
+            <h2 class="title">Conviértete en inversionista</h2>
+
+            <p class="text_info">
+                Conviértete en socio nuestro y apadrina el sueño de alguien.
+            </p>
+
+            <a routerLink="/registro-inversionista" class="action">Conviértete en inversionista</a>
+
+        </div>
+
+    </section>
+
+</div>
+
+<app-footer></app-footer>

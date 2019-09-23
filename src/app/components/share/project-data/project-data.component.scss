@@ -1,0 +1,121 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixin.scss';
+
+.action {
+    background-color: $gold;
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-family: $font-OpenSans-SB;
+    font-size: 0.7em;
+    letter-spacing: 0.5px;
+    margin-left: 10%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 80%;
+    padding: 8px 25px;
+    &:hover, &:active, &:focus{
+        outline: none;
+        text-decoration: none;
+    }
+    &:disabled {
+        background-color: #A6A6A6;
+        cursor: not-allowed;
+    }
+}
+
+.profile-action {
+  color: white !important;
+  display: inline-block;
+  font-size: 11px;
+  margin: 0;
+  padding: 0 8px;
+  width: auto;
+  i {
+    font-size: 15px;
+    vertical-align: middle;
+  }
+}
+
+.bottom_action {
+  background-color: $dark-blue;
+  display: inline-block;
+  font-size: 1em;
+  margin-left: 2%;
+  margin-top: 20px;
+  width: auto;
+}
+
+.delete {
+  background-color: #FF1421;
+}
+
+.project_container {
+    padding: 20px 5%;
+    width: 100%;
+    .info {
+        margin-bottom: 20px;
+        h2 {
+            font-family: $font-OpenSans-SB;
+        }
+        h3 {
+            font-family: $font-OpenSans
+        }
+    }
+    .data {
+        border: solid 2px #EEE;
+        border-radius: 20px;
+        padding: 20px 25px;
+        .data_content {
+            padding-left: 20px;
+            .single_data {
+                hr {
+                    border-top: 1px dashed #CCC;
+                    margin: 3px 0px;
+                }
+                label {
+                    display: block;
+                    font-family: $font-OpenSans-B;
+                    font-size: 0.9em;
+                    margin: 0px;
+                }
+                span {
+                    font-family: $font-OpenSans;
+                }
+                span.missing {
+                  color: #0089FF;
+                }
+                .title {
+                  font-size: 20px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 40em) {
+    .action{
+      border-radius: 5px;
+      height: auto;
+      margin: 10px 5%;
+      width: 90%;
+      text-align: center;
+    }
+    .project_container {
+        text-align: center;
+        .info{
+            margin-top: 0;
+        }
+        .data{
+            text-align: left;
+            .single_data {
+              .title, .fix-centering {
+                display: block;
+                text-align: center;
+              }
+            }
+        }
+    }
+}

@@ -1,0 +1,107 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixin.scss';
+
+.step_modal{
+    background-color: rgba( 26, 44, 53, 0.9 );
+    .modal-dialog{
+        margin: 5% auto;
+        max-width: 510px;
+        .modal-content{
+            .modal-header{
+                border-bottom: 0;
+                .mat_icon {
+                    vertical-align: middle;
+                }
+                .close{
+                    border-color: #1A2C35;
+                    cursor: pointer;
+                    font-size: 25px;
+                    margin: -5px -5px -15px auto;
+                    padding: 6px 11px;
+                    position: relative;
+                    &::before{
+                        content: '';
+                        border: 2px solid;
+                        border-radius: 50%;
+                        height: 100%;
+                        position: absolute;
+                        right: 0;
+                        top: 2px;
+                        width: 100%;
+                    }
+                    &:hover, &:active, &:focus{
+                        outline: none;
+                        text-decoration: none;
+                    }
+                }
+            }
+            .modal_content{
+                padding: 20px;
+                text-align: center;
+                .response{
+                    padding: 70px 0 30px;
+                    text-align: center;
+                    .image{
+                        display: inline-block;
+                        width: 20%;
+                    }
+                    .text{
+                        display: inline-block;
+                        font-family: $font-OpenSans;
+                        font-size: 15px;
+                        font-weight: bold;
+                        margin: 60px 0px 70px 0px;
+                        padding: 0 10%;
+                    }
+                    .action{
+                        background-color: $gold;
+                        border-radius: 25px;
+                        color: #fff;
+                        display: inline-block;
+                        font-family: Arial;
+                        font-size: 15px;
+                        letter-spacing: 0.5px;
+                        margin-top: 40px;
+                        padding: 7px 40px 6px;
+                        position: relative;
+                        &:hover, &:active, &:focus{
+                            outline: none;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.user_profile{
+    background-color: #F2F2F2;
+    .projects{
+        min-height: calc(100vh - 255px);
+        padding: 50px 0;
+        .title{
+            font-family: $font-OpenSans-SB;
+            font-size: 25px;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        .empty_message {
+            color: #E6E6E6;
+            font-family: $font-OpenSans;
+            font-size: 2em;
+            margin-top: 21%;
+            text-align: center;
+        }
+        .content_projects{
+            max-height: 50vh;
+            overflow-y: auto;
+        }
+    }
+}
+
+@media (max-width: 40em) {
+    .row {
+      margin: 0;
+    }
+}

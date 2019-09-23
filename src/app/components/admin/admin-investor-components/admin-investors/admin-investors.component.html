@@ -1,0 +1,56 @@
+<section class="banner text-center">
+
+
+    <div class="links">
+        <span class="items">
+            <span class="item" [routerLink]="['/admin','match']">Nuevos Negocios</span>
+            <span class="item" [routerLink]="['/admin','clientes']">Clientes <div class="total_notification_number" *ngIf="total_notifications>0">
+                <span class="clients">{{total_notifications}}</span>
+            </div></span>
+            <span class="item selected" [routerLink]="['/admin','inversionistas']">Inversionistas</span>
+        </span>
+    </div>
+
+    <button type="button" name="button" [class.button_selected]="!buttonSelected" class="return_action" (click)="toggleCButton()">Nuevos inversionistas</button>
+    <button type="button" name="button" [class.button_selected]="buttonSelected" class="return_action" (click)="toggleDButton()">Inversionistas actuales</button>
+
+</section>
+
+<div class="matches text-center"
+    infinite-scroll
+    [infiniteScrollDistance]="scrollDistance"
+    [infiniteScrollThrottle]="throttle"
+    [scrollWindow]="false"
+    (scrolled)="onScrollDown()">
+
+    <h1 *ngIf="investors.length==0" class="empty_message">Sin inversionistas</h1>
+
+    <div class="match row" *ngFor="let invs of investors; let i = index" (click)="showProfile(i)">
+
+        <div class="col-md-12">
+
+          <div class="user_detail">
+
+            <img *ngIf="invs.avatar.url!=null" width="45" src="{{API_path+invs.avatar.url}}" alt="Image User" title="Image User" class="image img-fluid">
+            <img *ngIf="invs.avatar.url==null" width="45" src="assets/images/client-profile/default_avatar.png"
+                alt="Image User" title="Image User" class="image img-fluid">
+
+              <div class="detail">
+
+                  <p class="name">{{invs.name}} {{invs.lastname}}</p>
+
+              </div>
+
+          </div>
+
+        </div>
+
+        <div class="arrow_image">
+
+            <img src="assets/images/admin-business/flecha@72x.png" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+
+        </div>
+
+    </div>
+
+</div>

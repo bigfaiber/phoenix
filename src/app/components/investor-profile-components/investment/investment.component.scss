@@ -1,0 +1,101 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixin.scss';
+
+.action {
+    background-color: $gold;
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-family: $font-OpenSans-SB;
+    font-size: 0.7em;
+    letter-spacing: 0.5px;
+    margin-left: 10%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 80%;
+    padding: 8px 25px;
+    &:hover, &:active, &:focus{
+        outline: none;
+        text-decoration: none;
+    }
+    &:disabled {
+        background-color: #A6A6A6;
+        cursor: not-allowed;
+    }
+}
+
+.account-selector {
+  background-color: #9A4343;
+  border-radius: 5px;
+  font-family: $font-OpenSans;
+  padding: 10px 15px;
+  position: relative;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+  table {
+    width: 100%;
+    margin-bottom: 20px;
+    tr {
+      height: 32px;
+      td {
+        text-align: left;
+        .data2 {
+          margin-left: 5%;
+        }
+        &:first-child {
+          color: $gold;
+          width: 118px;
+        }
+      }
+    }
+  }
+  .investor-label {
+    color: $gold;
+  }
+  .form_item {
+    position: relative;
+    input{
+        border-radius: 20px;
+        color: #1b2c35;
+        font-family: $font-OpenSans-SB;
+        font-size: 14px;
+        text-align: center;
+        padding: 0px 20px;
+        -webkit-box-shadow: 4px 4px 10px -5px rgba(51,51,51,0.7);
+        -moz-box-shadow: 4px 4px 10px -5px rgba(51,51,51,0.7);
+        box-shadow: 4px 4px 10px -5px rgba(51,51,51,0.7);
+    }
+    select {
+        background-color: white;
+        border: solid 1px #D6D6D6;
+        border-radius: 20px;
+        color: #1b2c35;
+        font-family: $font-OpenSans-SB;
+        font-size: 14px;
+        margin-bottom: 20px;
+        margin-top: 10px;
+        outline: none;
+        padding: 0px 10px;
+        text-align: center;
+        width: 100%;
+
+        -webkit-box-shadow: 4px 4px 10px -5px rgba(51,51,51,0.7);
+        -moz-box-shadow: 4px 4px 10px -5px rgba(51,51,51,0.7);
+        box-shadow: 4px 4px 10px -5px rgba(51,51,51,0.7);
+    }
+    select::-ms-expand {
+        display: none;
+    }
+    .input_error_right {
+        bottom: -16px;
+        color: black;
+        font-family: $font-OpenSans;
+        font-size: 10px;
+        position: absolute;
+        right: 23px;
+    }
+  }
+}

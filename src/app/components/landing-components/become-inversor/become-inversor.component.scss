@@ -1,0 +1,760 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixin.scss';
+
+.step_modal{
+    background-color: rgba( 26, 44, 53, 0.9 );
+    padding: 0 !important;
+    height: 100vh !important;
+    .modal-dialog{
+        margin: 0;
+        min-width: 100%;
+        height: 100vh !important;
+        .modal-content{
+            background-color: rgba( 0, 0, 0, 0 );
+            border: none;
+            padding: 0;
+            height: 100vh !important;
+            iframe {
+                border: none;
+                height: 100vh;
+            }
+            .modal_content{
+                padding: 0px;
+                position: relative;
+                text-align: center;
+                height: 100vh !important;
+                .close-modal {
+                  border: solid 2px $gold;
+                  border-radius: 50%;
+                  color: $gold;
+                  cursor: pointer;
+                  height: 40px;
+                  position: absolute;
+                  right: 20px;
+                  top: 20px;
+                  transition: .2s;
+                  width: 40px;
+                  i {
+                    font-size: 35px;
+                  }
+                  &:hover {
+                    transform: scale(1.1);
+                  }
+                }
+                h1 {
+                    color: white;
+                    margin-top: 20%;
+                }
+            }
+        }
+    }
+}
+
+.become_investor_content{
+    background-image: url('../../../../assets/images/optimized/img_header_desktop.jpg');
+    background-color: #092832;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-top: -104px;
+    .wrapper{
+        color: #fff;
+        margin-bottom: 35px;
+        margin-top: 80px;
+        position: relative;
+        text-align: center;
+        .welcome{
+            display: inline-block;
+            width: 60%;
+            .title{
+                font-family: $font-OpenSans-B;
+                font-size: 26px;
+                line-height: 1.3;
+                margin-bottom: 25px;
+            }
+            .testimonial{
+                cursor: pointer;
+                margin: 50px auto 0 !important;
+                opacity: .75;
+                position: relative;
+                transition: all .2s ease-in-out;
+                width: 260px;
+                img {
+                  border-radius: 30px;
+                }
+                .click-video {
+                  border: solid 4px $dark-blue;
+                  border-radius: 50%;
+                  cursor: pointer;
+                  width: 60px;
+                  height: 60px;
+                  padding-top: 9px;
+                  position: absolute;
+                  top: calc( 50% - 30px );
+                  left: calc( 50% - 30px );
+                  transition: 0.2s;
+                  .material-icons {
+                    color: $dark-blue;
+                    font-size: 37px;
+                  }
+                }
+
+                &:hover, &:active, &:focus {
+                    opacity: 1;
+                    transform: scale( 1.1 );
+                }
+            }
+            .register{
+                margin: 40px 0 25px;
+                .text_info{
+                    font-size: 16px;
+                    padding-top: 35px;
+                }
+                .action{
+                    background-color: $gold;
+                    border-radius: 25px;
+                    color: white;
+                    display: inline-block;
+                    font-family: Arial;
+                    font-size: 15px;
+                    letter-spacing: 0.5px;
+                    margin-bottom: 50px;
+                    margin-top: 5px;
+                    padding: 7px 25px 6px;
+                    position: relative;
+                    &:hover, &:active, &:focus{
+                        outline: none;
+                        text-decoration: none;
+                    }
+                }
+            }
+            .work_title{
+                color: #fff;
+                font-family: $font-OpenSans-B;
+                font-size: 30px;
+                line-height: 2.3;
+                margin: 0 auto;
+                padding-bottom: 20px;
+                position: relative;
+                width: 60%;
+                .subtitle{
+                    display: block;
+                    font-family: $font-OpenSans;
+                    font-size: 14px;
+                }
+                &::before{
+                    background-color: $gold;
+                    border-radius: 2px;
+                    bottom: 3px;
+                    content: '';
+                    height: 4px;
+                    left: 0;
+                    margin: 0 auto;
+                    position: absolute;
+                    right: 0;
+                    width: 35%;
+                }
+            }
+        }
+    }
+}
+.steps, .benefits{
+    background-color: #1A2C35;
+    position: relative;
+    .steps_content, .benefits_content{
+        color: $gold;
+        padding: 30px 10px 100px;
+        text-align: center;
+        transition: 0.2s;
+        .step, .benefit{
+            padding: 0 30px;
+            img{
+                margin: 0 auto;
+                padding: 20px;
+                width: 55%;
+            }
+            .step_name, .benefit_name{
+                font-family: $font-OpenSans-B;
+                font-size: 18px;
+                letter-spacing: 1px;
+                padding: 10px 5%;
+            }
+            .step_description{
+                font-family: $font-OpenSans;
+                font-size: 13px;
+                line-height: 1.2;
+                margin: 0 auto;
+                padding: 0 8%;
+            }
+        }
+    }
+}
+.benefits{
+    background-color: #fff;
+    .dreams-data {
+      color: $dark-blue;
+      display: flex;
+      font-family: $font-OpenSans-B;
+      width: 100%;
+      .right-data, .left-data {
+        display: flex;
+        width: 50%;
+        .content {
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+          max-width: 510px;
+          padding: 40px 0 10px;
+          width: 100%;
+          .title {
+            margin-bottom: 35px;
+          }
+          .data-line, .data-single-line {
+            align-items: center;
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            width: 70%;
+            .img {
+              width: 30%;
+              img {
+                display: block;
+                margin: 0 auto;
+              }
+            }
+            .data {
+              display: flex;
+              justify-content: flex-start;
+              flex-direction: column;
+              padding-left: 20px;
+              width: 70%;
+              .value {
+                font-size: 29px;
+              }
+              .label {
+                font-size: 14px;
+              }
+              .gold {
+                color: $gold;
+              }
+            }
+          }
+          .data-single-line {
+            .data {
+              justify-content: center;
+              text-align: center;
+              width: 100%;
+            }
+          }
+        }
+      }
+      .left-data {
+        background-color: #EFEFEF;
+        justify-content: flex-end;
+      }
+      .right-data {
+        background-color: #F1E5D7;
+        justify-content: flex-start;
+        .content {
+          .data-line {
+            padding-left: 8%;
+          }
+        }
+      }
+    }
+    .benefits_content{
+        margin: 0 auto;
+        max-width: 1020px;
+        padding-bottom: 70px;
+        text-align: center;
+        .current-portfolio {
+          border: solid 2px $gold;
+          border-top: none;
+          margin: 80px 0 50px;
+          padding: 0 30px 10px;
+          position: relative;
+          .title {
+            position: relative;
+            top: -47px;
+          }
+          .top-border {
+              border-top: solid 2px $gold;
+              position: absolute;
+              top: 0;
+              width: 18vw;
+              max-width: 380px;
+          }
+          .left-border {
+              left: 0;
+          }
+          .right-border {
+              right: 0;
+          }
+          .data-margin-b {
+            margin-bottom: 50px;
+          }
+          .data-content {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding-top: 10px;
+              .single-data {
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  flex-direction: column;
+                  min-height: 200px;
+                  width: 33.3%;
+                  img {
+                      margin-bottom: 25px;
+                  }
+                  .quantity {
+                      color: $dark-blue;
+                      font-family: $font-OpenSans-B;
+                      font-size: 36px;
+                      margin-bottom: 25px;
+                  }
+                  .label {
+                      color: $gold;
+                      font-family: $font-OpenSans-B;
+                      font-size: 16px;
+                      span {
+                        color: $gold;
+                        font-size: 21px;
+                      }
+                  }
+                  .profile {
+                    color: $dark-blue;
+                    font-family: $font-OpenSans;
+                    font-size: 22px;
+                    margin-top: 25px;
+                    .content {
+                      align-items: center;
+                      display: flex;
+                      justify-content: space-between;
+                      img {
+                        margin: {
+                          left: 10px;
+                          right: 5px;
+                          bottom: 0;
+                        }
+                      }
+                    }
+                  }
+              }
+              .single-data-label {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                margin-bottom: 40px;
+                .msg {
+                  color: $dark-blue;
+                  font-family: $font-OpenSans-B;
+                  font-size: 16px;
+                }
+              }
+          }
+        }
+        .title{
+            border-bottom: 3px solid #1A2C35;
+            color: #1A2C35;
+            display: inline-block;
+            font-family: $font-OpenSans-B;
+            font-size: 34px;
+            line-height: 1.3;
+            margin: 20px 0 40px;
+            padding: 10px 0 5;
+            text-transform: uppercase;
+        }
+        .chart-container {
+          margin-bottom: 30px;
+        }
+        .benefit{
+            .benefit_name{
+                color: #1A2C35;
+                font-family: $font-OpenSans;
+                font-size: 16px;
+                padding: 10px 15px;
+            }
+        }
+        .action{
+            background-color: $gold;
+            border-radius: 25px;
+            color: #fff;
+            display: inline-block;
+            font-family: Arial;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            margin-bottom: 25px;
+            margin-top: 40px;
+            padding: 7px 25px 6px;
+            position: relative;
+            &:hover, &:active, &:focus{
+                outline: none;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.current-investors {
+  background-color: #1A2C35;
+  padding-bottom: 40px;
+  .content {
+    text-align: center;
+    .title{
+      border-bottom: 3px solid white;
+      color: white;
+      display: inline-block;
+      font-family: $font-OpenSans-B;
+      font-size: 34px;
+      line-height: 1.3;
+      margin: 20px 0 40px;
+      padding: 10px 0 5;
+      text-transform: uppercase;
+    }
+    .data-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .map {
+        width: 65%;
+        img {
+          width: 100%;
+        }
+      }
+      .pie-chart {
+        width: 35%;
+        position: relative;
+        h6 {
+          color: white;
+          font-family: $font-OpenSans-B;
+          position: absolute;
+          left: 37%;
+          top: 20px;
+          z-index: 11;
+        }
+        .content {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 12;
+          .chart {
+            margin-left: -9%;
+            width: 33.33333%;
+            z-index: 10;
+          }
+          .women {
+            width: 33.33333%;
+            max-width: 161px;
+            text-align: right;
+            padding: 0 10px;
+            z-index: 11;
+          }
+          .men {
+            width: 33.33333%;
+            margin-left: 16px;
+            max-width: 115px;
+            text-align: left;
+            padding: 0 10px;
+            z-index: 11;
+          }
+        }
+      }
+    }
+  }
+}
+
+.testimonials{
+    background-color: white;
+    padding-top: 30px;
+    position: relative;
+    text-align: center;
+    .title{
+        color: #1A2C35;
+        font-family: $font-OpenSans-B;
+        font-size: 30px;
+        line-height: 2.3;
+        margin: 0 auto;
+        padding-bottom: 20px;
+        position: relative;
+        width: 40%;
+        .subtitle{
+            display: block;
+            font-family: $font-OpenSans;
+            font-size: 14px;
+        }
+        &::before{
+            background-color: $gold;
+            border-radius: 2px;
+            bottom: 12px;
+            content: '';
+            height: 4px;
+            left: 0;
+            margin: 0 auto;
+            position: absolute;
+            right: 0;
+            width: 35%;
+        }
+    }
+    .videos{
+        padding: 50px 0 30px;
+        text-align: center;
+        .testimonial{
+            cursor: pointer;
+            transition: all .2s ease-in-out;
+            img {
+              border-radius: 20px;
+            }
+            .click-video {
+              border: solid 6px white;
+              border-radius: 50%;
+              cursor: pointer;
+              width: 80px;
+              height: 80px;
+              padding-top: 9px;
+              position: absolute;
+              top: calc( 50% - 40px );
+              left: calc( 50% - 40px );
+              transition: 0.2s;
+              .material-icons {
+                color: white;
+                font-size: 51px;
+              }
+            }
+
+            &:hover, &:active, &:focus {
+                transform: scale( 1.1 );
+            }
+        }
+    }
+
+    .section_action{
+        background-color: $gold;
+        border-radius: 25px;
+        color: #fff;
+        display: inline-block;
+        font-family: Arial;
+        font-size: 15px;
+        letter-spacing: 0.5px;
+        margin: 15px 0 30px;
+        padding: 7px 25px 6px;
+        position: relative;
+        &:hover, &:active, &:focus{
+            outline: none;
+            text-decoration: none;
+        }
+    }
+}
+
+@media (max-width: 40em) {
+    .become_investor_content{
+        background-color: #1a2c35;
+        background-image: url('../../../../assets/images/optimized/img_header_movil.jpg');
+        .wrapper{
+            margin-bottom: 0;
+            margin-top: 25px;
+            padding: 0;
+            .welcome{
+                width: 100%;
+                .title{
+                    font-size: 25px;
+                    margin-bottom: 20px;
+                    padding: 0 16%;
+                }
+                .click_video{
+                    margin-top: 50px;
+                    img{
+                        width: 75%;
+                    }
+                }
+                .register{
+                    margin: 30px 0 0;
+                    .text_info{
+                        font-size: 15px;
+                        line-height: 1.2;
+                        padding: 30px 16% 0;
+                    }
+                    .action{
+                        margin-bottom: 30px;
+                    }
+                }
+                .work_title{
+                    background-color: #1A2C35;
+                    font-size: 27px;
+                    line-height: 3;
+                    padding: 35px 10% 20px;
+                    width: 100%;
+                    .subtitle{
+                        line-height: 1.2;
+                        padding: 0 15%;
+                    }
+                }
+            }
+        }
+        .steps{
+            .steps_content{
+                .step{
+                    padding: 30px;
+                    .step_name{
+                        font-size: 21px;
+                    }
+                    .step_description{
+                        font-size: 16px;
+                        padding: 0 15% 0;
+                    }
+                }
+            }
+
+        }
+        .benefits{
+            .dreams-data {
+              flex-direction: column;
+              .right-data, .left-data {
+                width: 100%;
+                justify-content: center;
+                .content {
+                  .title {
+                    font-size: 22px;
+                  }
+                  .data-line {
+                    .data {
+                      .value {
+                        font-size: 25px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            .current-portfolio {
+              padding: 0 10px 10px;
+              .title {
+                left: 0%;
+              }
+              .top-border {
+                  width: 11vw;
+              }
+              .data-margin-b {
+                margin-bottom: 0px;
+              }
+              .data-content {
+                  flex-direction: column;
+                  padding-top: 15px;
+                  padding-bottom: 0px;
+                  .single-data {
+                      margin-bottom: 45px;
+                      width: 70%;
+                      img {
+                          margin-bottom: 15px;
+                      }
+                      .quantity {
+                          font-size: 30px;
+                          margin-bottom: 15px;
+                      }
+                  }
+              }
+            }
+            .content_benefits{
+                .benefit{
+                    .benefit_name{
+                        padding: 10px 10% 25px;
+                    }
+                }
+            }
+        }
+        .current-investors {
+          .content {
+            .title {
+              font-size: 25px;
+            }
+            .data-content {
+              flex-direction: column;
+              .map {
+                margin-top: 20px;
+                width: 100%;
+              }
+              .pie-chart {
+                width: 100%;
+                h6 {
+                  left: 33%;
+                }
+                .content {
+                  .women {
+                    img {
+                      width: 13px;
+                    }
+                  }
+                  .men {
+                    margin-left: 30px;
+                    img {
+                      width: 11px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        .testimonials{
+            .title{
+                width: 70%;
+            }
+            .videos{
+                padding: 20px 15px 30px;
+                .testimonial{
+                    padding: 12.5px 30px;
+                }
+            }
+        }
+    }
+    .step_modal{
+        .modal-dialog{
+            .modal-content{
+                .modal_content{
+                    align-items: center;
+                    display: flex;
+                    justify-content: center;
+                    iframe{
+                        height: 35vh;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media ( max-width: 320px ) {
+    .become_investor_content{
+        .current-investors {
+          .content {
+            .data-content {
+              .pie-chart {
+                width: 100%;
+                h6 {
+                  left: 29%;
+                }
+                .content {
+                  .chart {
+                    margin-left: -15%;
+                  }
+                  .women {
+                    margin-right: 10px;
+                    img {
+                      width: 13px;
+                    }
+                  }
+                  .men {
+                    margin-left: 45px;
+                    img {
+                      width: 11px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+}

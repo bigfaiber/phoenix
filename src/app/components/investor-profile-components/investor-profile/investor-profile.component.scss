@@ -1,0 +1,193 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixin.scss';
+
+.projects{
+    min-height: calc(100vh - 255px);
+    padding: 0px 0;
+    .empty_message {
+        color: #E6E6E6;
+        font-family: $font-OpenSans;
+        font-size: 2em;
+        margin-top: 13%;
+        text-align: center;
+    }
+    .filters{
+        background-color: #F7F7F7;
+        border: solid 1px #E6E6E6;
+        color: $gold;
+        margin: 10px 0 40px;
+        padding: 20px 10px 20px;
+        .millions, .interest_rate, .term{
+            padding: 0 10px;
+            position: relative;
+            text-align: center;
+            .action_button_left {
+                background-color: $gold;
+                border-radius: 50%;
+                color: #1A2C35;
+                cursor: pointer;
+                position: absolute;
+                left: 8.8%;
+                bottom: 11px;
+                width: 23px;
+                height: 23px;
+            }
+            .action_button_right {
+                background-color: $gold;
+                border-radius: 50%;
+                color: #1A2C35;
+                cursor: pointer;
+                position: absolute;
+                right: 11.2%;
+                bottom: 11px;
+                width: 23px;
+                height: 23px;
+            }
+            .value_left {
+              color: $gold;
+              position: absolute;
+              left: 2%;
+              bottom: 11px;
+              font-size: 14px;
+            }
+            .value_right {
+              color: $gold;
+              position: absolute;
+              right: 3.8%;
+              bottom: 11px;
+              font-size: 14px;
+            }
+            nouislider {
+              width: 65%;
+              margin: 20px auto;
+            }
+            h3 {
+                font-family: $font-OpenSans;
+                font-size: 1.2em;
+                margin: 20px 0px 30px;
+                text-align: center;
+            }
+            #millions, #interest_rate, #term{
+                background-color: #CACACA;
+                border: none;
+                box-shadow: none;
+                display: inline-block;
+                height: 5px;
+                position: relative;
+                width: 65%;
+                &::before, &::after{
+                    background-color: $gold;
+                    border-radius: 50%;
+                    bottom: -8px;
+                    color: #5A472A;
+                    content: '-';
+                    font-size: 15px;
+                    height: 22px;
+                    line-height: 1.3;
+                    position: absolute;
+                    width: 22px;
+                }
+                &::before{
+                    left: -38px;
+                }
+                &::after{
+                    content: '+';
+                    right: -28px;
+                }
+            }
+            .example-val{
+                bottom: 0;
+                font-family: $font-OpenSans;
+                font-size: 12px;
+                position: absolute;
+            }
+            .plus{
+                right: 18px;
+            }
+            .minus{
+                left: 12px;
+            }
+            #term-value-lower{
+                left: unset;
+                right: 18px;
+            }
+            #term-value-upper{
+                left: 12px;
+                right: unset;
+                &::before{
+                    bottom: -2px;
+                    color: #BA9A70;
+                    content: '1';
+                    height: 20px;
+                    left: 2ºpx;
+                    position: absolute;
+                    width: 20px;
+                }
+            }
+        }
+    }
+    .title{
+        font-family: $font-OpenSans-SB;
+        font-size: 25px;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+    .content_projects{
+        max-height: 40vh;
+        overflow-y: auto;
+    }
+}
+
+@media ( max-width: 1400px ) {
+    .projects {
+        .content_projects{
+            .project, .new_project{
+                .project_link, .new_link{
+                    .project_name{
+                        font-size: 1.2vw;
+                    }
+                    .approved_value{
+                        font-size: 1.4vw;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 40em){
+    .projects{
+        .filters{
+            .millions, .interest_rate, .term{
+                .minus{
+                    bottom: -1px;
+                    left: 5px;
+                }
+                .value_left {
+                    left: -1%;
+                }
+                .value_left_patch {
+                    left: 1% !important;
+                }
+                .value_right {
+                    right: 0.8%;
+                }
+                .action_button_right {
+                    right: 10.2%;
+                }
+                .action_button_left {
+                    left: 6.8%;
+                }
+            }
+        }
+    }
+}
+
+@media ( max-width: 640px ) {
+    .projects{
+      .content_projects{
+          margin: 0;
+          margin-bottom: 42px;
+      }
+    }
+}

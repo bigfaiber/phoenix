@@ -1,0 +1,361 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixin.scss';
+
+.step_modal{
+    background-color: rgba( 26, 44, 53, 0.9 );
+    .modal-dialog{
+        margin: 2% auto;
+        max-width: 85%;
+        .modal-content{
+            background-color: rgba( 0, 0, 0, 0 );
+            border: none;
+            .modal-header{
+                border-bottom: 0;
+                .mat_icon {
+                    vertical-align: middle;
+                }
+                .close{
+                    color: white;
+                    cursor: pointer;
+                    font-size: 25px;
+                    margin: -5px -5px -15px auto;
+                    padding: 6px 11px;
+                    position: relative;
+                    &::before{
+                        content: '';
+                        border: 2px solid;
+                        border-radius: 50%;
+                        height: 100%;
+                        position: absolute;
+                        right: 0;
+                        top: 2px;
+                        width: 100%;
+                    }
+                    &:hover, &:active, &:focus{
+                        outline: none;
+                        text-decoration: none;
+                    }
+                }
+            }
+            .modal_content{
+                padding: 20px;
+                text-align: center;
+                h1 {
+                    color: white;
+                    margin-top: 20%;
+                }
+                embed {
+                    height: 80vh;
+                    max-width: 900px;
+                    width: 90%;
+                }
+                .action{
+                    background-color: $gold;
+                    border: none;
+                    border-radius: 25px;
+                    color: #fff;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: Arial;
+                    font-size: 15px;
+                    letter-spacing: 0.5px;
+                    margin-top: 20px;
+                    padding: 7px 50px 6px 50px;
+                    position: relative;
+                    &:hover, &:active, &:focus{
+                        outline: none;
+                        text-decoration: none;
+                    }
+
+                    -webkit-transition: background-color 100ms linear;
+                    -ms-transition: background-color 100ms linear;
+                    transition: background-color 100ms linear;
+                }
+                .action_disabled{
+                    background-color: #A6A6A6;
+                    cursor: default;
+
+                    -webkit-transition: background-color 200ms linear;
+                    -ms-transition: background-color 200ms linear;
+                    transition: background-color 200ms linear;
+                }
+            }
+        }
+    }
+}
+
+.rec_modal{
+    background-color: rgba( 26, 44, 53, 0.9 );
+    .modal-dialog{
+        margin: 5% auto;
+        max-width: 610px;
+        .modal-content{
+            .modal-header{
+                border-bottom: 0;
+                .mat_icon {
+                    vertical-align: middle;
+                }
+                .close{
+                    border-color: #1A2C35;
+                    cursor: pointer;
+                    font-size: 25px;
+                    margin: -5px -5px -15px auto;
+                    padding: 6px 11px;
+                    position: relative;
+                    &::before{
+                        content: '';
+                        border: 2px solid;
+                        border-radius: 50%;
+                        height: 100%;
+                        position: absolute;
+                        right: 0;
+                        top: 2px;
+                        width: 100%;
+                    }
+                    &:hover, &:active, &:focus{
+                        outline: none;
+                        text-decoration: none;
+                    }
+                }
+            }
+            .modal_content{
+                padding: 20px;
+                text-align: center;
+                .response{
+                    padding: 30px 0 30px;
+                    text-align: center;
+                    form{
+                        font-family: $font-OpenSans-SB;
+                        margin: 15px 0 0;
+                        padding: 20px 7%;
+                        position: relative;
+                        .form_item{
+                            padding: 0px 20%;
+                            position: relative;
+                            text-align: left;
+                            label{
+                                color: #1b2c35;
+                                font-size: 14px;
+                                margin: 10px 0 5px;
+                                padding-left: 20px;
+                                text-align: left;
+                                &.name{
+                                    margin: 0;
+                                }
+                                &.ans{
+                                    margin: 0;
+                                }
+                            }
+                            input{
+                                background-color: #F7F7F7;
+                                border: 0px;
+                                border-radius: 20px;
+                                display: inline-block;
+                                font-family: $font-OpenSans;
+                                font-size: 14px;
+                                padding: 8px 20px;
+                                width: 100%;
+                            }
+                            .input_error_right {
+                                bottom: -20px;
+                                color: red;
+                                font-family: $font-OpenSans;
+                                font-size: 12px;
+                                position: absolute;
+                                right: 118px;
+                            }
+                        }
+                    }
+                    .image{
+                        display: inline-block;
+                        width: 20%;
+                    }
+                    .text{
+                        display: block;
+                        font-family: $font-OpenSans;
+                        font-size: 15px;
+                        font-weight: bold;
+                        margin: 30px 0px 0px 0px;
+                        padding: 0 20%;
+                    }
+                    .upload_documents {
+                        background-color: #1A2C35;
+                        border: none;
+                        border-radius: 30px;
+                        color: white;
+                        cursor: pointer;
+                        margin-top: 10px;
+                        padding: 8px 20px;
+                        text-align: center;
+                        img {
+                            margin-right: 10px;
+                            width: 20px;
+                        }
+                        &:hover, &:active, &:focus{
+                            outline: none;
+                            text-decoration: none;
+                        }
+                    }
+                    .action{
+                        background-color: $gold;
+                        border: none;
+                        border-radius: 25px;
+                        color: #fff;
+                        cursor: pointer;
+                        display: inline-block;
+                        font-family: Arial;
+                        font-size: 15px;
+                        letter-spacing: 0.5px;
+                        margin-right: 15px;
+                        margin-top: 60px;
+                        padding: 7px 50px 6px 50px;
+                        position: relative;
+                        &:hover, &:active, &:focus{
+                            outline: none;
+                            text-decoration: none;
+                        }
+
+                        -webkit-transition: background-color 100ms linear;
+                        -ms-transition: background-color 100ms linear;
+                        transition: background-color 100ms linear;
+                    }
+                    .action_disabled{
+                        background-color: #A6A6A6;
+                        cursor: default;
+
+                        -webkit-transition: background-color 200ms linear;
+                        -ms-transition: background-color 200ms linear;
+                        transition: background-color 200ms linear;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.user_profile{
+    background-color: #F2F2F2;
+    .projects{
+        min-height: calc(100vh - 255px);
+        padding: 50px 0;
+        .title{
+            color: #1A2C35;
+            font-family: $font-OpenSans-SB;
+            font-size: 25px;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        .empty_message {
+            color: #E6E6E6;
+            font-family: $font-OpenSans;
+            font-size: 2em;
+            margin-top: 6%;
+            text-align: center;
+        }
+        .action {
+            background-color: $gold;
+            border: none;
+            border-radius: 25px;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: $font-OpenSans-SB;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+            margin-top: 70px;
+            margin-bottom: 10px;
+            width: 270px;
+            padding: 8px 25px;
+            &:hover, &:active, &:focus{
+                outline: none;
+                text-decoration: none;
+            }
+        }
+        .content_projects{
+            .mobile_action {
+                display: none;
+            }
+            .new_project{
+                cursor: pointer;
+                margin-bottom: 30px;
+                position: relative;
+                text-align: center;
+                .project_link, .new_link{
+                    background-color: $gold;
+                    border-radius: 3px;
+                    color: #1A2C35;
+                    display: block;
+                    font-family: $font-OpenSans;
+                    height: 100px;
+                    padding: 25px 20px 15px;
+                    position: relative;
+                    .project_name{
+                        font-size: 21px;
+                        margin-bottom: 5px;
+                    }
+                    .approved_value{
+                        font-size: 16px;
+                        .value{
+                            float: right;
+                        }
+                    }
+                    &:hover, &:active, &:focus{
+                        outline: none;
+                        text-decoration: none;
+                    }
+                }
+            }
+            .new_project{
+                .new_link{
+                    background-color: #E6E6E6;
+                    text-align: center;
+                    span{
+                        left: 0;
+                        margin: 0 auto;
+                        position: absolute;
+                        right: 0;
+                        top: 38px;
+                    }
+                    .image{
+                        height: 30px;
+                        position: absolute;
+                        right: 20px;
+                        top: 35px;
+                        width: 30px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 575px){
+    .rec_modal{
+        background-color: rgba( 26, 44, 53, 0.9 );
+        .modal-dialog{
+            .modal-content{
+                .modal_content{
+                    .response{
+                        form{
+                            .form_item{
+                                padding: 0px 10%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .user_profile{
+        .projects{
+            .content_projects{
+                .desktop_action {
+                    display: none;
+                }
+                .mobile_action {
+                    display: block;
+                }
+            }
+        }
+    }
+}

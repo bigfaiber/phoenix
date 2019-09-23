@@ -1,0 +1,123 @@
+<div class="investor_registration_content">
+
+    <app-menu-dark></app-menu-dark>
+
+    <div class="wrapper container">
+
+        <div class="registration_form">
+
+            <h2 class="title">Te ayudamos a <span>construir</span> tus <span>sueños</span> con préstamos <span>en línea</span></h2>
+
+            <span class="banner_info">Consigue financiación personal o de tu negocio a través de nosotros.</span>
+            <span class="banner_info">Sin costos adicionales, solo pagas tu crédito.</span>
+
+            <form name="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <div class="form_item form-group">
+
+                            <label for="email">¿Cuál es tu sueño?</label>
+
+                            <select formControlName="dream">
+
+                                <option value="0" selected disabled>Selecciona una opción</option>
+
+                                <option value="Capital de trabajo">Capital de trabajo</option>
+
+                                <option value="Unificar deudas">Unificar deudas</option>
+
+                                <option value="Viajar">Viajar</option>
+
+                                <option value="Comprar vehículo">Comprar vehículo</option>
+
+                                <option value="Comprar vivienda">Comprar vivienda</option>
+
+                                <option value="Comprar bienes raíces">Comprar bienes raíces</option>
+
+                                <option value="Tratamiento médico">Tratamiento médico</option>
+
+                                <option value="Estudiar">Estudiar</option>
+
+                                <option value="Iniciar mi negocio">Iniciar mi negocio</option>
+
+                                <option value="Otro">Otro</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="form_item form-group">
+
+                            <textarea formControlName="description" rows="4" placeholder="Describe tu sueño y cuéntanos cuál es tu plan de pagos con base en tus ingresos."></textarea>
+
+                            <div class="example">
+                              Ejemplo: “Yo gano 2 millones de pesos mensuales y mis gastos son de 1 millón, lo que me deja otro millón para gastos adicionales.“
+                            </div>
+
+                        </div>
+
+                        <div class="form_item form-group">
+
+                            <label for="email">¿Cuánto necesitas?</label>
+
+                            <input type="text" class="form-control" formControlName="needings" myCurrencyFormatter
+                                    (ngModelChange)="needingsChanged($event)" autocomplete="off">
+
+                            <span class="input_error_right" *ngIf="form.controls['needings'].hasError('pattern')" [@fadeInOut]>
+                                Sólo puede contener números
+                            </span>
+
+                        </div>
+
+                        <div class="form_item form-group">
+
+                            <label for="email">¿Cuánto puedes pagar mensualmente?</label>
+
+                            <input type="text" class="form-control" formControlName="payment" myCurrencyFormatter
+                                    (ngModelChange)="paymentChanged($event)" autocomplete="off">
+
+                            <span class="input_error_right" *ngIf="form.controls['payment'].hasError('pattern')" [@fadeInOut]>
+                                Sólo puede contener números
+                            </span>
+
+                        </div>
+
+                        <div class="form_item form-group">
+
+                            <label for="email">Meses</label>
+
+                            <input type="text" class="form-control" name="password" formControlName="months" readonly>
+
+                        </div>
+
+                        <div class="form_item form-group">
+
+                            <label for="email">Tasa de interés*</label>
+
+                            <input type="text" class="form-control" formControlName="rate" readonly>
+
+                        </div>
+
+                        <span class="start">*Estos valores son aproximaciones que pueden variar al momento de realizar las operaciones financieras.</span>
+
+                    </div>
+
+                </div>
+
+                <button type="submit" [disabled]="!isFormValid()" (click)="onSubmit()" class="action">Cumple tu sueño</button>
+
+            </form>
+
+            <p class="start">*La tasa puede variar dependiendo de cada perfil de cliente.</p>
+
+        </div>
+
+    </div>
+
+
+    <app-footer></app-footer>
+
+</div>

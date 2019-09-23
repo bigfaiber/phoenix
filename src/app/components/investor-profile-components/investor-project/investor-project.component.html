@@ -1,0 +1,382 @@
+<div class="pdf-modal modal fade" id="pdfModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog" role="document">
+
+      <div class="modal-content">
+
+          <div class="modal-header">
+
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+              </button>
+
+          </div>
+
+          <div class="modal-body modal_content">
+
+              <embed #pdf_viewer type='application/pdf'>
+
+          </div>
+
+      </div>
+
+  </div>
+
+</div>
+
+<div class="step_modal modal fade" id="likeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                      <img src="assets/images/registration/logo@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid">
+
+                <div class="response">
+
+                    <p class="text">Gracias por elegir este proyecto. Estamos empezando el trámite para hacer este sueño realidad</p>
+
+                    <a class="action" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">Ok</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="step_modal modal fade" id="exceedLimitModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                      <img src="assets/images/registration/logo@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid">
+
+                <div class="response">
+
+                    <p class="text bigger-font">Si eliges este proyecto vas a exceder tu tope asignado.</p>
+                    <p class="text">¿Deseas continuar?</p>
+
+                    <a #closeExceedLimit class="action blue-action" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">Cancelar</span>
+                    </a>
+
+                    <a class="action" (click)="likeProject(omb);closeExceedLimit.click()">
+                        <span aria-hidden="true">Continuar</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="step_modal modal fade" id="exceedPercentLimitModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                      <img src="assets/images/registration/logo@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid">
+
+                <div class="response">
+
+                    <p class="text bigger-font">Si eliges este proyecto estarás invirtiendo más del 25% de tu tope asignado en un sólo cliente.</p>
+                    <p class="text">¿Deseas continuar?</p>
+
+                    <a #closeExceedPercentLimit class="action blue-action" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">Cancelar</span>
+                    </a>
+
+                    <a class="action" (click)="likeProject(omb);closeExceedPercentLimit.click()">
+                        <span aria-hidden="true">Continuar</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="information_container text-center">
+
+    <div class="row">
+
+        <div class="col-md-4 spacing">
+
+            <div class="data_content1">
+
+                <div class="title">
+
+                    Información general
+
+                </div>
+
+                <div class="data">
+
+                      <div class="data_line">
+
+                          Edad
+                          <span>{{customer_age}}</span>
+
+                      </div>
+
+                      <div class="data_line">
+
+                          Situación laboral
+                          <span>{{project.client.employment_status}}</span>
+
+                      </div>
+
+                      <div class="data_line">
+
+                          Declara renta
+                          <span>{{project.client.rent?'Sí':'No'}}</span>
+
+                      </div>
+
+                      <div class="data_line">
+
+                          Cargo
+                          <span>{{project.client.job_position}}</span>
+
+                      </div>
+
+                      <div class="data_line">
+
+                          Ciudad
+                          <span>{{project.client.city}}</span>
+
+                      </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 spacing">
+            <div class="data_content2">
+
+                <div class="title">
+
+                    Estado financiero
+
+                </div>
+
+                <div class="data">
+
+                    <div class="data_line">
+
+                      Patrimonio
+                      <span>${{project.client.patrimony|myCurrency}}</span>
+
+                    </div>
+
+                    <div class="data_line">
+
+                      Capacidad máxima
+                      <span>${{project.client.max_capacity|myCurrency}}</span>
+
+                    </div>
+
+                    <div class="data_line">
+
+                      Deuda actual
+                      <span>${{project.client.current_debt|myCurrency}}</span>
+
+                    </div>
+
+                    <div class="data_line">
+
+                      Ingresos
+                      <span>${{project.client.income|myCurrency}}</span>
+
+                    </div>
+
+                    <div class="data_line">
+
+                      Capacidad de pago mensual
+                      <span>${{project.client.payment_capacity|myCurrency}}</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-4 spacing">
+            <div class="data_content2">
+
+                <div class="title">
+
+                    Negocio
+
+                </div>
+
+                <div class="data">
+
+                    <div class="data_line">
+
+                      Proyecto
+                      <span>{{project.dream}}</span>
+
+                    </div>
+
+                    <div class="data_line">
+
+                      Monto
+                      <span>${{project.money|myCurrency}}</span>
+
+                    </div>
+
+                    <div class="data_line">
+
+                      Cuota mensual
+                      <span>${{project.monthly_payment|myCurrency}}</span>
+
+                    </div>
+
+                    <div class="data_line">
+
+                      Tiempo
+                      <span>{{project.month}} Meses</span>
+
+                    </div>
+
+                    <div class="data_line">
+
+                      Tasa aprobada
+                      <span>{{project.interest_rate|number:'1.0-1'}}%</span>
+
+                    </div>
+
+                </div>
+
+                <button type="button" name="button" class="action" (click)="downloadAT(pdfBut)">Tabla Proyectada</button>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row graphics_container">
+
+      <div class="col-md-6">
+
+          <div class="tachometer_container">
+
+              <div class="text-center tachometer">
+
+                  <img src="/assets/images/tachometer/3x/tachometer2.png" class="tachometer_image">
+
+                  <img src="/assets/images/tachometer/3x/needle.png" class="needle_image"
+                      [style.transform]="calcNeedleRotation()">
+
+                  <h3>Calificación: {{project.client.global}}</h3>
+
+              </div>
+
+          </div>
+
+      </div>
+
+      <div class="col-md-6">
+
+          <div class="chart-content">
+
+              <div [chart]="chart" style="width: 80%; margin: 0 auto;"></div>
+
+          </div>
+
+      </div>
+
+    </div>
+
+    <div class="judgments_container">
+
+        <div class="pro">
+          <div class="header">
+            <img src="/assets/images/investor-profile/pros.png" alt="">
+            <h2>Pros</h2>
+          </div>
+          <ul>
+            <legend *ngIf="project.client.pros.length==0">Sin asignar</legend>
+            <div *ngFor="let op of project.client.pros; let i=index">
+              <li>
+                <span>{{op.opinion}}</span>
+              </li>
+            </div>
+          </ul>
+        </div>
+
+        <div class="con">
+          <div class="header">
+            <img src="/assets/images/investor-profile/contras.png" alt="">
+            <h2>Contras</h2>
+          </div>
+          <ul>
+            <legend *ngIf="project.client.cons.length==0">Sin asignar</legend>
+            <div *ngFor="let op of project.client.cons; let i=index">
+              <li>
+                <span>{{op.opinion}}</span>
+              </li>
+            </div>
+          </ul>
+        </div>
+
+    </div>
+
+    <button type="button" name="button" class="return_action" (click)="getBack()">Volver</button>
+    <button type="button" name="button" [class.action_disabled]="requestSent" class="action" (click)="likeHandler(omb,exceedBut,exceedPercentBut)">Invertir</button>
+    <button hidden #omb type="button" name="button" data-toggle="modal" data-target="#likeModal"></button>
+    <button hidden #exceedBut type="button" name="button" data-toggle="modal" data-target="#exceedLimitModal"></button>
+    <button hidden #exceedPercentBut type="button" name="button" data-toggle="modal" data-target="#exceedPercentLimitModal"></button>
+    <button hidden #pdfBut type="button" name="button" data-toggle="modal" data-target="#pdfModal"></button>
+
+</div>

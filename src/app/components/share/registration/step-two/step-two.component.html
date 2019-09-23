@@ -1,0 +1,128 @@
+<div class="step_modal modal fade" id="step2Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                      <img src="assets/images/registration/logo@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid">
+
+                <div class="response">
+
+                    <div class="image">
+                        <img src="assets/images/registration/mail_desktop@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid d-none d-md-block">
+                        <img src="assets/images/registration/mail_desktop@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid d-block d-sm-none">
+                    </div>
+
+                    <p class="text">Se ha enviado un código de verificación a tu número celular y al correo ingresado.</p>
+
+                    <a class="action" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">Ok</span>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="step_modal modal fade" id="step2Modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                      <img src="assets/images/registration/logo@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid">
+
+                <div class="response">
+
+                    <div class="image">
+                        <img src="assets/images/registration/check_desktop@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid d-none d-md-block">
+                        <img src="assets/images/registration/check_desktop@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid d-block d-sm-none">
+                    </div>
+
+                    <p class="text">Hemos verificado tu número de teléfono</p>
+
+                    <a class="action" data-dismiss="modal" aria-label="Close" (click)="next()">
+                        <span aria-hidden="true">Ok</span>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="wrapper container">
+
+    <div class="registration_form">
+
+        <h3 class="title">Ingresa el código</h3>
+
+        <form name="form" [formGroup]="form">
+
+            <div class="form_item form-group">
+
+                <input #code type="text" class="form-control" name="cod" formControlName="numb" (focus)="invalidCode=false" (ngModelChange)="invalidCode=false"
+                    autocomplete="off">
+
+                <span class="input_error_right" *ngIf="invalidCode" [@fadeInOut]>
+                    Código inválido
+                </span>
+
+                <span class="input_error_right" *ngIf="form.controls['numb'].hasError('minlength')" [@fadeInOut]>
+                    Mínimo 8 caracteres
+                </span>
+
+            </div>
+
+            <button type="submit" [class.action_disabled]="!isFormValid( )" class="action" (click)="onSubmit()">
+                Enviar
+            </button>
+
+            <button #openModalButton data-toggle="modal" data-target="#step2Modal2" hidden></button>
+
+        </form>
+
+        <div class="large_margin">
+            <a (click)="resendCode()">reenviar código</a><br>
+            <button #newCode data-toggle="modal" data-target="#step2Modal1" hidden></button>
+        </div>
+
+        <a class="stepwizard_button step_selected"></a>
+
+        <a class="stepwizard_button step_selected"></a>
+
+        <a class="stepwizard_button"></a>
+
+        <a class="stepwizard_button"></a>
+
+
+    </div>
+
+</div>

@@ -1,0 +1,327 @@
+<!-- <div class="step_modal modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                      <img src="assets/images/registration/logo@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid">
+
+                <div class="response">
+
+                    <p class="text">¿Estás seguro de eliminar este archivo?</p>
+
+                    <a class="action" data-dismiss="modal" aria-label="Close" (click)="confirmDeletion()">
+                        <span aria-hidden="true">Sí</span>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div> -->
+
+<!-- Modal -->
+<div class="step_modal modal fade" id="step5Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                      <img src="assets/images/registration/logo@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid">
+
+                <div class="response">
+
+                    <div class="image">
+                        <img src="assets/images/registration/check_desktop@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid d-none d-md-block">
+                        <img src="assets/images/registration/check_desktop@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid d-block d-sm-none">
+                    </div>
+
+                    <br>
+
+                    <p class="text">Datos actualizados</p>
+
+                    <br>
+
+                    <a class="action" data-dismiss="modal" aria-label="Close" (click)="nextStep()">
+                        <span aria-hidden="true">Bien!</span>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="step_modal modal fade" id="step5Modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                      <img src="assets/images/registration/logo@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid">
+
+                <div class="response">
+
+                    <div class="image">
+                        <img src="assets/images/registration/registro_icon_desktop@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid d-none d-md-block">
+                        <img src="assets/images/registration/registro_icon_desktop@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid d-block d-sm-none">
+                    </div>
+
+                    <p class="text">Tu registro se ha guardado con éxito</p>
+
+                    <a class="action" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">OK</span>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="rec_modal modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                <embed #pdf_viewer><br>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="wrapper container">
+
+    <div class="registration_form">
+
+        <h3 class="title">Documentos requeridos</h3>
+
+        <span class="banner_info">Para completar el proceso necesitamos estos documentos:</span>
+
+        <form>
+
+            <div class="file_container">
+
+                <div class="category_content">
+
+                    <label>Cédula (Por ambos lados)</label>
+
+                    <i class="material-icons add_more_files" (click)="addIdFileInputLine()">add</i>
+
+                </div>
+
+                <div class="multiple_files">
+
+                    <div *ngFor="let file of allIds; let i=index" class="line_container_2" [@fadeInOut]>
+
+                        <i *ngIf="file.document==undefined" class="material-icons remove_icon" [@fadeInOut]
+                            (click)="removeIdFileInputLine(i)">close</i>
+
+                        <label *ngIf="file.document==undefined">{{file.file?file.file.name:'Archivo '+(i+1)}} <span *ngIf="file.file">(sin guardar)</span></label>
+
+                        <label *ngIf="file.document!=undefined" class="file_present"
+                            (click)="showIdDocument(omk,i,'cc')"><span *ngIf="file.name">{{file.name}}</span><span *ngIf="!file.name">Archivo {{i+1}}</span></label>
+
+                        <i [class.empty_mat_icon]="file.document==undefined&&file.file==undefined"
+                                class="material-icons mat_icon" (click)="openIdFileInput(i,file)">
+
+                          cloud_upload
+
+                        </i>
+
+                    </div>
+
+                    <input #id_file_input type="file" (change)="catchIdFile()"
+                        accept="image/jpeg,image/gif,image/png,application/pdf" hidden/>
+
+                </div>
+
+                <div *ngIf="user_data.rent_tax" class="category_content">
+
+                    <label>Declaración de renta</label>
+
+                    <i class="material-icons add_more_files" (click)="addIncomeFileInputLine()">add</i>
+
+                </div>
+
+                <div *ngIf="user_data.rent_tax" class="multiple_files">
+
+                    <div *ngFor="let file of allIncomes; let i=index" class="line_container_2" [@fadeInOut]>
+
+                        <i *ngIf="file.document==undefined" class="material-icons remove_icon" [@fadeInOut]
+                            (click)="removeIncomeFileInputLine(i)">close</i>
+
+                        <label *ngIf="file.document==undefined">{{file.file?file.file.name:'Archivo '+(i+1)}} <span *ngIf="file.file">(sin guardar)</span></label>
+
+                        <label *ngIf="file.document!=undefined" class="file_present"
+                            (click)="showIncomeDocument(omk,i,'renta')"><span *ngIf="file.name">{{file.name}}</span><span *ngIf="!file.name">Archivo {{i+1}}</span></label>
+
+                        <i [class.empty_mat_icon]="file.document==undefined&&file.file==undefined"
+                                class="material-icons mat_icon" (click)="openIncomesFileInput(i,file)">
+
+                          cloud_upload
+
+                        </i>
+
+                    </div>
+
+                    <input #incomes_file_input type="file" (change)="catchIncomesFile()"
+                        accept="image/jpeg,image/gif,image/png,application/pdf" hidden/>
+
+                </div>
+
+                <div class="category_content">
+
+                    <label>Certificación de ingresos</label>
+
+                    <i class="material-icons add_more_files" (click)="addIncomeCertificationFileInputLine()">add</i>
+
+                </div>
+
+                <div class="multiple_files">
+
+                    <div *ngFor="let file of allIncomesCertifications; let i=index" class="line_container_2" [@fadeInOut]>
+
+                        <i *ngIf="file.document==undefined" class="material-icons remove_icon" [@fadeInOut]
+                            (click)="removeIncomeCertificationFileInputLine(i)">close</i>
+
+                        <label *ngIf="file.document==undefined">{{file.file?file.file.name:'Archivo '+(i+1)}} <span *ngIf="file.file">(sin guardar)</span></label>
+
+                        <label *ngIf="file.document!=undefined" class="file_present"
+                            (click)="showIncomeCertificationDocument(omk,i,'ingresos')"><span *ngIf="file.name">{{file.name}}</span><span *ngIf="!file.name">Archivo {{i+1}}</span></label>
+
+                        <i [class.empty_mat_icon]="file.document==undefined&&file.file==undefined"
+                                class="material-icons mat_icon" (click)="openIncomesCertificationFileInput(i,file)">
+
+                          cloud_upload
+
+                        </i>
+
+                    </div>
+
+                    <input #incomes_certification_file_input type="file" (change)="catchIncomesCertificationFile()"
+                        accept="image/jpeg,image/gif,image/png,application/pdf" hidden/>
+
+                </div>
+
+                <div class="category_content">
+
+                    <label>Extractos bancarios</label>
+
+                    <i class="material-icons add_more_files" (click)="addBankFileInputLine()">add</i>
+
+                </div>
+
+                <div class="multiple_files">
+
+                    <div *ngFor="let file of allBankStatements; let i=index" class="line_container_2" [@fadeInOut]>
+
+                        <i *ngIf="file.document==undefined" class="material-icons remove_icon" [@fadeInOut]
+                            (click)="removeBankFileInputLine(i)">close</i>
+
+                        <label *ngIf="file.document==undefined">{{file.file?file.file.name:'Archivo '+(i+1)}} <span *ngIf="file.file">(sin guardar)</span></label>
+
+                        <label *ngIf="file.document!=undefined" class="file_present"
+                            (click)="showStatementDocument(omk,i,'extractos')"><span *ngIf="file.name">{{file.name}}</span><span *ngIf="!file.name">Archivo {{i+1}}</span></label>
+
+                        <i [class.empty_mat_icon]="file.document==undefined&&file.file==undefined"
+                                class="material-icons mat_icon" (click)="openBankStatementsFileInput(i,file)">
+
+                          cloud_upload
+
+                        </i>
+
+                    </div>
+
+                    <input #bank_statements_file_input type="file" (change)="catchBankStatementsFile()"
+                        accept="image/jpeg,image/gif,image/png,application/pdf" hidden/>
+
+                </div>
+
+            </div>
+
+            <button type="button" class="action" (click)="getBack()" class="action" *ngIf="isRegistration">Atrás</button>
+
+            <button type="button" class="action" (click)="openModal1(om2)"
+                [class.action_disabled]="!this.isFormValid( )||(safeFlag1&&safeFlag2&&safeFlag3&&safeFlag4)"
+                  class="action">Guardar</button>
+
+            <button #om1 type="button" name="button" hidden data-toggle="modal" data-target="#step5Modal1"></button>
+
+            <button type="button" [class.action_disabled]="!safeFlag1||!safeFlag2||!safeFlag3||!safeFlag4"
+                class="action fixed_margin" (click)="openModal2(om1)">Finalizar</button>
+
+            <button #om2 type="button" name="button" hidden data-toggle="modal" data-target="#step5Modal2"></button>
+
+        </form>
+
+        <div *ngIf="isRegistration">
+          <a class="stepwizard_button step_selected"></a>
+
+          <a class="stepwizard_button step_selected"></a>
+
+          <a class="stepwizard_button step_selected"></a>
+
+          <a class="stepwizard_button step_selected"></a>
+        </div>
+
+    </div>
+
+</div>
+
+<button #omk type="button" name="button" hidden data-toggle="modal" data-target="#paymentModal"></button>

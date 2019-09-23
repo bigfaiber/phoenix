@@ -1,0 +1,66 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixin.scss';
+
+.project-link {
+  border-radius: 3px;
+  color: #000;
+  cursor: pointer;
+  display: block;
+  font-family: $font-OpenSans;
+  height: 100px;
+  margin-bottom: 20px;
+  padding: 25px 20px 15px;
+  position: relative;
+  width: 100%;
+  .state-icon {
+    position: absolute;
+    right: 19px;
+    top: 18px;
+    width: 30px;
+  }
+  .project_name{
+      font-family: $font-OpenSans-SB;
+      font-size: 21px;
+      margin-bottom: 5px;
+  }
+  .approved_value{
+      font-size: 16px;
+      margin-top: 15px;
+      .value{
+          float: right;
+      }
+  }
+  .notification {
+      border-radius: 3px;
+      color: white;
+      font-family: $font-OpenSans-SB;
+      font-size: 0.8em;
+      padding: 2px 5px;
+      position: absolute;
+      right: 19px;
+      top: 18px;
+  }
+  .orange-notification {
+    background-color: #DF8236;
+  }
+  .red-notification {
+    background-color: #FF1421;
+  }
+  .blue-notification {
+    background-color: #0089FF;
+  }
+}
+
+.created-background {
+  background-color: #E6E6E6;
+}
+
+.approved-background {
+  background-color: $dark-blue;
+  color: $gold;
+  font-family: $font-OpenSans-B;
+}
+
+.match-background {
+  background-color: $gold;
+}

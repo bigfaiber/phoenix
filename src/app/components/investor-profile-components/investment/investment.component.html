@@ -1,0 +1,170 @@
+<section class="container">
+  <app-project-data
+    [topButtons]="buttonsData"
+    [bottomButtons]="bottomButtons"
+    [project]="project"
+    dataProjectType="1"
+    (topButtonClicked)="buttonClickHandler($event)"
+    (bottomButtonClicked)="bottomButtonClickHandler($event)"
+    (profileButtonClicked)="showCustomerProfile()"
+    >
+
+      <button class="action" (click)="showAccountSelector=!showAccountSelector;showNewAccountForm=false;showAvailableAccounts=false">
+        <span *ngIf="!showAccountSelector&&!showNewAccountForm&&!showAvailableAccounts">Agregar cuenta bancaria</span>
+        <span *ngIf="showAccountSelector||showNewAccountForm||showAvailableAccounts">Cancelar</span>
+      </button>
+
+      <div class="account-selector" *ngIf="showAccountSelector" [@appearingAnimNoDelay]>
+        <button class="action" (click)="showNewAccountForm=true;showAccountSelector=false">Nueva</button>
+        <button class="action" (click)="showAvailableAccounts=true;showAccountSelector=false">Existente</button>
+      </div>
+
+      <div class="account-selector" *ngIf="showAvailableAccounts" [@appearingAnimNoDelay]>
+
+          <div class="form_item">
+
+            <select #account_selector>
+
+                <option value="0" selected disabled>Selecciona una opción</option>
+
+                <option *ngFor="let account of allAccounts; let i=index" value="{{account.id}}">{{account.bank}}, {{account.account_type}} - {{account.account_number}}</option>
+
+            </select>
+
+          </div>
+
+          <button class="action" [disabled]="account_selector.value=='0'" (click)="addAccount(false,account_selector.value)">Guardar</button>
+
+      </div>
+
+      <div class="account-selector" *ngIf="showNewAccountForm" [@appearingAnimNoDelay]>
+
+          <form name="accountForm" [formGroup]="accountForm">
+            <table>
+              <tr>
+                <td>Banco</td>
+                <td>
+                  <div class="data2">
+                      <div class="form_item">
+
+                          <select formControlName="bank">
+
+                              <option value="0" selected disabled>Selecciona una opción</option>
+
+                              <option value="Banco Agrario">Banco Agrario</option>
+
+                              <option value="Banco AV Villas">Banco AV Villas</option>
+
+                              <option value="Bancamia">Bancamia</option>
+
+                              <option value="BBVA">BBVA</option>
+
+                              <option value="Banco de Bogotá">Banco de Bogotá</option>
+
+                              <option value="Banco Caja Social">Banco Caja Social</option>
+
+                              <option value="Citibank">Citibank</option>
+
+                              <option value="Bancolombia">Bancolombia</option>
+
+                              <option value="Banco Colpatria">Banco Colpatria</option>
+
+                              <option value="Banco Coomeva">Banco Coomeva</option>
+
+                              <option value="Banco Corpbanca">Banco Corpbanca</option>
+
+                              <option value="Davivienda">Davivienda</option>
+
+                              <option value="Banco Falabella">Banco Falabella</option>
+
+                              <option value="Banco Finandina">Banco Finandina</option>
+
+                              <option value="Banco GNB Sudameris">Banco GNB Sudameris</option>
+
+                              <option value="Helm bank">Helm bank</option>
+
+                              <option value="HSBC Colombia">HSBC Colombia</option>
+
+                              <option value="Banco de Occidente">Banco de Occidente</option>
+
+                              <option value="Banco Pichincha">Banco Pichincha</option>
+
+                              <option value="Banco Popular">Banco Popular</option>
+
+                              <option value="Banco Procredito">Banco Procredito</option>
+
+                              <option value="Banco de la República">Banco de la República</option>
+
+                              <option value="Scotiabank">Scotiabank</option>
+
+                              <option value="Banco WWB">Banco WWB</option>
+
+                              <option value="ANIF">ANIF</option>
+
+                              <option value="Asobancaria">Asobancaria</option>
+
+                              <option value="Fogafin">Fogafin</option>
+
+                              <option value="Superfinanciera">Superfinanciera</option>
+
+                          </select>
+                        </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Tipo de cuenta</td>
+                <td>
+                  <div class="data2">
+                    <div class="form_item">
+
+                        <select formControlName="account_type">
+
+                            <option value="0" selected disabled>Selecciona una opción</option>
+
+                            <option value="1">Ahorros</option>
+
+                            <option value="2">Corriente</option>
+
+                        </select>
+
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Número</td>
+                <td>
+                  <div class="data2">
+                    <div class="form_item">
+
+                        <input #account_input type="text" class="form-control" name="password" formControlName="account_number">
+
+                        <span class="input_error_right" *ngIf="accountForm.controls['account_number'].hasError('pattern')" [@fadeInOut]>
+                            Sólo números
+                        </span>
+
+                        <span class="input_error_right" *ngIf="!accountForm.controls['account_number'].hasError('pattern')&&accountForm.controls['account_number'].hasError('minlength')" [@fadeInOut]>
+                            Mínimo 6 números
+                        </span>
+
+                        <span class="input_error_right" *ngIf="!accountForm.controls['account_number'].hasError('pattern')&&accountForm.controls['account_number'].hasError('maxlength')" [@fadeInOut]>
+                            Máximo 14 números
+                        </span>
+
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+
+          <button class="action" [disabled]="!accountForm.valid" (click)="addAccount(true,null)">Guardar</button>
+
+      </div>
+
+  </app-project-data>
+
+  <a #ref_link target="_self" download hidden></a>
+  <button #openModalButton data-toggle="modal" data-target="#step1Modal" hidden></button>
+</section>

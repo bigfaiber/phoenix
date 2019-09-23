@@ -1,0 +1,275 @@
+@import '../../../../../sass/variables.scss';
+@import '../../../../../sass/mixin.scss';
+
+.banner {
+    background-color: #fff;
+    color: #1A2C35;
+    padding: 20px 15%;
+    margin-top: 32px;
+    .links {
+        border-bottom: solid 2px $gold;
+        padding-bottom: 7px;
+        margin: 10px 0px 30px;
+        .items {
+            cursor: pointer;
+            display: inline-block;
+            padding-bottom: 10px;
+            .selected {
+                font-family: $font-OpenSans-B;
+            }
+            .item {
+                padding: 10px 30px;
+                position: relative;
+                &:nth-child(2){
+                    &::before, &::after{
+                        background-color: #000;
+                        content: '';
+                        height: 60%;
+                        position: absolute;
+                        right: -2px;
+                        top: 20%;
+                        width: 1px;
+                    }
+                    &::after{
+                        right: unset;
+                        left: -2px;
+                    }
+                }
+                .total_notification_number {
+                    background-color: #FF1421;
+                    border-radius: 50%;
+                    color: white;
+                    height: 16px;
+                    position: absolute;
+                    right: 10px;
+                    top: -5px;
+                    width: 16px;
+                    .clients{
+                        font-size: 10px;
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        margin: 0 auto;
+                        top: 1px;
+                    }
+                }
+            }
+        }
+    }
+    .return_action {
+        background-color: white;
+        border: solid 2px #1A2C35;
+        border-radius: 25px;
+        color: #1A2C35;
+        cursor: pointer;
+        display: inline-block;
+        font-family: $font-OpenSans-SB;
+        font-size: 15px;
+        letter-spacing: 0.5px;
+        margin-right: 15px;
+        margin-top: 30px;
+        padding: 8px 20px 8px 20px;
+        position: relative;
+        width: 175px;
+        &:hover, &:active, &:focus{
+            outline: none;
+            text-decoration: none;
+        }
+        i {
+            vertical-align: middle;
+        }
+
+        -webkit-transition: background-color 100ms linear;
+        -ms-transition: background-color 100ms linear;
+        transition: background-color 100ms linear;
+
+        .notification_number {
+            background-color: #FF1421;
+            border-radius: 50%;
+            color: white;
+            height: 16px;
+            position: absolute;
+            right: 0;
+            top: -10px;
+            width: 16px;
+            .number{
+                font-size: 10px;
+                position: absolute;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                top: 1px;
+            }
+        }
+    }
+    .button_selected {
+        background-color: #1A2C35;
+        color: white;
+
+        -webkit-transition: background-color 200ms linear;
+        -ms-transition: background-color 200ms linear;
+        transition: background-color 200ms linear;
+    }
+}
+
+.matches {
+    background-color: #F4F4F4;
+    max-height: 50vh;
+    overflow-y: auto;
+    padding: 20px 18%;
+    .empty_message {
+        color: #AAAAAA;
+        font-family: $font-OpenSans;
+        font-size: 2em;
+        text-align: center;
+    }
+    .match {
+        background-color: #fff;
+        cursor: pointer;
+        margin: 20px 0px;
+        padding: 30px 10px;
+        padding-right: 39px;
+        position: relative;
+        vertical-align: middle;
+        .arrow_image {
+            cursor: pointer;
+            top: 40px;
+            position: absolute;
+            right: 38px;
+        }
+        .new {
+            background-color: #FF1421;
+            border-radius: 3px;
+            color: white;
+            font-family: $font-OpenSans;
+            font-size: 0.8em;
+            padding: 2px 5px;
+            position: absolute;
+            right: 97px;
+            top: 40px;
+        }
+        .user_detail {
+            text-align: left;
+            .image {
+                border-radius: 50%;
+                border: solid 2px $gold;
+            }
+            .profile_pic {
+                background-image: url('../../../../../assets/images/client-profile/default_avatar.png');
+                background-position: top center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                border: solid 2px $gold;
+                border-radius: 50%;
+                display: inline-block;
+                height: 45px;
+                vertical-align: middle;
+                width: 45px;
+            }
+            .detail {
+                display: inline-block;
+                margin-left: 10px;
+                position: relative;
+                text-align: left;
+                vertical-align: middle;
+                .name {
+                    color: #1A2C35;
+                    font-family: $font-OpenSans;
+                    font-size: 15px;
+                    margin: 0;
+                }
+                .stars {
+                    text-align: left;
+                }
+            }
+        }
+        .interest_content {
+            text-align: center;
+        }
+    }
+}
+
+@media ( max-width: 1400px ) {
+    .banner {
+        padding: 20px 10%;
+    }
+    .matches {
+        padding: 20px 13%;
+    }
+}
+
+@media (max-width: 640px) {
+    .banner{
+        margin: 0;
+        padding: 10px 10%;
+        .links{
+            margin-bottom: 30px;
+            padding: 0;
+            .items{
+                display: block;
+                margin: 0;
+                padding: 0;
+                .item{
+                    border-bottom: 1px solid #000;
+                    display: block;
+                    margin: 0;
+                    padding: 15px 25px;
+                    text-align: center;
+                    &:nth-child(2){
+                        &::before, &::after{
+                            display: none;
+                        }
+                    }
+                    &:last-child{
+                        border: none;
+                    }
+                    .total_notification_number{
+                        top: 35%;
+                        .clients{
+                            padding-left: 1px;
+                        }
+                    }
+                }
+            }
+        }
+        .return_action{
+            margin: 10px 0 15px;
+        }
+    }
+    .matches{
+        padding: 5px 5%;
+        .match{
+            .new{
+                right: 8px;
+                top: 8px;
+            }
+            .arrow_image{
+                right: 20px;
+                top: 40%;
+            }
+            .user_detail{
+                img, .detail{
+                    display: inline-block;
+                    position: relative;
+                    vertical-align: middle;
+                }
+                .detail{
+                    margin: 0;
+                    padding-left: 10px;
+                    width: calc(100% - 60px);
+                    .name{
+                        display: block;
+                        line-height: 1.2;
+                        margin: 0 0 5px;
+                    }
+                    .stars{
+                        line-height: 1;
+                        img{
+                            max-width: 17px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+<div *ngIf="requestSent" class="bird_canvas" [@fadeInOut]>
+
+    <img src="assets/phx_logo_01.png" width="70" alt="" class="rotate_anim">
+
+    <div *ngIf="timeout" class="error_msg" [@fadeInOut]>
+        El servidor ha tardado demasiado en responder o algo ha salido mal...
+        <i class="material-icons reload_button" (click)="reloadPage()">cached</i>
+    </div>
+
+</div>

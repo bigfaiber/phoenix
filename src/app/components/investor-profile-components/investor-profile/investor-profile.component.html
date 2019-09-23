@@ -1,0 +1,64 @@
+<app-investor-nav #upper_nav></app-investor-nav>
+
+<section class="projects container">
+
+    <h3 class="title">Proyectos disponibles</h3>
+
+    <div class="filters row">
+        <div class="millions col-md-4">
+            <h3>Capital</h3>
+
+            <div class="value_left value_left_patch" style="left:5%">0</div>
+            <div class="action_button_left noselect" (click)="changeMillionsRange(0,-5)">-</div>
+            <nouislider [connect]="true" [min]="0" [max]="150" [tooltips]="[true,true]" [step]="5" [(ngModel)]="millionsRange" (ngModelChange)="catchValues()"></nouislider>
+            <div class="action_button_right noselect" (click)="changeMillionsRange(1,5)">+</div>
+            <div class="value_right">150</div>
+
+        </div>
+        <div class="interest_rate col-md-4">
+            <h3>Tasa de interés</h3>
+
+            <div class="value_left">1.0</div>
+            <div class="action_button_left noselect" (click)="changeInterestRange(0,-0.1)">-</div>
+            <nouislider [connect]="true" [min]="1.0" [max]="2.2" [tooltips]="[true,true]" [step]="0.1" [(ngModel)]="interestRange" (ngModelChange)="catchValues()"></nouislider>
+            <div class="action_button_right noselect" (click)="changeInterestRange(1,0.1)">+</div>
+            <div class="value_right">2.2</div>
+
+        </div>
+
+        <div class="term col-md-4">
+            <h3>Plazo (meses)</h3>
+
+            <div class="value_left" style="left:5%">1</div>
+            <div class="action_button_left noselect" style="left:9.8%" (click)="changeTermRange(-1)">-</div>
+            <nouislider [connect]="[true,false]" [min]="1" [max]="120" [tooltips]="[true]" [step]="1" [(ngModel)]="termRange" (ngModelChange)="catchValues()"></nouislider>
+            <div class="action_button_right noselect" (click)="changeTermRange(1)">+</div>
+            <div class="value_right">120</div>
+
+        </div>
+    </div>
+
+    <h1 *ngIf="projects.length==0" class="empty_message">Parece que no existen proyectos con estas características</h1>
+
+    <div class="content_projects row"
+        infinite-scroll
+        [infiniteScrollDistance]="scrollDistance"
+        [infiniteScrollThrottle]="throttle"
+        [scrollWindow]="false"
+        (scrolled)="onScrollDown()">
+
+        <div class="col-md-4" *ngFor="let proj of projects; let i=index">
+          <app-data-project-link
+            (click)="redirectToProject(i)"
+            bgColor="gold"
+            [money]="proj.money"
+            [data]="proj.parse">
+          </app-data-project-link>
+        </div>
+
+    </div>
+
+</section>
+
+<button (click)="catchValues()" hidden id="catcherButton"></button>
+<button #updater_button id="capitalUpdaterButton" hidden></button>

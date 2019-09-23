@@ -1,0 +1,27 @@
+<div class="project-link"
+  [class.gray-background]="bgColor=='gray'"
+  [class.gold-background]="bgColor=='gold'">
+
+  <img *ngIf="!notification" src="assets/images/client-profile/match.png" class="state-icon">
+
+  <div *ngIf="notification" class="notification"
+    [class.orange-notification]="notification.color=='orange'"
+    [class.red-notification]="notification.color=='red'"
+    [class.blue-notification]="notification.color=='blue'">
+    {{notification.message}}
+  </div>
+
+  <table>
+    <tbody>
+      <tr *ngFor="let line of data; let i=index">
+        <td>{{line.label}}:</td>
+        <td><span [class.value]="line.label">{{line.prefix}}{{line.value}}{{line.sufix}}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="money">
+    ${{money|myCurrency}}
+  </div>
+
+</div>

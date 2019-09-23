@@ -1,0 +1,329 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixin.scss';
+
+.wrapper{
+    color: #fff;
+    margin-bottom: 70px;
+    margin-top: 6px;
+    position: relative;
+    text-align: center;
+    .rotate_anim {
+        position: absolute;
+        top: 80%;
+        left: calc( 50% + 25px );
+        margin:-60px 0 0 -60px;
+        z-index: 10;
+        -webkit-animation:spin 1s linear infinite;
+        -moz-animation:spin 1s linear infinite;
+        animation:spin 1s linear infinite;
+    }
+    @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+    @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+    @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+    .registration_form{
+        background-color: rgba(255,255,255,1);
+        border: 1px solid $gold;
+        border-radius: 10px;
+        margin: 0px auto;
+        padding-bottom: 40px;
+        padding-top: 40px;
+        text-align: center;
+        width: 75%;
+        .title{
+            color: #1b2c35;
+            font-family: $font-OpenSans-B;
+            font-size: 23px;
+            margin: 0;
+            padding: 0 5%;
+        }
+        form{
+            font-family: $font-OpenSans-SB;
+            margin: 15px 0 0;
+            padding: 20px 7%;
+            padding-left: 10%;
+            padding-right: 10%;
+            position: relative;
+            .form_item{
+                position: relative;
+                text-align: left;
+                .input_error_right {
+                    bottom: -20px;
+                    color: red;
+                    font-family: $font-OpenSans;
+                    font-size: 12px;
+                    position: absolute;
+                    right: 3%;
+                }
+                .patch {
+                    right: 66%;
+                }
+                .input_error_left {
+                    bottom: -20px;
+                    color: red;
+                    font-family: $font-OpenSans;
+                    font-size: 12px;
+                    position: absolute;
+                    left: 3%;
+                }
+                .block_this {
+                    display: block;
+                }
+                .secure {
+                    margin-right: 20px;
+                    width: 35%;
+                }
+                span {
+                    color: #AAA;
+                    display: inline;
+                    font-family: $font-OpenSans;
+                }
+                .make_input_inline {
+                    display: inline;
+                }
+                input[type=radio] {
+                    display: none;
+                }
+                input[type=radio] + label {
+                    background-color: white;
+                    border: 1px solid $gold;
+                    border-radius: 50%;
+                    display: inline-block;
+                    height: 15px;
+                    padding: 0 0 0 0px;
+                    position: absolute;
+                    top: 5px;
+                    width: 15px;
+                }
+                input[type=radio]:checked + label {
+                    background-color: $gold;
+                }
+                .right_margin {
+                    margin-right: 45px;
+                }
+                .left_margin {
+                    margin-left: 18px;
+                }
+                label{
+                    color: #1b2c35;
+                    font-size: 14px;
+                    margin: 20px 0 10px;
+                    padding-left: 15px;
+                    text-align: left;
+                }
+                input{
+                    background-color: #F7F7F7;
+                    border: 0px;
+                    border-radius: 20px;
+                    color: #1A2C35;
+                    font-family: $font-OpenSans;
+                    font-size: 14px;
+                    margin-left: 10px;
+                    min-height: 40px;
+                    outline: none;
+                    padding: 8px 20px;
+
+                    -webkit-transition: background-color 100ms linear;
+                    -ms-transition: background-color 100ms linear;
+                    transition: background-color 100ms linear;
+                }
+                .input_disabled {
+                    background-color: #999;
+
+                    -webkit-transition: background-color 200ms linear;
+                    -ms-transition: background-color 200ms linear;
+                    transition: background-color 200ms linear;
+                }
+                input:placeholder-shown {
+                    font-size: 12px;
+                }
+                .input_size {
+                    width: 65%;
+                }
+                select {
+                    background-color: #F7F7F7;
+                    border: 0px;
+                    border-radius: 20px;
+                    color: #1A2C35;
+                    font-family: $font-OpenSans;
+                    font-size: 14px;
+                    height: 40px;
+                    margin-left: 10px;
+                    outline: none;
+                    padding: 8px 20px;
+                    width: 100%;
+                }
+                select::-ms-expand {
+                    display: none;
+                }
+                .check_box {
+                    background-color: white;
+                    border: 1px solid $gold;
+                    border-radius: 50%;
+                    height: 12px;
+                    outline: none;
+                    vertical-align: middle;
+                    width: 12px;
+                }
+                .check_box:checked {
+                    background-color: #1A2C35;
+                }
+            }
+            .action{
+                background-color: $gold;
+                border: none;
+                border-radius: 25px;
+                color: #fff;
+                cursor: pointer;
+                font-family: Arial;
+                font-size: 15px;
+                letter-spacing: 0.5px;
+                margin-top: 60px;
+                padding: 7px 50px 6px 50px;
+                position: relative;
+                &:hover, &:active, &:focus{
+                    outline: none;
+                    text-decoration: none;
+                }
+
+                -webkit-transition: background-color 100ms linear;
+                -ms-transition: background-color 100ms linear;
+                transition: background-color 100ms linear;
+            }
+            .action_disabled{
+                background-color: #A6A6A6;
+                cursor: default;
+
+                -webkit-transition: background-color 200ms linear;
+                -ms-transition: background-color 200ms linear;
+                transition: background-color 200ms linear;
+            }
+        }
+        .stepwizard_button {
+            background-color: #F2F2F2;
+            border: 1px solid $gold;
+            border-radius: 50px;
+            cursor: pointer;
+            height: 10px;
+            margin: 20px 2px 0px 0px;
+            outline: none;
+            width: 10px;
+            display: inline-block;
+        }
+        .step_selected {
+            background-color: #1A2C35;
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .wrapper{
+        margin-bottom: 0;
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-top: 0;
+        &::before{
+            bottom: 0;
+            content: '';
+            height: calc(100% - 300px);
+            left: 0;
+            position: absolute;
+            width: 100%;
+            z-index: -1;
+        }
+        .registration_form{
+            background-color: rgba( 0, 0, 0, 0 );
+            border: none;
+            padding: 40px 0px;
+            width: 95%;
+            .title{
+                font-size: 21px;
+            }
+            form{
+                margin: 0;
+                padding-left: 0px;
+                padding-right: 0;
+                position: relative;
+                .form_item {
+                    padding: 0 20px;
+                    span {
+                        font-size: 0.7em;
+                    }
+                    .make_center {
+                        margin-bottom: 0px;
+                        text-align: center;
+                    }
+                    .centering_radio {
+                        text-align: center;
+                        .credit_check_box {
+                            top: -15px;
+                            left: 100px;
+                        }
+                        .debit_check_box {
+                            top: 29px;
+                            left: 100px;
+                        }
+                        label {
+                            font-size: 1em;
+                        }
+                    }
+                    .right_margin {
+                        margin-right: 5px;
+                    }
+                    .left_margin {
+                        margin-left: 15px;
+                    }
+                    label.make_block {
+                        font-size: 0.8em;
+                        margin-left: 35%;
+                    }
+                    label {
+                        font-size: 1em;
+                        display: block;
+                        &.name{
+                            margin-bottom: 5px;
+                            padding-left: 0;
+                        }
+                    }
+                    input {
+                        border: 1px solid #CCCCCC;
+                        border-radius: 30px;
+                        display: inline-block;
+                        font-size: 16px;
+                        min-height: 40px;
+                        margin: 0;
+                        padding: 6px 20px;
+                    }
+                    input:placeholder-shown {
+                        font-size: 14px;
+                    }
+                    .input_size {
+                        margin-bottom: 310px;
+                    }
+                    .make_inline {
+                        display: block;
+                        font-size: 1.1em;
+                    }
+                    .make_input_inline {
+                        width: 55%;
+                    }
+                    select {
+                        font-size: 16px;
+                        height: 40px;
+                        margin: 0;
+                    }
+                }
+                .action {
+                    font-size: 19px;
+                    margin-bottom: 20px;
+                    margin-top: 60px;
+                    width: 83%;
+                }
+            }
+            .stepwizard_button{
+                height: 13px;
+                width: 13px;
+                margin: 20px 5px 0 0;
+            }
+        }
+    }
+}

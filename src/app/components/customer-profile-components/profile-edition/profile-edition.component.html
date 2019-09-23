@@ -1,0 +1,167 @@
+<section>
+
+    <div class="profile_container container">
+
+        <div class="info">
+            <h2>Editar mis datos</h2>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-5 picture">
+
+                <div class="user_detail">
+
+                    <div class="user_image_container">
+
+                        <img #profile_pic alt="Image User" title="Image User" class="user_image img-fluid" width="130">
+
+                        <div class="upload" (click)="openProfilePicInput()">
+                            Sube una foto
+                        </div>
+
+                    </div>
+
+                    <div class="detail">
+
+                        <p class="name">{{user_data.name}} {{user_data.lastname}}</p>
+
+                        <div class="stars">
+                          <img src="{{imgPath(0)}}" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+                          <img src="{{imgPath(1)}}" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+                          <img src="{{imgPath(2)}}" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+                          <img src="{{imgPath(3)}}" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+                          <img src="{{imgPath(4)}}" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+                        </div>
+
+                        <p class="stability">Estabilidad: {{user_data.rating|number:'1.0-1'}}</p>
+
+                    </div>
+
+                    <input #profile_pic_input type="file" (change)="catchProfilePicFile()"
+                        accept="image/*" hidden/>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-7 editable_data">
+
+                <div class="update_alert" *ngIf="data_updated" [@fadeInOut]>
+                    <i class="material-icons check_icon">check</i>
+                    Tus datos han sido actualizados
+                </div>
+
+                <form name="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+                  <div class="row" hidden>
+
+                      <div class="col-md-6">
+
+                          <div class="form_item form-group">
+
+                              <label for="name">Nombres</label>
+
+                              <input #f1 type="text" class="form-control" name="name" value="{{user_data.name}}" formControlName="names"
+                                  (ngModelChange)="data_updated=false;data_changed=true" autocomplete="off">
+
+                              <span class="input_error_right" *ngIf="!form.controls['names'].hasError('pattern')&&form.controls['names'].hasError('minlength')" [@fadeInOut]>
+                                  Mínimo 3 caracteres
+                              </span>
+
+                              <span class="input_error_right" *ngIf="form.controls['names'].hasError('pattern')" [@fadeInOut]>
+                                  Nombre inválido
+                              </span>
+
+                          </div>
+
+                      </div>
+
+                      <div class="col-md-6">
+
+                          <div class="form_item form-group">
+
+                              <label for="name">Apellidos</label>
+
+                              <input #f3 type="text" class="form-control" name="num" value="{{user_data.lastname}}" formControlName="lastname"
+                                  (ngModelChange)="data_updated=false;data_changed=true" autocomplete="off">
+
+                              <span class="input_error_right" *ngIf="!form.controls['lastname'].hasError('pattern')&&form.controls['lastname'].hasError('minlength')" [@fadeInOut]>
+                                  Mínimo 3 caracteres
+                              </span>
+
+                              <span class="input_error_right" *ngIf="form.controls['lastname'].hasError('pattern')" [@fadeInOut]>
+                                  Apellido inválido
+                              </span>
+
+                          </div>
+
+                      </div>
+
+                  </div>
+
+                  <div class="row">
+
+                      <div class="col-md-6">
+
+                          <div class="form_item form-group">
+
+                              <label for="name">Dirección</label>
+
+                              <input #f2 type="text" class="form-control" name="address" value="{{user_data.address}}" formControlName="address"
+                                  (ngModelChange)="data_updated=false;data_changed=true" autocomplete="off">
+
+                              <span class="input_error_right" *ngIf="form.controls['address'].hasError('minlength')" [@fadeInOut]>
+                                  Mínimo 5 caracteres
+                              </span>
+
+                          </div>
+
+                      </div>
+
+                      <div class="col-md-6">
+
+                          <div class="upload_documents" (click)="fillDocs()">
+
+                              <img src="assets/images/client-profile/clip.png" alt="Image User" title="Image User" class="image">
+
+                              Subir documentos
+
+                              <input #files_input type="file" (change)="catchFiles()"
+                                  accept=".pdf" hidden/>
+
+                          </div>
+
+                      </div>
+
+                  </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+
+                            <button type="submit" name="button" [class.action_disabled]="!isFormValid( )||!data_changed||requestSent"
+                                class="action">Guardar cambios</button>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <button type="button" name="button" class="return_action" (click)="getBack()">
+                                <i class="material-icons">keyboard_backspace</i>
+                                Volver al perfil
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

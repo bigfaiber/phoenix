@@ -1,0 +1,291 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixin.scss';
+
+.step_modal{
+    background-color: rgba( 26, 44, 53, 0.9 );
+    .modal-dialog{
+        margin: 5% auto;
+        max-width: 410px;
+        .modal-content{
+            .modal-header{
+                border-bottom: 0;
+                .mat_icon {
+                    vertical-align: middle;
+                }
+                .close{
+                    border-color: #1A2C35;
+                    cursor: pointer;
+                    font-size: 25px;
+                    margin: -5px -5px -15px auto;
+                    padding: 6px 11px;
+                    position: relative;
+                    &::before{
+                        content: '';
+                        border: 2px solid;
+                        border-radius: 50%;
+                        height: 100%;
+                        position: absolute;
+                        right: 0;
+                        top: 2px;
+                        width: 100%;
+                    }
+                    &:hover, &:active, &:focus{
+                        outline: none;
+                        text-decoration: none;
+                    }
+                }
+            }
+            .modal_content{
+                padding: 20px;
+                text-align: center;
+                .response{
+                    padding: 70px 0 30px;
+                    text-align: center;
+                    .image{
+                        display: inline-block;
+                        width: 20%;
+                    }
+                    .text{
+                        display: inline-block;
+                        font-family: $font-OpenSans;
+                        font-size: 15px;
+                        font-weight: bold;
+                        margin: 30px 0px 70px 0px;
+                        padding: 0 20%;
+                    }
+                    .action{
+                        background-color: $gold;
+                        border-radius: 25px;
+                        color: #fff;
+                        display: inline-block;
+                        font-family: Arial;
+                        font-size: 15px;
+                        letter-spacing: 0.5px;
+                        margin-top: 40px;
+                        padding: 7px 40px 6px;
+                        position: relative;
+                        &:hover, &:active, &:focus{
+                            outline: none;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.menu_phoenix {
+    background-color: #fff;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+    .menu{
+        padding-bottom: 15px;
+        nav{
+            padding: 5px 0 0;
+            #menuUser{
+                float: right;
+                position: relative;
+                .hello {
+                    color: black;
+                    font-family: $font-OpenSans;
+                    font-size: 0.9em;
+                }
+                ._menu_action{
+                    cursor: pointer;
+                    display: inline-block !important;
+                    margin-left: 10px;
+                    padding: 10px 40px 0 0;
+                    position: relative;
+                    width: 100px;
+                    .image{
+                        border: 2px solid $gold;
+                        border-radius: 50%;
+                        position: relative;
+                    }
+                    &::after{
+                        content: url('../../../../assets/images/client-profile/down_arrow.png');
+                        bottom: 24px;
+                        height: 20px;
+                        position: absolute;
+                        right: 0;
+                        width: 30px;
+                    }
+                }
+                ._content_menu{
+                    background-color: #1A2C35;
+                    flex-direction: column;
+                    font-family: $font-OpenSans;
+                    padding: 2px 0;
+                    position: absolute;
+                    right: 0;
+                    top: calc(100% + 9px);
+                    width: 220px;
+                    z-index: 1;
+                    .item{
+                        list-style-type: none;
+                        position: relative;
+                        .item_menu{
+                            color: #fff;
+                            cursor: pointer;
+                            display: block;
+                            padding: 10px 25px;
+                            width: 100%;
+                            .material-icons {
+                                font-size: 27px;
+                                margin-right: 4px;
+                                vertical-align: middle;
+                            }
+                            img{
+                                margin-right: 5px;
+                                width: 25px;
+                            }
+                        }
+                        &:hover, &:active, &:focus{
+                            .item_menu{
+                                background-color: #204351;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .mobile{
+            display: none;
+        }
+        .desktop{
+            display: block;
+        }
+    }
+}
+
+.shadow {
+    background-color: white;
+    box-shadow: inset 0px 10px 15px #E6E6E6;
+    height: 20px;
+    width: 100%;
+}
+
+.email-text {
+    right: 20px;
+    position: fixed;
+    bottom: 10px;
+    z-index: 1000;
+    .material-icons {
+        vertical-align: middle;
+    }
+}
+
+.social-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 2px 6px;
+    position: fixed;
+    z-index: 1000;
+    bottom: 12px;
+    img {
+        border-radius: 2px;
+        margin-right: 5px;
+        width: 13px;
+    }
+}
+
+.fb-share-button {
+    background-color: #5667b7;
+    right: 174px;
+}
+
+.custom-tweet-button {
+    background-color: #4E90DD;
+    right: 108px;
+}
+
+@media (max-width: 40em) {
+    .menu_phoenix{
+        .menu{
+            padding: 0 0 10px;
+            nav{
+                padding: 0;
+                .navbar-brand{
+                    margin: 10px;
+                    img{
+                        margin-left: 10px;
+                        width: 75%;
+                    }
+                }
+                button{
+                    float: right;
+                    margin: 15px 20px 0 10px;
+                    img{
+                        border-radius: 50%;
+                        height: 45px;
+                        margin: 5px 0;
+                        overflow: hidden;
+                        position: relative;
+                        width: 45px;
+                    }
+                    i{
+                        color: #1A2C35;
+                        font-size: 18px;
+                        position: absolute;
+                        right: 12px;
+                        top: 37px;
+                    }
+                    .icon-bar{
+                        background-color: #1A2C35;
+                        border-radius: 1px;
+                        display: block;
+                        margin: 5px 0;
+                        height: 4px;
+                        width: 32px;
+                    }
+                    &:focus{
+                        outline: none;
+                    }
+                }
+                #menuUser{
+                    position: relative;
+                    width: 100%;
+                    ._content_menu{
+                        margin-bottom: 0;
+                        opacity: 1;
+                        position: relative;
+                        right: unset;
+                        top: unset;
+                        width: 100%;
+                    }
+                }
+            }
+            .mobile{
+                display: block;
+            }
+            .desktop{
+                display: none;
+            }
+        }
+    }
+    .step_modal{
+        position: absolute;
+        width: 100%;
+        left: 0;
+        right: 0;
+        height: 100%;
+        overflow: hidden;
+        padding: 10px;
+        .modal-dialog{
+            margin: 15% auto;
+        }
+    }
+}

@@ -1,0 +1,73 @@
+@import '../../../../../sass/variables.scss';
+@import '../../../../../sass/mixin.scss';
+
+.banner {
+    background-color: #fff;
+    color: #1A2C35;
+    padding: 20px 15%;
+    margin-top: 32px;
+    .links {
+        border-bottom: solid 2px $gold;
+        padding-bottom: 7px;
+        margin: 10px 0px 30px;
+    }
+    .desktop_view {
+        display: none;
+    }
+    .search_input {
+        position: relative;
+        text-align: right;
+        i {
+            left: 8px;
+            position: absolute;
+            top: 5px;
+        }
+        input {
+            padding-left: 40px;
+            background-color: #e2e2e2;
+            border: 0px;
+            border-radius: 20px;
+            display: inline-block;
+            font-family: $font-OpenSans;
+            font-size: 14px;
+        }
+    }
+}
+
+.matches {
+    background-color: #F4F4F4;
+    max-height: 45vh;
+    overflow-y: auto;
+    padding: 20px 0;
+    .empty_message {
+        color: #AAAAAA;
+        font-family: $font-OpenSans;
+        font-size: 2em;
+        text-align: center;
+    }
+    .content_projects{
+        margin: 0 auto;
+    }
+}
+
+@media ( max-width: 1400px ) {
+    .banner {
+        padding: 20px 10%;
+    }
+}
+
+@media (max-width: 640px) {
+    .banner{
+        margin-top: 0;
+        padding: 10px 10%;
+        .search_input {
+            text-align: center;
+        }
+        .desktop_view {
+            display: block;
+        }
+    }
+    .matches{
+        padding: 10px 0;
+    }
+}

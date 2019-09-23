@@ -1,0 +1,181 @@
+<div class="project_container">
+
+    <div class="info">
+        <h2>{{project.dream}}</h2>
+        <h3>${{project.money|myCurrency}}</h3>
+    </div>
+
+    <div class="data">
+
+        <div class="row">
+
+            <div class="col-md-8 data_content">
+
+                <div class="single_data" *ngIf="dataProjectType>0">
+
+                    <label class="title">Cliente</label>
+                    <span class="fix-centering">{{project.client.name}} {{project.client.lastname}}</span>
+                    <a class="action profile-action" *ngIf="showProfileButton()" (click)="emitProfileClick()">
+                      <!-- <i class="material-icons">person</i> -->
+                      Ver Perfil
+                    </a>
+
+                    <hr>
+
+                </div>
+
+                <!-- <div [ngStyle]="leftPadding()" *ngIf="dataProjectType>0"> -->
+                <div *ngIf="dataProjectType>0">
+                  <div class="single_data">
+
+                      <label>Cédula</label>
+
+                      <span>{{project.client.identification}}</span>
+
+
+                      <hr>
+
+                  </div>
+
+                  <div class="single_data">
+
+                      <label>Banco</label>
+
+                      <span>{{project.account.bank}}</span>
+
+
+                      <hr>
+
+                  </div>
+
+                  <div class="single_data">
+
+                      <label>Cuenta No.</label>
+
+                      <span>{{formatBankNumb(project.account.account_number)}}</span>
+
+
+                      <hr>
+
+                  </div>
+
+                  <div class="single_data">
+
+                      <label>Tipo de cuenta</label>
+
+                      <span>{{project.account.account_type}}</span>
+
+                      <hr>
+
+                  </div>
+                </div>
+
+                <div class="single_data" *ngIf="dataProjectType!=1">
+
+                    <label class="title">Inversionista</label>
+                    <span>{{project.investor.name}} {{project.investor.lastname}}</span>
+
+                    <hr>
+
+                </div>
+
+                <div class="single_data">
+
+                    <label>Interés</label>
+
+                    <span>{{project.interest_rate|number:'1.0-1'}}%</span>
+
+                    <hr>
+
+                </div>
+
+                <div class="single_data" style="margin-bottom: 20px">
+
+                    <label>Tiempo</label>
+
+                    <span>{{project.month}} Meses</span>
+
+                    <hr>
+
+                </div>
+
+                <div class="single_data" *ngIf="dataProjectType>0">
+
+                    <label class="title">Inversionista</label>
+
+                    <hr>
+
+                </div>
+
+                <!-- <div [ngStyle]="leftPadding()"> -->
+                <div>
+                    <div class="single_data">
+
+                        <label>Banco</label>
+
+                        <span *ngIf="project.inv_account">{{project.inv_account.bank}}</span>
+
+                        <span *ngIf="!project.inv_account" class="missing">Pendiente del inversionista</span>
+
+                        <hr>
+
+                    </div>
+
+                    <div class="single_data">
+
+                        <label>Cuenta No.</label>
+
+                        <span *ngIf="project.inv_account">{{formatBankNumb(project.inv_account.account_number)}}</span>
+
+                        <span *ngIf="!project.inv_account" class="missing">Pendiente del inversionista</span>
+
+                        <hr>
+
+                    </div>
+
+                    <div class="single_data">
+
+                        <label>Tipo de cuenta</label>
+
+                        <span *ngIf="project.inv_account">{{project.inv_account.account_type}}</span>
+
+                        <span *ngIf="!project.inv_account" class="missing">Pendiente del inversionista</span>
+
+                        <hr>
+
+                    </div>
+                </div>
+
+                <div class="single_data">
+
+                    <label>Fecha de desembolso</label>
+
+                    <span *ngIf="project.initial_payment">{{project.initial_payment}}</span>
+
+                    <span *ngIf="!project.initial_payment" class="missing">Sin fecha asignada</span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-4">
+
+                <button *ngFor="let button of topButtons; let i=index" [disabled]="!button.enable" class="action"
+                  (click)="onClick(i,'top')">
+                  {{button.text}}
+                </button>
+
+                <ng-content></ng-content>
+
+            </div>
+
+        </div>
+
+    </div>
+    <button *ngFor="let button of bottomButtons; let i=index" [disabled]="!button.enable" class="action bottom_action"
+      (click)="onClick(i,'bottom')" [class.delete]="button.warning">
+      {{button.text}}
+    </button>
+</div>

@@ -1,0 +1,29 @@
+<app-investor-nav></app-investor-nav>
+
+<section class="projects container">
+
+    <h3 class="title">Mis inversiones</h3>
+
+    <h1 *ngIf="projects.length==0" class="empty_message">Este es un espacio para tus próximas inversiones</h1>
+
+    <div class="content_projects row"
+        infinite-scroll
+        [infiniteScrollDistance]="scrollDistance"
+        [infiniteScrollThrottle]="throttle"
+        [scrollWindow]="false"
+        (scrolled)="onScrollDown()">
+
+        <div class="col-md-4" *ngFor="let proj of projects; let i=index">
+          <app-data-project-link
+            (click)="openInvestment(i)"
+            bgColor="gray"
+            [money]="proj.money"
+            [data]="proj.parse"
+            [notification]="proj.notification"
+            >
+          </app-data-project-link>
+        </div>
+
+    </div>
+
+</section>

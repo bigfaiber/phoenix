@@ -1,0 +1,330 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixin.scss';
+
+.step_modal{
+    background-color: rgba( 26, 44, 53, 0.9 );
+    .modal-dialog{
+        margin: 2% auto;
+        max-width: 85%;
+        .modal-content{
+            background-color: rgba( 0, 0, 0, 0 );
+            border: none;
+            iframe {
+                border: none;
+                height: 80vh;
+            }
+            .modal-header{
+                border-bottom: 0;
+                .mat_icon {
+                    vertical-align: middle;
+                }
+                .close{
+                    color: white;
+                    cursor: pointer;
+                    font-size: 25px;
+                    margin: -5px -5px -15px auto;
+                    padding: 6px 11px;
+                    position: relative;
+                    &::before{
+                        content: '';
+                        border: 2px solid;
+                        border-radius: 50%;
+                        height: 100%;
+                        position: absolute;
+                        right: 0;
+                        top: 2px;
+                        width: 100%;
+                    }
+                    &:hover, &:active, &:focus{
+                        outline: none;
+                        text-decoration: none;
+                    }
+                }
+            }
+            .modal_content{
+                padding: 20px 10%;
+                text-align: justify;
+                .faq_text {
+                    color: white;
+                    font-family: $font-OpenSans-SB;
+                    .italic {
+                        font-style: italic;
+                    }
+                    ol {
+                        li {
+                            color: $gold;
+                            cursor: pointer;
+                            font-size: 27px;
+                            text-align: left;
+                        }
+                        ul {
+                            li {
+                                color: white;
+                                font-size: 15px;
+                            }
+                        }
+                    }
+                }
+                .faq_interaction {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin: 45px 0;
+                    padding-left: 40px;
+                    img {
+                        cursor: pointer;
+                        width: 85%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.footer{
+    background-color: #1A2C35;
+    color: $gold;
+    .footer_content{
+        margin: 0 auto;
+        max-width: 1100px;
+        padding: 6vw 25px 0;
+        width: 90%;
+        .social_heading {
+            border: solid 2px $gold;
+            border-top: none;
+            padding: 50px 0;
+            position: relative;
+            text-align: center;
+            .hand {
+              position: absolute;
+              top: -35px;
+              left: calc( 50% - 25px );
+              width: 50px;
+            }
+            .top-border {
+                border-top: solid 2px $gold;
+                position: absolute;
+                top: 0;
+                width: 35vw;
+                max-width: 504px;
+            }
+            .left-border {
+                left: 0;
+            }
+            .right-border {
+                right: 0;
+            }
+            .social_image {
+                cursor: pointer;
+                width: 45px;
+            }
+            .heading_title {
+                font-family: $font-OpenSans-SB;
+                margin-bottom: 20px;
+            }
+            .fb-share-button {
+                display: inline-block;
+            }
+            .custom-tweet-button {
+                display: inline-block;
+                margin-left: 5px;
+                padding-top: 9px;
+                vertical-align: middle;
+            }
+        }
+        .faq{
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .faq_image{
+                width: 70px;
+            }
+            .text {
+              font-family: $font-OpenSans-SB;
+              margin-left: 10px;
+            }
+        }
+        .contact_button {
+            padding-top: 66px;
+            text-align: center;
+            a {
+              background-color: rgba(0,0,0,0);
+              border: 1.5px solid $gold;
+              border-radius: 30px;
+              color: $gold;
+              cursor: pointer;
+              font-family: $font-OpenSans-SB;
+              font-size: 14px;
+              padding: 6px 32px 8px;
+              @include transition(all 0.25s ease-in-out);
+              &:hover, &:focus, &:active{
+                  outline: none;
+                  text-decoration: none;
+              }
+            }
+        }
+        .logo{
+            display: inline-block;
+            margin: 0 25% 0 0;
+            padding: 30px 15px;
+            vertical-align: top;
+        }
+        .items_footer{
+            display: inline-block;
+            list-style: none;
+            padding: 30px 0 0;
+            li{
+                padding: 5px 0;
+                .item{
+                    color: $gold;
+                    text-decoration: none;
+                }
+            }
+        }
+        .social{
+            margin-top: 50px;
+            position: relative;
+            .copyright{
+                display: inline-block;
+                float: left;
+                padding: 7px 30px;
+            }
+            .social_icons{
+                display: inline-block;
+                float: right;
+                list-style: none;
+                padding-left: 0;
+                li{
+                    display: inline-block;
+                    .icon{
+                        display: block;
+                        margin: 0;
+                        position: relative;
+                        img{
+                            height: 35px;
+                            width: 35px;
+                        }
+                    }
+                }
+            }
+            &::before{
+                background-color: $gold;
+                bottom: 30px;
+                content: '';
+                height: 2px;
+                left: calc( 15% - 10px );
+                position: absolute;
+                width: 73%;
+            }
+        }
+    }
+}
+
+@media (max-width: $laptop-S-maxSize) {
+  .footer {
+    .footer_content {
+      .social {
+        &::before {
+          left: calc( 20% - 10px );
+          width: 63%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $tablet-L-maxSize) {
+  .footer {
+    .footer_content {
+      text-align: center;
+      .logo {
+        margin: 0;
+      }
+      .social {
+        &::before {
+          left: calc( 29% - 10px );
+          width: 47%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+    .step_modal{
+        .modal-dialog{
+            .modal-content{
+                .modal_content{
+                    padding: 20px 0%;
+                    .faq_interaction {
+                        flex-direction: column;
+                        img {
+                            width: 95%;
+                            margin-bottom: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .footer{
+        .footer_content{
+            padding: 15vw 25px 20px;
+            .social_heading {
+                padding: 50px 5%;
+                .heading_title {
+                    font-size: 20px;
+                }
+            }
+            .logo{
+                display: block;
+                margin: 0 auto;
+                padding: 25px 0 10px;
+                width: 30%;
+            }
+            .items_footer{
+                margin-bottom: 30px;
+                li{
+                    padding: 2px 0;
+                }
+            }
+            .info_footer{
+                p{
+                    font-size: 14px;
+                    padding: 0 10%;
+                }
+                .action{
+                    background-color: $gold;
+                    border-radius: 25px;
+                    color: #fff;
+                    display: inline-block;
+                    font-family: Arial;
+                    font-size: 15px;
+                    letter-spacing: 0.5px;
+                    margin: 30px 0;
+                    padding: 7px 25px 6px;
+                    position: relative;
+                    &:hover, &:active, &:focus{
+                        outline: none;
+                        text-decoration: none;
+                    }
+                }
+            }
+            .social{
+                margin-top: 20px;
+                .copyright, .social_icons{
+                    display: block;
+                    float: unset;
+                }
+                .social_icons{
+                    margin: 20px 0;
+                    padding: 0;
+                }
+                &::before{
+                    display: none;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,388 @@
+<div class="step_modal modal fade" id="step1Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-body modal_content">
+
+                <div class="close-modal" data-dismiss="modal" aria-label="Close" (click)="stopVideo()">
+                  <i class="material-icons">clear</i>
+                </div>
+
+                <iframe #top_video width="100%" height="100%" src="" allowfullscreen>
+                </iframe>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="become_investor_content">
+
+    <app-menu-dark></app-menu-dark>
+
+    <div class="wrapper container">
+
+        <section class="welcome">
+
+            <h2 class="title">¡Bienvenido! Acá podrás encontrar ideas de negocio para invertir y aumentar tu rentabilidad financiera.</h2>
+
+            <div class="testimonial" style="margin: 0 auto" (click)="resetTopVideo(openModalButton)">
+
+                <img src="assets/images/videos_thumbnails/thumb_inversionistas.png" alt="Testimonio 1" title="Testimonio 1" class="img-fluid">
+
+                <div class="click-video">
+                  <i class="material-icons">play_arrow</i>
+                </div>
+
+            </div>
+
+            <span #openModalButton data-toggle="modal" data-target="#step1Modal"></span>
+
+            <div class="register">
+
+                <p class="text_info">
+                    Conviértete en socio nuestro y apadrina el sueño de alguien.
+                </p>
+
+                <a class="action" routerLink="/registro-inversionista" (click)="dreamTracker()">Regístrate</a>
+            </div>
+
+            <h2 class="work_title">¿Cómo funciona? <span class="subtitle">En 3 sencillos pasos inviertes y obtienes rentabilidad.</span></h2>
+
+        </section>
+
+    </div>
+
+    <div class="steps">
+
+        <section class="steps_content container" #steps_container>
+
+            <div class="row">
+
+                <div class="step col-md-4" *ngIf="stepsShowing.step1" [@stepState]>
+
+                    <img src="assets/images/about-us/securidad_icon.png" alt="Security Icon" title="Security Icon" class="img-fluid d-none d-md-block">
+                    <img src="assets/images/about-us/seguridad_icon_movil.png" alt="Security Icon" title="Security Icon" class="img-fluid d-block d-sm-none">
+
+                    <h3 class="step_name">Paso 1</h3>
+
+                    <p class="step_description">
+                        Inscríbete como inversionista.
+                    </p>
+
+                </div>
+
+                <div class="step col-md-4" *ngIf="stepsShowing.step2" [@stepState]>
+
+                    <img src="assets/images/about-us/suenos_icon.png" alt="Dreams Icon" title="Dreams Icon" class="img-fluid d-none d-md-block">
+                    <img src="assets/images/about-us/suenos_icon_movil.png" alt="Dreams Icon" title="Dreams Icon" class="img-fluid d-block d-sm-none">
+
+                    <h3 class="step_name">Paso 2</h3>
+
+                    <p class="step_description">
+                        Selecciona un proyecto que se adapte a tu perfil.
+                    </p>
+
+                </div>
+
+                <div class="step col-md-4" *ngIf="stepsShowing.step3" [@stepState]>
+
+                    <img src="assets/images/about-us/crecimiento_icon.png" alt="Increase Icon" title="Increase Icon" class="img-fluid d-none d-md-block">
+                    <img src="assets/images/about-us/crecimiento_icon_movil.png" alt="Increase Icon" title="Increase Icon" class="img-fluid d-block d-sm-none">
+
+                    <h3 class="step_name">Paso 3</h3>
+
+                    <p class="step_description">
+                        Invierte en el proyecto y obtén rentabilidad.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <div class="benefits">
+
+        <section class="benefits_content" #chart_container>
+
+            <h2 class="title">Comparativo Rentabilidad</h2>
+
+            <div class="chart-container">
+
+                <app-profitabilities-chart #profitabilitiesChart [height]="400">
+                </app-profitabilities-chart>
+
+            </div>
+
+            <section class="current-portfolio" #statistics_container>
+
+                <div class="top-border left-border"></div>
+                <div class="top-border right-border"></div>
+
+                <h2 class="title">Cartera Actual</h2>
+
+                <div class="data-content">
+
+                  <div class="single-data">
+
+                      <img src="assets/images/new-home/Desk/people.png" width="20%" class="img-fluid d-none d-md-block">
+                      <img src="assets/images/new-home/Mobile/people_mobile.png" width="50%" class="img-fluid d-block d-sm-none">
+
+                      <div class="quantity">
+                        {{portfolioValues.customers}}
+                      </div>
+
+                      <div class="label">
+                        Clientes
+                      </div>
+
+                  </div>
+
+                  <div class="single-data">
+
+                      <img src="assets/images/new-home/Desk/bill.png" width="12%" class="img-fluid d-none d-md-block">
+                      <img src="assets/images/new-home/Mobile/bill_mobile.png" width="42%" class="img-fluid d-block d-sm-none">
+
+                      <div class="quantity">
+                        {{portfolioValues.investors}}
+                      </div>
+
+                      <div class="label">
+                        Inversionistas
+                      </div>
+
+                  </div>
+
+                </div>
+
+                <div class="data-content data-margin-b">
+
+                  <div class="single-data">
+
+                      <img src="assets/images/new-home/Desk/percentage.png" width="20%" class="img-fluid d-none d-md-block">
+                      <img src="assets/images/new-home/Desk/percentage.png" width="50%" class="img-fluid d-block d-sm-none">
+
+                      <div class="quantity">
+                        {{portfolioValues.rate}}% n.m.v
+                      </div>
+
+                      <div class="label">
+                        Tasa de Interés Promedio
+                      </div>
+
+                  </div>
+
+                  <div class="single-data">
+
+                      <img src="assets/images/new-home/Desk/money.png" width="19%" class="img-fluid d-none d-md-block">
+                      <img src="assets/images/new-home/Mobile/money_mobile.png" width="45%" class="img-fluid d-block d-sm-none">
+
+                      <div class="quantity">
+                        ${{portfolioValues.activeBusiness|number}}
+                      </div>
+
+                      <div class="label">
+                        Negocios Activos
+                      </div>
+
+                  </div>
+
+                  <div class="single-data">
+
+                      <img src="assets/images/new-home/Desk/stats.png" width="20%" class="img-fluid d-none d-md-block">
+                      <img src="assets/images/new-home/Desk/stats.png" width="50%" class="img-fluid d-block d-sm-none">
+
+                      <div class="quantity">
+                        ${{portfolioValues.cash|number}}
+                      </div>
+
+                      <div class="label">
+                        Generación de efectivo
+                      </div>
+
+                  </div>
+
+                </div>
+
+                <app-active-portfolio #portfolio_chart></app-active-portfolio>
+
+            </section>
+
+        </section>
+
+        <div class="dreams-data" #dream_stats_container>
+          <div class="left-data">
+            <div class="content">
+              <h3 class="title">Inversionista más grande:</h3>
+              <div class="data-single-line">
+                <div class="data">
+                  <span class="value">${{portfolioValues.most_male_investor|number}}</span>
+                  <span class="label gold">Consultor financiero</span>
+                </div>
+              </div>
+              <div class="data-line">
+                <div class="img">
+                  <img src="assets/images/new-home/Desk/man.png" width="25" alt="">
+                </div>
+                <div class="data">
+                  <span class="value gold">31 Años</span>
+                  <span class="label">Perfil: Hombre</span>
+                  <span class="label">{{portfolioValues.customers}} negocios activos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="right-data">
+            <div class="content">
+              <h3 class="title">Inversionista más pequeño:</h3>
+              <div class="data-single-line">
+                <div class="data">
+                  <span class="value">${{portfolioValues.most_female_investor|number}}</span>
+                  <span class="label gold">Empresaria</span>
+                </div>
+              </div>
+              <div class="data-line">
+                <div class="img">
+                  <img src="assets/images/new-home/Desk/woman.png" width="25" alt="">
+                </div>
+                <div class="data">
+                  <span class="value gold">53 Años</span>
+                  <span class="label">Perfil: Mujer</span>
+                  <span class="label">1 negocio activo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="benefits_content" #benefits_container>
+
+            <h2 class="title">Beneficios</h2>
+
+            <div class="row">
+
+                <div class="benefit col-md-4" *ngIf="benefitsShowing.ben1" [@appearingAnimNoDelay]>
+
+                    <img src="assets/images/become-investor/rentabilidad_icon.png" alt="Cost effectiveness Icon" title="Cost effectiveness Icon" class="img-fluid d-none d-md-block">
+                    <img src="assets/images/become-investor/rentabilidad_icon_movil.png" alt="Cost effectiveness Icon" title="Cost effectiveness Icon" class="img-fluid d-block d-sm-none">
+
+                    <h3 class="benefit_name">Acá encuentras una rentabilidad que se ajusta a tus recursos.</h3>
+
+                </div>
+
+                <div class="benefit col-md-4" *ngIf="benefitsShowing.ben2" [@appearingAnimNoDelay]>
+
+                    <img src="assets/images/become-investor/proyectos_icon.png" alt="Projects Icon" title="Projects Icon" class="img-fluid d-none d-md-block">
+                    <img src="assets/images/become-investor/proyectos_icon_movil.png" alt="Projects Icon" title="Projects Icon" class="img-fluid d-block d-sm-none">
+
+                    <h3 class="benefit_name">Tienes libertad de escoger qué sueño puedes apadrinar.</h3>
+
+                </div>
+
+                <div class="benefit col-md-4" *ngIf="benefitsShowing.ben3" [@appearingAnimNoDelay]>
+
+                    <img src="assets/images/become-investor/descanso_icon.png" alt="Break Icon" title="Break Icon" class="img-fluid d-none d-md-block">
+                    <img src="assets/images/become-investor/descanso_icon_movil.png" alt="Break Icon" title="Break Icon" class="img-fluid d-block d-sm-none">
+
+                    <h3 class="benefit_name">Creces económicamente y logras que tu dinero trabaje para ti.</h3>
+
+                </div>
+
+            </div>
+
+            <a class="action" routerLink="/registro-inversionista">Conviértete en inversionista</a>
+
+        </section>
+
+    </div>
+
+    <section class="current-investors" #map_container>
+
+      <div class="content container">
+        <h2 class="title">Inversionistas Actuales</h2>
+
+        <div class="data-content">
+
+          <div class="map">
+
+            <img src="assets/images/new-home/investor/Desk/map.png" class="img-fluid d-none d-md-block">
+            <img src="assets/images/new-home/investor/Mobile/map_mobile.png" class="img-fluid d-block d-sm-none">
+
+          </div>
+
+          <div class="pie-chart">
+
+            <h6>INVERSIONISTAS</h6>
+
+            <div class="content">
+
+              <div class="women">
+                <img src="assets/images/new-home/Desk/woman.png" width="16px" *ngFor="let w of womenAmount" [@appearingAnimNoDelay]>
+              </div>
+
+              <div class="chart">
+                <div [chart]="chart3"></div>
+              </div>
+
+              <div class="men">
+                <img src="assets/images/new-home/investor/Desk/man.png" width="15px" *ngFor="let w of menAmount" [@appearingAnimNoDelay]>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+    </section>
+
+    <section class="testimonials">
+
+      <div class="container">
+
+        <h2 class="title">Inversionistas</h2>
+
+        <section class="videos row">
+
+            <div class="testimonial col-md-6" (click)="resetBottomLeftVideo(openModalButton)">
+
+                <img src="assets/images/videos_thumbnails/testimonial_inv_1.png" alt="Testimonio 1" title="Testimonio 1" class="img-fluid">
+
+                <div class="click-video">
+                  <i class="material-icons">play_arrow</i>
+                </div>
+
+            </div>
+
+            <div class="testimonial col-md-6" (click)="resetBottomRightVideo(openModalButton)">
+
+                <img src="assets/images/videos_thumbnails/testimonial_inv_2.png" alt="Testimonio 2" title="Testimonio 2" class="img-fluid">
+
+                <div class="click-video">
+                  <i class="material-icons">play_arrow</i>
+                </div>
+
+            </div>
+
+        </section>
+
+      </div>
+
+      <a routerLink="/registro-inversionista" class="section_action">Conviértete en Inversionista</a>
+
+    </section>
+
+    <app-footer></app-footer>
+
+</div>

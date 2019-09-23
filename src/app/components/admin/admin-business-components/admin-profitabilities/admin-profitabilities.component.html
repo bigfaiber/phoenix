@@ -1,0 +1,148 @@
+<section class="user_profile">
+
+    <section class="projects container text-center">
+
+        <div class="user_container row">
+
+            <div class="col-md-8" style="margin: 0 auto">
+
+                <app-profitabilities-chart #profitabilitiesChart></app-profitabilities-chart>
+
+            </div>
+
+        </div>
+
+        <div class="accounts_container">
+
+            <legend class="title">Rentabilidades</legend>
+
+            <h4 class="empty" *ngIf="allProfitabilities.length==0" [@appearingAnimNoDelay]>En el momento no hay ninguna</h4>
+
+            <div class="row all-accounts">
+              <div class="bank-card-container col-md-4" *ngFor="let profitability of allProfitabilities; let i=index" [@appearingAnimNoDelay]>
+                <div class="bank-card">
+                  <form name="profitability.form" [formGroup]="profitability.form">
+                    <table>
+                      <tr>
+                        <td>
+                          <div class="push-down">
+                            Nombre
+                          </div>
+                        </td>
+                        <td>
+                          <div class="data push-down">
+                            <div *ngIf="!profitability.editing" [@editingToggler]>{{profitability.name.slice(0,15)}}...</div>
+                            <div class="form_item" *ngIf="profitability.editing" [@editingToggler]>
+                              <input #account_input type="text" class="form-control" name="password" formControlName="name" (ngModelChange)="profitability.uniquenessError=false">
+
+                              <span class="input_error_right" *ngIf="profitability.uniquenessError" [@fadeInOut]>
+                                Ya fue tomado
+                              </span>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Porcentaje</td>
+                        <td>
+                          <div class="data">
+                            <div *ngIf="!profitability.editing" [@editingToggler]>{{profitability.percentage}}%</div>
+                            <div class="form_item" *ngIf="profitability.editing" [@editingToggler]>
+
+                                <input #account_input type="number" min="0" max="100" class="form-control" name="password" formControlName="percentage">
+
+                                <span class="input_error_right" *ngIf="profitability.form.controls['percentage'].hasError('pattern')" [@fadeInOut]>
+                                    Sólo números
+                                </span>
+
+                                <span class="input_error_right" *ngIf="!profitability.form.controls['percentage'].hasError('pattern')&&profitability.form.controls['percentage'].hasError('min')" [@fadeInOut]>
+                                    Mínimo 0
+                                </span>
+
+                                <span class="input_error_right" *ngIf="!profitability.form.controls['percentage'].hasError('pattern')&&profitability.form.controls['percentage'].hasError('max')" [@fadeInOut]>
+                                    Máximo 100
+                                </span>
+
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </form>
+
+                  <div class="delete-button">
+                    <i class="material-icons" (click)="deleteProfitability(i)">delete</i>
+                  </div>
+
+                  <div class="edit-button" *ngIf="!profitability.editing" [@editingToggler]>
+                    <i class="material-icons" (click)="toggleEdition(i)">edit</i>
+                  </div>
+                  <div class="edit-button" *ngIf="profitability.editing" [@editingToggler]>
+                    <i class="material-icons" (click)="toggleEdition(i)">save</i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bank-card-container col-md-4">
+                <div class="bank-card">
+                  <div class="new">Nueva</div>
+                  <form name="profitabilityForm" [formGroup]="profitabilityForm">
+                    <table>
+                        <tr>
+                          <td>
+                            <div class="push-down">
+                              Nombre
+                            </div>
+                          </td>
+                          <td>
+                            <div class="data push-down">
+                              <div class="form_item">
+
+                                <input #account_input type="text" class="form-control" name="password" formControlName="name" (ngModelChange)="uniquenessError=false">
+
+                                <span class="input_error_right" *ngIf="uniquenessError" [@fadeInOut]>
+                                  Ya fue tomado
+                                </span>
+
+                              </div>
+                            </div>
+                          </td>
+                      </tr>
+                      <tr>
+                        <td>Porcentaje</td>
+                        <td>
+                          <div class="data">
+                            <div class="form_item">
+
+                                <input #account_input type="number" min="0" max="100" class="form-control" name="password" formControlName="percentage">
+
+                                <span class="input_error_right" *ngIf="profitabilityForm.controls['percentage'].hasError('pattern')" [@fadeInOut]>
+                                    Sólo números
+                                </span>
+
+                                <span class="input_error_right" *ngIf="!profitabilityForm.controls['percentage'].hasError('pattern')&&profitabilityForm.controls['percentage'].hasError('min')" [@fadeInOut]>
+                                    Mínimo 0
+                                </span>
+
+                                <span class="input_error_right" *ngIf="!profitabilityForm.controls['percentage'].hasError('pattern')&&profitabilityForm.controls['percentage'].hasError('max')" [@fadeInOut]>
+                                    Máximo 100
+                                </span>
+
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </form>
+                  <div class="edit-button">
+                    <i class="material-icons" (click)="postNewProfitability()">save</i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+
+    </section>
+
+</section>

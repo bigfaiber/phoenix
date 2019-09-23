@@ -1,0 +1,73 @@
+<p-dialog
+  header="Password"
+  [(visible)]="display"
+  [modal]="true"
+  [closeOnEscape]="false"
+  [closable]="false"
+  [draggable]="false">
+    <input type="password" #pass autocomplete="off" (keydown)="verifyCredentials(pass.value,$event)">
+    <p-footer>
+      <p-button styleClass="ui-button-success" (click)="verifyCredentials(pass.value,$event)" label="Verify"></p-button>
+      <p-button styleClass="ui-button-info" (click)="leave()" label="Leave"></p-button>
+    </p-footer>
+</p-dialog>
+
+<div class="container all-content">
+
+  <h1 class="title">Programmer</h1>
+
+  <h2 class="sub-title">Settings</h2>
+
+  <table class="options-table">
+    <tbody>
+      <tr>
+        <td>Debug</td>
+        <td>
+          <div class="td-content">
+            <p-inputSwitch [(ngModel)]="checked[0]" (onChange)="changeValue($event,0)"></p-inputSwitch>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Console clearing</td>
+        <td>
+          <div class="td-content">
+            <p-inputSwitch [(ngModel)]="checked[1]" (onChange)="changeValue($event,1)"></p-inputSwitch>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Modal Clearing</td>
+        <td>
+          <div class="td-content">
+            <p-inputSwitch [(ngModel)]="checked[2]" (onChange)="changeValue($event,2)"></p-inputSwitch>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Auto top scroll</td>
+        <td>
+          <div class="td-content">
+            <p-inputSwitch [(ngModel)]="checked[3]" (onChange)="changeValue($event,3)"></p-inputSwitch>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="sub-title">Actions</h2>
+
+  <table class="options-table">
+    <tbody>
+      <tr>
+        <td>Clear localStorage</td>
+        <td>
+          <div class="td-content">
+            <p-button styleClass="ui-button-info" (click)="clearLocalStorage()" label="Clear"></p-button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

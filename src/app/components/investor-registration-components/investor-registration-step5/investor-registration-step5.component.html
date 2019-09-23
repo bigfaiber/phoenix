@@ -1,0 +1,211 @@
+<div class="wrapper container">
+
+    <img *ngIf="requestSent" src="assets/phx_logo_01.png" width="70" alt="" class="rotate_anim" [@fadeInOut]>
+
+    <div class="registration_form">
+
+        <h3 class="title">Medios de pago</h3>
+
+        <form name="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <div class="form_item form-group">
+
+                          <div class="centering_radio" (click)="submitButton.name">
+
+                              <input #f1 class="check_box" type="radio" name="answer2" id="ans12">
+
+                              <label #label_1 class="credit_check_box" for="ans12"></label>
+
+                              <label class="right_margin left_margin make_block" (click)="label_1.click()">Tarjeta de crédito</label>
+
+
+                              <input #f2 class="check_box" type="radio" name="answer2" id="ans22">
+
+                              <label #label_2 class="debit_check_box" for="ans22"></label>
+
+                              <label class="right_margin left_margin make_block" (click)="label_2.click()">Tarjeta de débito</label>
+
+                          </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                  <div class="form_item form-group">
+
+                      <label class="name" for="name">Nombres</label>
+
+                      <input type="text" class="form-control" name="name" formControlName="names" autocomplete="off">
+
+                      <span class="input_error_right" *ngIf="form.controls['names'].hasError('pattern')" [@fadeInOut]>
+                          Nombre inválido
+                      </span>
+
+                  </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                  <div class="form_item form-group">
+
+                      <label class="name" for="lastname">Apellidos</label>
+
+                      <input type="text" class="form-control" name="lastname" formControlName="last_names" autocomplete="off">
+
+                      <span class="input_error_right" *ngIf="form.controls['last_names'].hasError('pattern')" [@fadeInOut]>
+                          Apellido inválido
+                      </span>
+
+                  </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <div class="form_item form-group">
+
+                        <label class="name" for="name">Número de tarjeta</label>
+
+                        <input #f5 type="text" class="form-control" name="name" formControlName="card" autocomplete="off">
+
+                        <span class="input_error_right" *ngIf="form.controls['card'].hasError('pattern')" [@fadeInOut]>
+                            Sólo puede contener números
+                        </span>
+
+                        <span class="input_error_right" *ngIf="!form.controls['card'].hasError('pattern')&&form.controls['card'].hasError('minlength')" [@fadeInOut]>
+                            Mínimo 8 números
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <div class="form_item form-group">
+
+                        <label class="name make_inline block_this" for="name">Número de seguridad</label>
+
+                        <input #f6 type="text" class="form-control make_input_inline secure" [class.input_disabled]="f2.checked"
+                                name="name" formControlName="sec_numb" [readonly]="f2.checked" autocomplete="off">
+
+                        <span>Últimos tres números</span>
+
+                        <span class="input_error_right patch" *ngIf="form.controls['sec_numb'].hasError('pattern')" [@fadeInOut]>
+                            Sólo puede contener números
+                        </span>
+
+                        <span class="input_error_right patch" *ngIf="!form.controls['sec_numb'].hasError('pattern')&&form.controls['sec_numb'].hasError('minlength')" [@fadeInOut]>
+                            Mínimo tres números
+                        </span>
+
+                        <span class="input_error_right patch" *ngIf="!form.controls['sec_numb'].hasError('pattern')&&form.controls['sec_numb'].hasError('maxlength')" [@fadeInOut]>
+                            Máximo tres números
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="form_item form-group">
+
+                        <label class="name make_center">Mes</label>
+
+                        <select #month (click)="submitButton.name">
+
+                            <option value="0" disabled selected>Selecciona una opción</option>
+
+                            <option value="enero">Enero</option>
+
+                            <option value="febrero">Febrero</option>
+
+                            <option value="marzo">Marzo</option>
+
+                            <option value="abril">Abril</option>
+
+                            <option value="mayo">Mayo</option>
+
+                            <option value="junio">Junio</option>
+
+                            <option value="julio">Julio</option>
+
+                            <option value="agosto">Agosto</option>
+
+                            <option value="septiembre">Septiembre</option>
+
+                            <option value="octubre">Octubre</option>
+
+                            <option value="noviembre">Noviembre</option>
+
+                            <option value="diciembre">Diciembre</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="form_item form-group">
+
+                        <label class="name make_center">Año</label>
+
+                        <select #year (click)="submitButton.name">
+
+                            <option value="0" disabled selected>Selecciona una opción</option>
+
+                            <option *ngFor="let year of years" value="{{year}}">{{year}}</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button #submitButton type="submit" [class.action_disabled]="!isFormValid( )" class="action">Siguiente</button>
+
+        </form>
+
+        <a class="stepwizard_button step_selected"></a>
+
+        <a class="stepwizard_button step_selected"></a>
+
+        <a class="stepwizard_button step_selected"></a>
+
+        <a class="stepwizard_button step_selected"></a>
+
+        <a class="stepwizard_button step_selected"></a>
+
+        <a class="stepwizard_button"></a>
+
+    </div>
+
+</div>

@@ -1,0 +1,36 @@
+<div class="phoenix-menu">
+  <div class="menu-content container">
+    <div class="dinamic-content">
+      <div class="logo">
+        <a [routerLink]="['/inicio']">
+          <img src="assets/images/about-us/logo_blanco.png">
+        </a>
+      </div>
+      <div class="menu-toggler" (click)="navLinksState=!navLinksState">
+        <i class="material-icons">menu</i>
+      </div>
+    </div>
+    <div class="nav" *ngIf="navLinksState" [@navState]>
+      <ul>
+        <li>
+          <a routerLink="/inicio">Inicio</a>
+        </li>
+        <li>
+          <a routerLink="/quienes-somos" routerLinkActive="active-link">Quiénes somos</a>
+        </li>
+        <li>
+          <a routerLink="/conviertete-en-inversionista" routerLinkActive="active-link">Conviértete en inversionista</a>
+        </li>
+        <li *ngIf="!sessionActive">
+          <a routerLink="/iniciar-sesion" (click)="signOut()">Iniciar sesión</a>
+        </li>
+        <li *ngIf="sessionActive">
+          <a class="profile-link" (click)="signOut()">
+              <img *ngIf="user_data.avatar.url==null" src="assets/images/client-profile/default_avatar.png" width="60">
+              <img *ngIf="user_data.avatar.url!=null" src="{{API_path+user_data.avatar.url}}" width="60">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

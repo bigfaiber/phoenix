@@ -1,0 +1,78 @@
+<div class="head">
+  <h2 class="title">Perfil Cliente</h2>
+  <div class="container">
+
+      <div class="user_detail">
+
+        <div class="image">
+          <!-- <img #profile_pic src="assets/images/client-profile/default_avatar.png" alt="Image User" title="Image User" class="image img-fluid"> -->
+          <img #profile_pic width="150" alt="Image User" title="Image User" class="user_image img-fluid">
+        </div>
+
+        <div class="detail">
+
+          <p class="name">{{user_data.name}} {{user_data.lastname}}</p>
+
+          <div class="stars">
+            <img src="{{imgPath(0)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+            <img src="{{imgPath(1)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+            <img src="{{imgPath(2)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+            <img src="{{imgPath(3)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+            <img src="{{imgPath(4)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+          </div>
+
+          <p class="stability">Estabilidad: {{user_data.rating|number:'1.0-1'}}</p>
+
+        </div>
+
+      </div>
+
+      <div class="stats">
+
+        <div class="text-center tachometer">
+
+          <img src="/assets/images/tachometer/3x/tachometer2.png" class="tachometer_image">
+
+          <img src="/assets/images/tachometer/3x/needle.png" class="needle_image"
+          [style.transform]="calcNeedleRotation()">
+
+          <h3>Calificación: {{user_data.global}}</h3>
+
+        </div>
+
+        <div class="graph-content">
+
+          <div [chart]="chart"></div>
+
+        </div>
+
+      </div>
+
+  </div>
+  <div class="container">
+    <div class="account-info">
+      <h4 class="account-title">Información Cuenta Bancaria</h4>
+      <table>
+        <tbody>
+          <tr>
+            <td>Cédula:</td>
+            <td><span>{{user_data.identification}}</span></td>
+          </tr>
+          <tr>
+            <td>Banco:</td>
+            <td><span>{{user_data.project_account.bank}}</span></td>
+          </tr>
+          <tr>
+            <td>Tipo:</td>
+            <td><span>{{user_data.project_account.account_type}}</span></td>
+          </tr>
+          <tr>
+            <td>Número:</td>
+            <td><span>{{user_data.project_account.account_number}}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <button class="action" (click)="getBack()">Volver</button>
+</div>

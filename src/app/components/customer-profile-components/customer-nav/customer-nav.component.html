@@ -1,0 +1,88 @@
+<div class="step_modal modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-body modal_content">
+
+                <div class="close-modal" data-dismiss="modal" aria-label="Close" (click)="stopVideo()">
+                  <i class="material-icons">clear</i>
+                </div>
+
+                <iframe #top_video width="100%" height="100%" src="" allowfullscreen>
+                </iframe>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<span #openModalButton data-toggle="modal" data-target="#videoModal"></span>
+
+<div class="head">
+  <div class="container">
+
+      <div class="user_detail">
+
+        <div class="image">
+          <!-- <img #profile_pic src="assets/images/client-profile/default_avatar.png" alt="Image User" title="Image User" class="image img-fluid"> -->
+          <img #profile_pic width="150" alt="Image User" title="Image User" class="user_image img-fluid">
+        </div>
+
+        <div class="detail">
+
+          <p class="name">{{user_data.name}} {{user_data.lastname}}</p>
+
+          <div class="stars">
+            <img src="{{imgPath(0)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+            <img src="{{imgPath(1)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+            <img src="{{imgPath(2)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+            <img src="{{imgPath(3)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+            <img src="{{imgPath(4)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+          </div>
+
+          <p class="stability">Estabilidad: {{user_data.rating|number:'1.0-1'}}</p>
+
+        </div>
+
+        <div class="testimonial" style="margin: 0 auto" (click)="resetTopVideo(openModalButton)">
+
+            <img src="assets/images/videos_thumbnails/customer_tutorial.png" alt="Testimonio 1" title="Testimonio 1" class="img-fluid">
+
+            <div class="click-video">
+              <i class="material-icons">play_arrow</i>
+            </div>
+
+        </div>
+
+      </div>
+
+      <div class="stats">
+
+        <div class="text-center tachometer">
+
+          <img src="/assets/images/tachometer/3x/tachometer2.png" class="tachometer_image">
+
+          <img src="/assets/images/tachometer/3x/needle.png" class="needle_image"
+          [style.transform]="calcNeedleRotation()">
+
+          <h3>Calificación: {{user_data.global}}</h3>
+
+        </div>
+
+        <div class="graph-content">
+
+          <div [chart]="chart"></div>
+
+        </div>
+
+      </div>
+
+  </div>
+  <app-missing-docs [user_data]="user_data" type="customer" #missing_ref></app-missing-docs>
+</div>

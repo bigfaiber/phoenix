@@ -1,0 +1,45 @@
+<section class="user_profile">
+
+    <app-customer-nav></app-customer-nav>
+
+    <section class="projects container">
+
+        <h3 class="title">Pros & Contras</h3>
+
+        <div class="judgments_container">
+
+            <div class="pro">
+              <div class="header">
+                <img src="/assets/images/investor-profile/pros.png" alt="">
+                <h2>Pros</h2>
+              </div>
+              <ul>
+                <legend *ngIf="user_data.pros.length==0">Sin asignar</legend>
+                <div *ngFor="let op of user_data.pros; let i=index">
+                  <li>
+                    <span>{{op.opinion}}</span>
+                  </li>
+                </div>
+              </ul>
+            </div>
+
+            <div class="con">
+              <div class="header">
+                <img src="/assets/images/investor-profile/contras.png" alt="">
+                <h2>Contras</h2>
+              </div>
+              <ul>
+                <legend *ngIf="user_data.cons.length==0">Sin asignar</legend>
+                <div *ngFor="let op of user_data.cons; let i=index">
+                  <li>
+                    <span>{{op.opinion}}</span>
+                  </li>
+                </div>
+              </ul>
+            </div>
+
+        </div>
+
+    </section>
+
+</section>

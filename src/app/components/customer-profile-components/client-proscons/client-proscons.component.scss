@@ -1,0 +1,96 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixin.scss';
+
+.user_profile{
+    .projects{
+        min-height: calc(100vh - 255px);
+        padding: 50px 0;
+        .judgments_container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            .pro, .con {
+                background-color: white;
+                border: solid 1px $gold;
+                border-radius: 20px;
+                padding: 10px 30px;
+                width: 48%;
+                .header {
+                  text-align: center;
+                  margin-bottom: 20px;
+                  img {
+                    width: 90px;
+                  }
+                  h2 {
+                    display: inline;
+                    vertical-align: middle;
+                    font-family: $font-OpenSans-B;
+                  }
+                }
+                ul {
+                  justify-content: flex-start;
+                  font-family: $font-OpenSans;
+                  text-align: left;
+                  legend {
+                    color: #BBB;
+                    font-size: 15px;
+                    text-align: center;
+                  }
+                  li {
+                    color: #8DC043;
+                    span {
+                      color: black;
+                    }
+                  }
+                }
+            }
+            .con {
+              .header {
+                img {
+                  width: 80px;
+                }
+              }
+              ul {
+                li {
+                  color: #DF5C31;
+                }
+              }
+            }
+        }
+        .title{
+            font-family: $font-OpenSans-SB;
+            font-size: 25px;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        .empty_message {
+            color: #cccccc;
+            font-family: $font-OpenSans;
+            font-size: 2vw;
+            margin-top: 12%;
+            text-align: center;
+        }
+    }
+}
+
+@media (max-width: 40em) {
+    .user_profile{
+        .projects{
+            display: block;
+            padding: 40px 15px;
+            .empty_message {
+                font-size: 6vw;
+            }
+            .judgments_container {
+              flex-direction: column;
+              .pro, .con {
+                padding: 10px 10px;
+                width: 100%;
+              }
+              .pro {
+                margin-bottom: 15px;
+              }
+            }
+        }
+    }
+}

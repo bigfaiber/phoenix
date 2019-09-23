@@ -1,0 +1,172 @@
+<div class="rate_modal modal fade" id="receiptModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                      <img src="assets/images/registration/logo@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid">
+
+                <div class="response">
+
+                    <form name="form" [formGroup]="form">
+
+                        <div class="form_item form-group">
+
+                            <label>Puntaje global</label>
+
+                            <input type="number" class="form-control" name="birthday" formControlName="number">
+
+                        </div>
+
+                    </form>
+
+                    <a [class.action_disabled]="!this.isFormValid( )||requestSent" class="action" (click)="rateClient(close_rate_modal)">
+                        <span aria-hidden="true">Guardar</span>
+                    </a>
+
+                    <button #close_rate_modal hidden data-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="del_modal modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                      <img src="assets/images/registration/logo@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid">
+
+                <div class="response">
+
+                    <p class="text">¿Estás seguro de eliminar a {{customer_data.name}} {{customer_data.lastname}}?</p>
+
+                    <button type="button" name="button" class="action" (click)="deleteCustomer()" data-dismiss="modal" aria-label="Close">Sí</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<section class="user_profile">
+
+    <section class="projects container">
+
+        <div class="user_container row">
+
+            <div class="col-md-6">
+
+                <div class="user_detail">
+
+                    <div class="image">
+                        <img *ngIf="customer_data.avatar.url!=null" src="{{API_path+customer_data.avatar.url}}" alt="Image User"
+                            title="Image User" class="image img-fluid">
+                        <img *ngIf="customer_data.avatar.url==null" src="assets/images/client-profile/default_avatar.png" alt="Image User"
+                            title="Image User" class="image img-fluid">
+                    </div>
+
+                    <div class="detail">
+
+                        <p class="name">{{customer_data.name}} {{customer_data.lastname}}</p>
+
+                        <div class="stars">
+                            <img src="{{imgPath(0)}}" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+                            <img src="{{imgPath(1)}}" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+                            <img src="{{imgPath(2)}}" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+                            <img src="{{imgPath(3)}}" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+                            <img src="{{imgPath(4)}}" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+                        </div>
+
+                        <p class="stability">Estabilidad: {{customer_data.rating|number:'1.0-1'}}</p>
+                        <p class="created">Fecha registro: <br>{{customer_data.created_at}}</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 i_buttons">
+
+              <div class="row">
+
+                  <div class="col-md-6 bu_content">
+
+                      <button type="button" name="button" class="return_action" (click)="openDocuments()">Ver documentos</button>
+                      <button type="button" name="button" class="return_action" (click)="openForm()">Formulario</button>
+                      <button type="button" name="button" class="return_action"
+                          data-toggle="modal" data-target="#receiptModal">Calificar</button>
+                      <button type="button" name="button" class="return_action" (click)="addOpinion()">Pros & Cons</button>
+
+                  </div>
+
+                  <div class="col-md-6 bu_content">
+
+                      <button type="button" name="button" class="return_action delete" data-toggle="modal" data-target="#deleteModal">Eliminar</button>
+
+                  </div>
+
+              </div>
+
+            </div>
+
+        </div>
+
+        <h3 class="title">Proyectos del cliente</h3>
+
+        <h1 *ngIf="projects.length==0" class="empty_message">Sin proyectos</h1>
+
+        <div class="row">
+
+          <div  *ngFor="let proj of projects; let i = index" class="col-md-4">
+              <app-cool-project-link
+                [state]="proj.state"
+                [dream]="proj.dream"
+                [money]="proj.money"
+                [notification]="proj.notification"
+                (click)="openDream(i)">
+              </app-cool-project-link>
+              <button #ooo type="button" name="button" hidden data-toggle="modal" data-target="#step1Modal"></button>
+          </div>
+
+          <div class="col-md-4">
+              <app-new-project-link (click)="createProject()"></app-new-project-link>
+          </div>
+
+        </div>
+
+        <button type="button" name="button" class="return_action patch" (click)="return_to()">Volver</button>
+
+    </section>
+
+</section>

@@ -1,0 +1,109 @@
+<div class="del_modal modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                      <img src="assets/images/registration/logo@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid">
+
+                <div class="response">
+
+                    <p class="text">¿Estás seguro de eliminar a {{investor_data.name}} {{investor_data.lastname}}?</p>
+
+                    <button type="button" name="button" class="action" (click)="deleteInvestor()" data-dismiss="modal" aria-label="Close">Sí</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<section class="user_profile">
+
+    <section class="projects container text-center">
+
+        <div class="user_container row">
+
+            <div class="col-md-6">
+
+                <div class="user_detail">
+
+                    <div class="image">
+                      <img *ngIf="investor_data.avatar.url!=null" src="{{API_path+investor_data.avatar.url}}" alt="Image User"
+                          title="Image User" class="image img-fluid">
+                      <img *ngIf="investor_data.avatar.url==null" src="assets/images/client-profile/default_avatar.png" alt="Image User"
+                          title="Image User" class="image img-fluid">
+                    </div>
+
+                    <div class="detail">
+
+                        <p class="name">{{investor_data.name}} {{investor_data.lastname}}</p>
+                        <p class="limit"><span>Tope:</span> ${{investor_data.maximum|number}}</p>
+                        <p class="created">Fecha registro: <br>{{investor_data.created_at}}</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 i_buttons">
+
+              <div class="row">
+
+                  <div class="col-md-6 bu_content">
+
+                      <button type="button" name="button" class="return_action" (click)="openDocuments()">Ver documentos</button>
+                      <button type="button" name="button" class="return_action" (click)="openForm()">Formulario</button>
+                      <button type="button" name="button" class="return_action" (click)="addOpinion()">Pros & Cons</button>
+                      <button type="button" name="button" class="return_action" [routerLink]="['/admin','cuentas-inversionista']">Cuentas Bancarias</button>
+
+                  </div>
+
+                  <div class="col-md-6 bu_content">
+
+                      <button type="button" name="button" class="return_action delete" data-toggle="modal" data-target="#deleteModal">Eliminar</button>
+
+                  </div>
+
+              </div>
+
+            </div>
+
+        </div>
+
+        <h3 class="title">Inversiones</h3>
+
+        <h1 *ngIf="investments.length==0" class="empty_message">Sin inversiones</h1>
+
+        <div class="row">
+
+            <div class="project col-md-4" *ngFor="let proj of investments; let i = index">
+              <app-data-project-link
+                (click)="openProject(i)"
+                bgColor="gray"
+                [money]="proj.money"
+                [data]="proj.parse">
+              </app-data-project-link>
+            </div>
+
+        </div>
+
+        <button type="button" name="button" class="return_action patch" (click)="return_to()">Volver</button>
+
+    </section>
+
+</section>

@@ -1,0 +1,40 @@
+<section class="banner text-center">
+
+    <h1>Proyectos</h1>
+
+    <div class="links">
+    </div>
+
+    <div class="search_input desktop_view">
+
+        <i class="material-icons">search</i>
+
+        <input #sea class="form-control" type="text" placeholder="Busca un proyecto por código..." (keyup)="searchProjectByCode(sea.value)">
+
+    </div>
+
+</section>
+
+<div class="matches"
+    infinite-scroll
+    [infiniteScrollDistance]="scrollDistance"
+    [infiniteScrollThrottle]="throttle"
+    [scrollWindow]="false"
+    (scrolled)="onScrollDown()">
+
+    <h1 *ngIf="matches.length==0" class="empty_message">En el momento no hay ningún proyecto</h1>
+
+    <div class="content_projects container row">
+
+        <div class="col-md-4" *ngFor="let proj of matches; let i = index">
+            <app-data-project-link
+              (click)="openProject(i)"
+              bgColor="gold"
+              [money]="proj.project.money"
+              [data]="proj.parse">
+            </app-data-project-link>
+        </div>
+
+    </div>
+
+</div>

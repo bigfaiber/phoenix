@@ -1,0 +1,230 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixin.scss';
+
+.step_modal{
+    background-color: rgba( 26, 44, 53, 0.9 );
+    padding: 0 !important;
+    height: 100vh !important;
+    .modal-dialog{
+        margin: 0;
+        min-width: 100%;
+        height: 100vh !important;
+        .modal-content{
+            background-color: rgba( 0, 0, 0, 0 );
+            border: none;
+            padding: 0;
+            height: 100vh !important;
+            iframe {
+                border: none;
+                height: 100vh;
+            }
+            .modal_content{
+                padding: 0px;
+                position: relative;
+                text-align: center;
+                height: 100vh !important;
+                .close-modal {
+                  border: solid 2px $gold;
+                  border-radius: 50%;
+                  color: $gold;
+                  cursor: pointer;
+                  height: 40px;
+                  position: absolute;
+                  right: 20px;
+                  top: 20px;
+                  transition: .2s;
+                  width: 40px;
+                  i {
+                    font-size: 35px;
+                  }
+                  &:hover {
+                    transform: scale(1.1);
+                  }
+                }
+                h1 {
+                    color: white;
+                    margin-top: 20%;
+                }
+            }
+        }
+    }
+}
+
+.head {
+    background: #fff;
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .user_detail{
+        background-color: #fff;
+        padding: 30px 0;
+        text-align: center;
+        width: 25%;
+        .testimonial{
+            cursor: pointer;
+            margin: 20px auto !important;
+            position: relative;
+            transition: 0.2s;
+            width: 225px;
+            img {
+              border: solid 1px $dark-blue;
+              border-radius: 30px;
+            }
+            .click-video {
+              border: solid 4px $dark-blue;
+              border-radius: 50%;
+              cursor: pointer;
+              width: 60px;
+              height: 60px;
+              padding-top: 9px;
+              position: absolute;
+              top: calc( 50% - 30px );
+              left: calc( 50% - 30px );
+              transition: 0.2s;
+              .material-icons {
+                color: $dark-blue;
+                font-size: 37px;
+              }
+            }
+
+            &:hover {
+                transform: scale( 1.1 );
+            }
+        }
+        .image{
+            display: block;
+            position: relative;
+            .user_image{
+                border-radius: 50%;
+                margin-bottom: 13px;
+            }
+        }
+        .detail{
+            display: inline-block;
+            padding: 0 15px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+            .name{
+                color: #825520;
+                font-size: 20px;
+                margin: 4px 0;
+            }
+            .stability {
+                color: #825520;
+                font-size: 15px;
+                margin: 0;
+            }
+            .stars{
+                margin: 2px 0px 6px;
+                text-align: center;
+            }
+        }
+    }
+    .stats {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 75%;
+      .tachometer {
+          padding-top: 40px;
+          position: relative;
+          width: 35%;
+          .tachometer_image {
+              display: block;
+              margin: 0 auto;
+              width: 100%;
+          }
+          .needle_image {
+              bottom: 63px;
+              left: 47%;
+              position: absolute;
+              width: 96px;
+              transform-origin: 12px 37px;
+          }
+          h3 {
+              font-family: $font-OpenSans-SB;
+              margin-top: 23px;
+              font-size: 25px;
+          }
+      }
+      .graph-content {
+          padding: 0 40px !important;
+          width: 60%;
+      }
+    }
+}
+
+@media (max-width: 40em) {
+  .step_modal{
+      .modal-dialog{
+          .modal-content{
+              .modal_content{
+                  align-items: center;
+                  display: flex;
+                  justify-content: center;
+                  iframe{
+                      height: 35vh;
+                      width: 100%;
+                  }
+              }
+          }
+      }
+  }
+  .head {
+    .container {
+      flex-direction: column;
+    }
+    .stats {
+      flex-direction: column;
+      width: 100%;
+      .tachometer {
+          padding-top: 20px;
+          width: 100%;
+          .tachometer_image {
+              width: 296px;
+          }
+          .needle_image {
+              bottom: 50px;
+              left: 47.5%;
+              width: 101px;
+              transform-origin: 13px 37px;
+          }
+          h3 {
+              font-size: 21px;
+          }
+      }
+      .graph-content {
+          padding: 0 !important;
+          width: 100%;
+      }
+    }
+    .user_detail{
+      width: 100%;
+        .image{
+            display: block;
+            margin: 0 auto;
+            .user_image{
+                border-radius: 50%;
+            }
+        }
+        .detail{
+            margin: 5px 0 5px;
+            .stars{
+                text-align: center;
+                .image{
+                    display: inline-block;
+                }
+            }
+            .name{
+                text-align: center;
+            }
+            .stability {
+                text-align: center;
+            }
+        }
+    }
+  }
+}

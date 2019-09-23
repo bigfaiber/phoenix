@@ -1,0 +1,183 @@
+<div class="upload-rec-modal modal fade" id="uploadReceiptModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog" role="document">
+
+      <div class="modal-content">
+
+          <div class="modal-header">
+
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+              </button>
+
+          </div>
+
+          <div class="modal-body modal_content">
+
+                    <img src="assets/images/registration/logo@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid">
+
+              <div class="response">
+
+                  <p class="text">Datos del recibo</p>
+
+                  <form name="form2" [formGroup]="form2">
+
+                    <div class="form_item form-group">
+
+                        <label for="birthday">Fecha del recibo</label>
+
+                        <input type="date" class="form-control" name="birthday" formControlName="date">
+
+                    </div>
+
+                      <div class="form_item form-group">
+
+                        <div class="upload_documents" (click)="openReceiptFileInput()">
+
+                            <img src="assets/images/client-profile/clip.png" alt="Image User" title="Image User" class="image" width="10">
+
+                            Seleccionar recibo
+
+                        </div>
+
+                        <span class="input_error_right" *ngIf="date_error" [@fadeInOut]>
+                            Revisa la fecha
+                        </span>
+
+                      </div>
+
+                  </form>
+
+                  <a class="action" [class.action_disabled]="!this.isFormValid( )||requestSent" (click)="uploadReceipt(close_upload_modal)">
+                      <span aria-hidden="true">Guardar</span>
+                  </a>
+
+                  <button #close_upload_modal hidden data-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+          </div>
+
+      </div>
+
+  </div>
+
+</div>
+
+<div class="rec_modal modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                <embed #pdf_viewer><br>
+
+                <button type="button" name="button" [class.action_disabled]="requestSent" class="action" (click)="downloadDoc()">Descargar</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="rate_modal modal fade" id="receiptModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                      <img src="assets/images/registration/logo@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid">
+
+                <div class="response">
+
+                    <form name="form" [formGroup]="form">
+
+                        <div class="form_item form-group">
+
+                            <label>Días de retraso</label>
+
+                            <input type="number" class="form-control" name="birthday" formControlName="number">
+
+                        </div>
+
+                    </form>
+
+                    <a [class.action_disabled]="!this.isFormValid( )||requestSent" class="action" (click)="rateReceiptRequest(close_rate_modal)">
+                        <span aria-hidden="true">Guardar</span>
+                    </a>
+
+                    <button #close_rate_modal hidden data-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<section class="user_profile">
+
+    <section class="projects container text-center">
+
+        <h3 class="title">Historial de Comprobantes de pago</h3>
+
+        <h1 *ngIf="receipts.length==0" class="empty_message">No hay recibos</h1>
+
+        <div class="content_projects row">
+
+            <div class="new_project col-md-4" *ngFor="let rec of receipts; let i = index">
+                <a class="new_link">
+                    <div [class.already_rated]="rec.is_grade" class="rate_button desktop_view" (click)="rateReceipt(i,rateModalButton)">
+                        <span *ngIf="!rec.is_grade">Calificar</span>
+                        <span *ngIf="rec.is_grade">{{rec.grade}}</span>
+                    </div>
+                    <div class="show_button desktop_view" (click)="showReceipt(i,openModalButton)">Ver</div>
+                    <i *ngIf="!rec.is_grade" class="material-icons mobile_view rate_icon"
+                        (click)="rateReceipt(i,rateModalButton)">rate_review</i>
+                    <div *ngIf="rec.is_grade" class="mobile_view rate_icon already_rated"
+                        (click)="rateReceipt(i,rateModalButton)">
+                        {{rec.grade}}
+                    </div>
+                    <i class="material-icons mobile_view show_icon" (click)="downloadMobileDoc(i)">remove_red_eye</i>
+                    <span class="span-class">{{rec.day}} {{rec.month}} {{rec.year}}</span>
+                </a>
+            </div>
+
+            <button hidden #openModalButton data-toggle="modal" data-target="#paymentModal"></button>
+            <button hidden #rateModalButton data-toggle="modal" data-target="#receiptModal"></button>
+
+        </div>
+
+        <button type="button" name="button" class="action" (click)="getBack()">Volver</button>
+
+        <button type="button" name="button" class="action" data-toggle="modal" data-target="#uploadReceiptModal">Subir Comprobantes de pago</button>
+
+        <input #receipt_file_input type="file" (change)="catchReceiptFile()" (focus)="date_error=false"
+            accept="image/jpeg,image/gif,image/png,application/pdf" hidden/>
+
+    </section>
+
+</section>

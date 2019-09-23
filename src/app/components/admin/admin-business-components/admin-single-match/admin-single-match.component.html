@@ -1,0 +1,104 @@
+<div class="match_content container">
+
+    <div class="content row">
+
+        <div class="couple col-md-5">
+
+            <div class="customer" (click)="openCustomerProfile()">
+
+                <div class="user_detail">
+
+                    <!-- <div class="profile_pic"></div> -->
+                    <img *ngIf="match.client.avatar.url!=null" src="{{API_path+match.client.avatar.url}}" width="40"
+                        alt="Image User" title="Image User" class="image img-fluid">
+                    <img *ngIf="match.client.avatar.url==null" src="assets/images/client-profile/default_avatar.png" width="40"
+                        alt="Image User" title="Image User" class="image img-fluid">
+
+                    <div class="detail">
+
+                        <p class="name">{{match.client.name}} {{match.client.lastname}}</p>
+
+                        <div class="stars">
+                          <img src="{{imgPath(0)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+                          <img src="{{imgPath(1)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+                          <img src="{{imgPath(2)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+                          <img src="{{imgPath(3)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+                          <img src="{{imgPath(4)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="to_profile">
+
+                    Ver perfil
+
+                    <img src="assets/images/admin-business/flecha@72x.png" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+
+                </div>
+
+            </div>
+
+            <legend>Inversionistas Interesados</legend>
+            <div class="customer customer-patch" *ngFor="let investor of match.investors; let i=index" (click)="openInvestorProfile(i)">
+
+                <div class="user_detail">
+
+                    <img *ngIf="investor.avatar.url!=null" src="{{API_path+investor.avatar.url}}" width="40"
+                        alt="Image User" title="Image User" class="image img-fluid">
+                    <img *ngIf="investor.avatar.url==null" src="assets/images/client-profile/default_avatar.png" width="40"
+                        alt="Image User" title="Image User" class="image img-fluid">
+
+                    <div class="detail">
+
+                        <p class="name">{{investor.name}} {{investor.lastname}}</p>
+
+                    </div>
+
+                </div>
+
+                <div class="action" (click)="approveMatch(i,$event)">Aprobar</div>
+
+                <div class="to_profile">
+
+                    Ver perfil
+
+                    <img src="assets/images/admin-business/flecha@72x.png" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="information col-md-7">
+
+            <div class="price">
+
+                <img src="assets/images/admin-business/match@72x.png" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+
+                <h3>{{match.project.dream}}</h3>
+
+                <span>${{match.project.money|myCurrency}}</span>
+
+                <div class="row details">
+                  <div class="col-md-6 detail">
+                    Interés<br>
+                    {{match.project.interest_rate|number:'1.0-1'}}%
+                  </div>
+                  <div class="col-md-6">
+                    Meses<br>
+                    {{match.project.month}}
+                  </div>
+                </div>
+
+            </div>
+
+            <button type="button" name="button" class="return_action" (click)="getBack()">Volver</button>
+
+        </div>
+
+    </div>
+
+</div>

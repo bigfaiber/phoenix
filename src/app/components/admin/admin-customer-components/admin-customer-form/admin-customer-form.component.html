@@ -1,0 +1,774 @@
+<div class="wrapper container">
+
+    <div class="registration_form">
+
+        <h3 class="title">Formulario</h3>
+
+        <form name="form" [formGroup]="form">
+
+            <div class="row">
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                        <label for="name">Nombres</label>
+
+                        <input #f1 type="text" class="form-control" name="name" formControlName="names" autocomplete="off">
+
+                        <span class="input_error_right" *ngIf="hasError('names')!=null" [@fadeInOut]>
+                            {{hasError('names')}}
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                        <label for="lastname">Apellidos</label>
+
+                        <input #f6 type="text" class="form-control" name="lastname" formControlName="last_names" autocomplete="off">
+
+                        <span class="input_error_right" *ngIf="hasError('last_names')!=null" [@fadeInOut]>
+                            {{hasError('last_names')}}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                        <label for="doc">Cédula</label>
+
+                        <input type="text" class="form-control" name="doc" formControlName="id" (focus)="uniqueness_errors.id=false" autocomplete="off">
+
+                        <span class="input_error_right" *ngIf="hasError('id')!=null" [@fadeInOut]>
+                            {{hasError('id')}}
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                        <label for="num">Número móvil</label>
+
+                        <input #f7 type="text" class="form-control" name="num" formControlName="phone" (focus)="uniqueness_errors.phone=false"
+                            autocomplete="off">
+
+                            <span class="input_error_right" *ngIf="hasError('phone')!=null" [@fadeInOut]>
+                                {{hasError('phone')}}
+                            </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 remove_padding">
+
+                  <div class="form_item form-group">
+
+                      <label for="address">Dirección domicilio</label>
+
+                      <input type="text" class="form-control" name="address" formControlName="address" autocomplete="off">
+
+                      <span class="input_error_right" *ngIf="hasError('address')!=null" [@fadeInOut]>
+                        {{hasError('address')}}
+                      </span>
+
+                  </div>
+
+                </div>
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                        <label for="birthday">Fecha de nacimiento</label>
+
+                        <input #f8 class="form-control"
+                          formControlName="date"
+                          autocomplete="off"
+                          [matDatepicker]="myDatepicker"
+                          (focus)="myDatepicker.opened=true"
+                          readonly>
+                        <i class="material-icons" (click)="toggleDatePicker()">date_range</i>
+                        <mat-datepicker #myDatepicker></mat-datepicker>
+
+                        <span class="input_error_right" *ngIf="hasError('date')!=null" [@fadeInOut]>
+                            {{hasError('date')}}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 remove_padding">
+
+                  <div class="form_item form-group">
+
+                      <label for="email">Correo Electrónico</label>
+
+                      <input #f4 type="email" class="form-control" name="email" formControlName="email" (focus)="uniqueness_errors.email=false"
+                          autocomplete="off">
+
+                          <span class="input_error_right" *ngIf="hasError('email')!=null" [@fadeInOut]>
+                              {{hasError('email')}}
+                          </span>
+
+                  </div>
+
+                </div>
+
+                <div class="col-md-6 remove_padding">
+                    <div class="form_item form-group">
+
+                        <label for="city">Ciudad</label>
+
+                        <input #f9 type="text" class="form-control" name="city" formControlName="city" autocomplete="off">
+
+                        <span class="input_error_right" *ngIf="hasError('city')!=null" [@fadeInOut]>
+                            {{hasError('city')}}
+                        </span>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <hr>
+
+        </form>
+
+        <form name="form" [formGroup]="form">
+
+            <div class="row">
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                      <select class="options" formControlName="labor_options">
+
+                         <option value="0" disabled selected>Situación laboral</option>
+
+                         <option value="1">Desempleado</option>
+
+                         <option value="2">Empleado</option>
+
+                         <option value="3">Independiente</option>
+
+                         <option value="4">Contratista</option>
+
+                     </select>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                        <select class="options" formControlName="civil_status">
+
+                            <option value="0" disabled selected>Estado civil</option>
+
+                            <option value="1">Soltero</option>
+
+                            <option value="2">Casado</option>
+
+                            <option value="3">Unión libre</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                      <select class="options" formControlName="family_options">
+
+                          <option value="0" disabled selected>Personas a cargo</option>
+
+                          <option value="1">Ninguna</option>
+
+                          <option value="2">Una</option>
+
+                          <option value="3">Dos</option>
+
+                          <option value="4">Tres</option>
+
+                          <option value="5">Más de tres</option>
+
+                      </select>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                      <select class="options" formControlName="education_level" (ngModelChange)="setCareerValidation($event)">
+
+                          <option value="0" disabled selected>Nivel educativo</option>
+
+                          <option value="1">Primaria</option>
+
+                          <option value="2">Bachiller</option>
+
+                          <option value="5">Técnico/Tecnólogo</option>
+
+                          <option value="3">Profesional</option>
+
+                          <option value="4">Maestria</option>
+
+                      </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                        <label>Declara renta</label>
+
+                        <div class="centering_radio">
+
+                            <label class="right_margin make_block">Si</label>
+
+
+                            <input #f2 class="check_box" type="radio" name="answer" id="ans1">
+
+                            <label #rent_yes for="ans1"></label>
+
+
+
+
+                            <label class="right_margin left_margin make_block">No</label>
+
+
+                            <input #f3 class="check_box" type="radio" name="answer" id="ans2">
+
+                            <label #rent_no for="ans2"></label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group" *ngIf="showCareerSelection()" [@appearingAnimNoDelay]>
+
+                      <label class="name">¿Carrera?</label>
+
+                      <select class="options" formControlName="career">
+
+                          <option value="0" disabled selected>Selecciona una opción</option>
+
+                          <option value="1">Administración</option>
+
+                          <option value="2">Ingeniería</option>
+
+                          <option value="3">Medicina</option>
+
+                          <option value="4">Economía</option>
+
+                          <option value="5">Veterinaria</option>
+
+                          <option value="6">Contabilidad</option>
+
+                          <option value="7">Mercadeo</option>
+
+                          <option value="8">Derecho</option>
+
+                          <option value="9">Arquitectura</option>
+
+                          <option value="10">Diseño</option>
+
+                          <option value="11">Otra</option>
+
+                      </select>
+
+                    </div>
+
+                    <div class="form_item form-group" *ngIf="showTecType()" [@appearingAnimNoDelay]>
+
+                      <label>¿Tipo de técnico?</label>
+
+                      <input type="text" class="form-control" placeholder="Escribe el tipo" autocomplete="off" formControlName="technical_career">
+
+                      <!-- <span class="input_error_right" *ngIf="form.controls['monthly_payment'].hasError('pattern')" [@fadeInOut]>
+                          Sólo puede contener números
+                      </span> -->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                      <select class="options" formControlName="household_type" (ngModelChange)="householdChange($event)">
+
+                          <option value="0" disabled selected>Selecciona una opción</option>
+
+                          <option value="1">Arriendo</option>
+
+                          <option value="2">Vivienda propia</option>
+
+                          <option value="3">Vivienda familiar</option>
+
+                          <option value="4">Estoy pagando vivienda</option>
+
+                      </select>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 remove_padding" *ngIf="showPayment()" [@appearingAnimNoDelay]>
+
+                    <div class="form_item form-group">
+
+                      <label>¿Cuánto pagas mensualmente?</label>
+
+                      <input #f5 type="text" class="form-control" placeholder="Escribe el valor" formControlName="monthly_payment" myCurrencyFormatter
+                        autocomplete="off">
+
+                      <span class="input_error_right" *ngIf="form.controls['monthly_payment'].hasError('pattern')" [@fadeInOut]>
+                          Sólo puede contener números
+                      </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr>
+
+        </form>
+
+        <h3 class="title">Bienes</h3>
+
+        <legend class="title2">Vehículos</legend>
+
+        <div class="row goods">
+
+          <div class="col-md-6" *ngFor="let vehicle of customer_data.vehicles">
+            <table>
+              <tr>
+                <td>Precio:</td>
+                <td>${{vehicle.price|myCurrency}}</td>
+              </tr>
+              <tr>
+                <td>Placa:</td>
+                <td>{{vehicle.plate}}</td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+
+        <legend class="title2">Inmuebles</legend>
+
+        <div class="row goods">
+
+          <div class="col-md-6" *ngFor="let estate of customer_data.estates">
+            <table>
+              <tr>
+                <td>Precio:</td>
+                <td>${{estate.price|myCurrency}}</td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+
+        <h3 class="title">Gastos mensuales</h3>
+
+        <form name="form" [formGroup]="form">
+
+            <div class="row">
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                        <label>Mercado</label>
+
+                        <input type="text" class="form-control" placeholder="Escribe el valor" myCurrencyFormatter autocomplete="off"
+                          formControlName="market_expenses">
+
+                        <span class="input_error_right" *ngIf="hasError('market_expenses')!=null" [@fadeInOut]>
+                            {{hasError('market_expenses')}}
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                        <label>Transporte</label>
+
+                        <input type="text" class="form-control" placeholder="Escribe el valor" myCurrencyFormatter autocomplete="off"
+                          formControlName="transport_expenses">
+
+                        <span class="input_error_right" *ngIf="hasError('transport_expenses')!=null" [@fadeInOut]>
+                            {{hasError('transport_expenses')}}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                        <label>Servicios públicos</label>
+
+                        <input type="text" class="form-control" placeholder="Escribe el valor" myCurrencyFormatter autocomplete="off"
+                          formControlName="public_service_expenses">
+
+                        <span class="input_error_right" *ngIf="hasError('public_service_expenses')!=null" [@fadeInOut]>
+                            {{hasError('public_service_expenses')}}
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                        <label>Obligaciones bancarias</label>
+
+                        <input type="text" class="form-control" placeholder="Escribe el valor" myCurrencyFormatter autocomplete="off"
+                          formControlName="bank_obligations">
+
+                        <span class="input_error_right" *ngIf="hasError('bank_obligations')!=null" [@fadeInOut]>
+                            {{hasError('bank_obligations')}}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
+
+        <h3 class="title">Datos adicionales</h3>
+
+        <form name="form" [formGroup]="form">
+
+            <div class="row">
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                        <label for="name">Edad</label>
+
+                        <input #age_input type="text" class="form-control" name="city" formControlName="age" readonly>
+
+                        <span class="input_error_right" *ngIf="hasError('age')!=null" [@fadeInOut]>
+                            {{hasError('age')}}
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                        <label for="num">Cargo</label>
+
+                        <input #f7 type="text" class="form-control" name="num" formControlName="job" autocomplete="off">
+
+                        <span class="input_error_right" *ngIf="hasError('job')!=null" [@fadeInOut]>
+                            {{hasError('job')}}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 remove_padding">
+
+                  <div class="form_item form-group">
+
+                      <label for="address">Patrimonio</label>
+
+                      <input type="text" class="form-control" name="address" formControlName="patrimony" autocomplete="off"
+                          myCurrencyFormatter>
+
+                      <span class="input_error_right" *ngIf="hasError('patrimony')!=null" [@fadeInOut]>
+                          {{hasError('patrimony')}}
+                      </span>
+
+                  </div>
+
+                </div>
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                        <label for="birthday">Capacidad máxima</label>
+
+                        <input #f8 type="text" class="form-control" name="birthday" formControlName="max_capacity" autocomplete="off"
+                            myCurrencyFormatter>
+
+                        <span class="input_error_right" *ngIf="hasError('max_capacity')!=null" [@fadeInOut]>
+                            {{hasError('max_capacity')}}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
+
+        <h3 class="title">Estado financiero</h3>
+
+        <form name="form" [formGroup]="form">
+
+            <div class="row">
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                        <label for="name">Deuda actual</label>
+
+                        <input #f1 type="text" class="form-control" name="name" myCurrencyFormatter formControlName="debt" autocomplete="off">
+
+                        <span class="input_error_right" *ngIf="hasError('debt')!=null" [@fadeInOut]>
+                            {{hasError('debt')}}
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                        <label for="lastname">Ingresos</label>
+
+                        <input #f6 type="text" class="form-control" name="lastname" myCurrencyFormatter formControlName="income" autocomplete="off">
+
+                        <span class="input_error_right" *ngIf="hasError('income')!=null" [@fadeInOut]>
+                            {{hasError('income')}}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                        <label for="doc">Capacidad de pago mensual</label>
+
+                        <input type="text" class="form-control" name="doc" myCurrencyFormatter formControlName="payment_cap" autocomplete="off">
+
+                        <span class="input_error_right" *ngIf="hasError('payment_cap')!=null" [@fadeInOut]>
+                            {{hasError('payment_cap')}}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
+
+        <h3 class="title" (click)="printErrors()">Otros datos</h3>
+
+        <form name="form" [formGroup]="form">
+
+            <div class="row">
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                      <label>¿Tiene finca raíz?</label>
+
+                      <div class="centering_radio">
+
+                          <label class="right_margin make_block">Si</label>
+
+
+                          <input #re1 class="check_box" type="radio" name="answer2" id="ans3">
+
+                          <label #estate_yes for="ans3"></label>
+
+
+
+
+                          <label class="right_margin left_margin make_block">No</label>
+
+
+                          <input #re2 class="check_box" type="radio" name="answer2" id="ans4">
+
+                          <label #estate_no for="ans4"></label>
+
+                      </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                      <label>¿Tiene mora?</label>
+
+                      <div class="centering_radio">
+
+                          <label class="right_margin make_block">Si</label>
+
+
+                          <input #a1 class="check_box" type="radio" name="answer3" id="ans5">
+
+                          <label #arrear_yes for="ans5"></label>
+
+
+
+
+                          <label class="right_margin left_margin make_block">No</label>
+
+
+                          <input #a2 class="check_box" type="radio" name="answer3" id="ans6">
+
+                          <label #arrear_no for="ans6"></label>
+
+                      </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row" *ngIf="a1.checked" [@appearingAnimNoDelay]>
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                        <label for="doc">Tiempo</label>
+
+                        <input type="text" class="form-control" name="doc" formControlName="payments_in_arrears_time" autocomplete="off">
+
+                        <span class="input_error_right" *ngIf="hasError('payments_in_arrears_time')!=null" [@fadeInOut]>
+                            {{hasError('payments_in_arrears_time')}}
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 remove_padding">
+
+                    <div class="form_item form-group">
+
+                        <label for="doc">Valor</label>
+
+                        <input type="text" class="form-control" name="doc" myCurrencyFormatter formControlName="payments_in_arrears_value" autocomplete="off">
+
+                        <span class="input_error_right" *ngIf="hasError('payments_in_arrears_value')!=null" [@fadeInOut]>
+                            {{hasError('payments_in_arrears_value')}}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button class="action" (click)="getBack()">
+                <span>Volver</span>
+            </button>
+
+            <button [disabled]="!isFormValid()||requestSent" class="action" (click)="updateCustomer()">
+                <span>Guardar</span>
+            </button>
+
+        </form>
+
+    </div>
+
+</div>

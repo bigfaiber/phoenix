@@ -1,0 +1,356 @@
+<div class="wrapper container">
+
+    <div class="registration_form">
+
+        <h3 class="title">Nos gustaría conocerte un poco más</h3>
+
+        <span class="banner_info"><span>¿Que <span>activos</span> tienes?</span> (Tienen que estar a tu nombre y libre de todo gravamen.)</span>
+
+        <form name="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <div class="items row">
+
+                <div class="col-md-6 form_item form-group">
+
+                    <label class="make_inline">Inmueble</label>
+
+                    <a class="add_action" (click)="addProperty()">
+
+                        <i class="material-icons mat_icon">add_circle_outline</i>
+
+                        <span>Agregar</span>
+
+                    </a>
+
+                    <div class="form_item form-group dynamic_form_item" *ngFor="let pr of propertyArray; let i = index" [@fadeInOut]>
+
+                        <label class="make_block">{{pr.label}}. Inmueble</label>
+
+                        <i class="material-icons remove_input" (click)="removeProperty(i)">close</i>
+
+                        <input class="input_size" type="text" [(ngModel)]="propertyArray[i].value"
+                            placeholder="Escribe el valor comercial" [ngModelOptions]="{standalone: true}" myCurrencyFormatter
+                                autocomplete="off">
+
+                        <span class="input_error_right" *ngIf="!numbRegexTest(propertyArray[i].value)" [@fadeInOut]>
+                            Sólo puede contener números
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 form_item form-group">
+
+                    <label class="make_inline">Vehículos</label>
+
+                    <a class="add_action" (click)="addVehicle()">
+
+                        <i class="material-icons mat_icon">add_circle_outline</i>
+
+                        <span>Agregar</span>
+
+                    </a>
+
+                    <div class="form_item form-group fix_height dynamic_form_item" *ngFor="let pr of vehicleArray; let i = index" [@fadeInOut]>
+
+                        <label class="make_block">{{pr.label}}. Vehículo</label>
+
+                        <i class="material-icons remove_input remove_input_patch" (click)="removeVehicle(i)">close</i>
+
+                        <input class="input_size" type="text" [(ngModel)]="vehicleArray[i].value"
+                            placeholder="Escribe el valor comercial" [ngModelOptions]="{standalone: true}" myCurrencyFormatter
+                                autocomplete="off">
+
+                        <span class="input_error_right" *ngIf="!numbRegexTest(vehicleArray[i].value)" [@fadeInOut]>
+                            Sólo puede contener números
+                        </span>
+
+                        <input class="input_size" type="text" [(ngModel)]="vehicleArray[i].plate"
+                            placeholder="Placa del vehículo" [ngModelOptions]="{standalone: true}" autocomplete="off">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <h5 class="set-title">¿Cuáles son tus gastos mensuales?</h5>
+
+            <div class="items row">
+
+              <div class="col-md-6 form_item form-group">
+
+                  <label>Mercado</label>
+
+                  <input type="text" class="form-control" placeholder="Escribe el valor" myCurrencyFormatter autocomplete="off"
+                    formControlName="market_expenses">
+
+                  <span class="input_error_right" *ngIf="form.controls['market_expenses'].hasError('pattern')" [@fadeInOut]>
+                      Sólo puede contener números
+                  </span>
+
+              </div>
+
+              <div class="col-md-6 form_item form-group">
+
+                  <label>Transporte</label>
+
+                  <input type="text" class="form-control" placeholder="Escribe el valor" myCurrencyFormatter autocomplete="off"
+                    formControlName="transport_expenses">
+
+                  <span class="input_error_right" *ngIf="form.controls['transport_expenses'].hasError('pattern')" [@fadeInOut]>
+                      Sólo puede contener números
+                  </span>
+
+              </div>
+
+            </div>
+
+            <div class="items row">
+
+              <div class="col-md-6 form_item form-group">
+
+                  <label>Servicios públicos</label>
+
+                  <input type="text" class="form-control" placeholder="Escribe el valor" myCurrencyFormatter autocomplete="off"
+                    formControlName="public_service_expenses">
+
+                  <span class="input_error_right" *ngIf="form.controls['public_service_expenses'].hasError('pattern')" [@fadeInOut]>
+                      Sólo puede contener números
+                  </span>
+
+              </div>
+
+              <div class="col-md-6 form_item form-group">
+
+                  <label>Obligaciones bancarias</label>
+
+                  <input type="text" class="form-control" placeholder="Escribe el valor" myCurrencyFormatter autocomplete="off"
+                    formControlName="bank_obligations">
+
+                  <span class="input_error_right" *ngIf="form.controls['bank_obligations'].hasError('pattern')" [@fadeInOut]>
+                      Sólo puede contener números
+                  </span>
+
+              </div>
+
+            </div>
+
+            <h5 class="set-title mb">Información personal</h5>
+
+            <div class="items row">
+
+                <div class="col-md-6 form_item form-group select">
+
+                    <label class="name">¿Tienes personas a cargo en tu familia?</label>
+
+                    <select class="options" formControlName="family_options">
+
+                        <option value="0" disabled selected>Selecciona una opción</option>
+
+                        <option value="1">Ninguna</option>
+
+                        <option value="2">Una</option>
+
+                        <option value="3">Dos</option>
+
+                        <option value="4">Tres</option>
+
+                        <option value="5">Más de tres</option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-md-6 form_item form-group">
+
+                    <label class="name">¿Nivel educativo?</label>
+
+                    <select class="options" formControlName="education_level" (ngModelChange)="setCareerValidation($event)">
+
+                        <option value="0" disabled selected>Selecciona una opción</option>
+
+                        <option value="1">Primaria</option>
+
+                        <option value="2">Bachiller</option>
+
+                        <option value="5">Técnico/Tecnólogo</option>
+
+                        <option value="3">Profesional</option>
+
+                        <option value="4">Maestria</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="items row">
+
+                <div class="col-md-6 form_item form-group select">
+
+                    <label class="name">¿Estado civil?</label>
+
+                    <select class="options" formControlName="civil_status">
+
+                        <option value="0" disabled selected>Selecciona una opción</option>
+
+                        <option value="1">Soltero</option>
+
+                        <option value="2">Casado</option>
+
+                        <option value="3">Unión libre</option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-md-6 form_item form-group select" *ngIf="showCareerSelection()" [@appearingAnimNoDelay]>
+
+                    <label class="name">¿Carrera?</label>
+
+                    <select class="options" formControlName="career">
+
+                        <option value="0" disabled selected>Selecciona una opción</option>
+
+                        <option value="1">Administración</option>
+
+                        <option value="2">Ingeniería</option>
+
+                        <option value="3">Medicina</option>
+
+                        <option value="4">Economía</option>
+
+                        <option value="5">Veterinaria</option>
+
+                        <option value="6">Contabilidad</option>
+
+                        <option value="7">Mercadeo</option>
+
+                        <option value="8">Derecho</option>
+
+                        <option value="9">Arquitectura</option>
+
+                        <option value="10">Diseño</option>
+
+                        <option value="11">Otra</option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-md-6 form_item form-group select" *ngIf="showTecType()" [@appearingAnimNoDelay]>
+
+                  <label>¿Tipo de técnico?</label>
+
+                  <input type="text" class="form-control" placeholder="Escribe el tipo" autocomplete="off" formControlName="technical_career">
+
+                  <!-- <span class="input_error_right" *ngIf="form.controls['monthly_payment'].hasError('pattern')" [@fadeInOut]>
+                      Sólo puede contener números
+                  </span> -->
+
+                </div>
+
+            </div>
+
+            <div class="items row">
+
+                <div class="col-md-6 form_item form-group select">
+
+                    <label class="name">¿Tipo de vivienda?</label>
+
+                    <select class="options" formControlName="household_type" (ngModelChange)="householdChange($event)">
+
+                        <option value="0" disabled selected>Selecciona una opción</option>
+
+                        <option value="1">Arriendo</option>
+
+                        <option value="2">Vivienda propia</option>
+
+                        <option value="3">Vivienda familiar</option>
+
+                        <option value="4">Estoy pagando vivienda</option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-md-6 form_item form-group" *ngIf="showPayment()" [@appearingAnimNoDelay]>
+
+                    <label>¿Cuánto pagas mensualmente?</label>
+
+                    <input #f5 type="text" class="form-control" placeholder="Escribe el valor" formControlName="monthly_payment" myCurrencyFormatter
+                      autocomplete="off">
+
+                    <span class="input_error_right" *ngIf="form.controls['monthly_payment'].hasError('pattern')" [@fadeInOut]>
+                        Sólo puede contener números
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="items row">
+
+                <div class="col-md-6 form_item form-group select">
+
+                    <label>¿Situación laboral?</label>
+
+                    <select class="options" formControlName="labor">
+
+                       <option value="0" disabled selected>Selecciona una opción</option>
+
+                       <option value="1">Desempleado</option>
+
+                       <option value="2">Empleado</option>
+
+                       <option value="3">Independiente</option>
+
+                       <option value="4">Contratista</option>
+
+                   </select>
+
+                </div>
+
+                <div class="col-md-6 form_item form-group">
+
+                    <label class="name">¿Declaras renta?</label><br>
+
+                    <div class="centering_radio">
+
+                        <label class="right_margin make_block">Si</label>
+
+                        <input #f6 class="check_box" type="radio" name="answer2" id="ans12">
+
+                        <label #rent_yes class="ans" for="ans12"></label>
+
+                        <label class="right_margin left_margin make_block">No</label>
+
+                        <input #f7 class="check_box" type="radio" name="answer2" id="ans22">
+
+                        <label #rent_no class="ans" for="ans22"></label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button type="submit" [disabled]="!isFormValid()" #submitButton
+                class="action">Siguiente</button>
+
+        </form>
+
+        <a class="stepwizard_button step_selected"></a>
+
+        <a class="stepwizard_button step_selected"></a>
+
+        <a class="stepwizard_button step_selected"></a>
+
+        <a class="stepwizard_button"></a>
+
+    </div>
+
+</div>

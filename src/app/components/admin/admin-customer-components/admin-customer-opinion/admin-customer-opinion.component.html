@@ -1,0 +1,77 @@
+<div class="wrapper container">
+
+    <div class="opinion_content">
+
+        <legend>Comentarios</legend>
+
+        <div class="pros_content">
+
+            <div class="header">
+              <img src="/assets/images/investor-profile/pros.png" alt="">
+              <h2>Pros</h2>
+            </div>
+            <ul>
+              <div class="overflow_content">
+                  <div class="opinion_container" *ngFor="let op of opinions; let i=index" [@appearingAnimNoDelay]>
+                      <li *ngIf="op.opinion_status=='pros'">
+                          <div class="toggler">
+                              <i class="material-icons" (click)="toggleEditing(i)">
+                                <span *ngIf="!op.editing">edit</span>
+                                <span *ngIf="op.editing">close</span>
+                              </i>
+                          </div>
+                          <div class="test">
+                              <div *ngIf="!op.editing" [@editingToggler]>{{op.opinion}}</div>
+                              <textarea [(ngModel)]="op.opinion" *ngIf="op.editing" rows="1" [@editingToggler]>{{op.opinion}}</textarea>
+                              <i *ngIf="op.editing" class="material-icons" [@appearingAnim]
+                                  (click)="saveOpinion(i)">save</i>
+                              <i *ngIf="op.editing" class="material-icons" [@appearingAnim]
+                                  (click)="deleteOpinion(i)">delete</i>
+                          </div>
+                      </li>
+                  </div>
+                  <i class="material-icons add_form" (click)="addForm('pros')">add</i>
+                  <span>Agregar Pro</span>
+              </div>
+            </ul>
+
+        </div>
+
+        <div class="cons_content">
+
+            <div class="header">
+              <img src="/assets/images/investor-profile/contras.png" alt="">
+              <h2>Cons</h2>
+            </div>
+            <ul>
+              <div class="overflow_content">
+                  <div class="opinion_container" *ngFor="let op of opinions; let i=index" [@appearingAnimNoDelay]>
+                      <li *ngIf="op.opinion_status=='cons'">
+                          <div class="toggler">
+                              <i class="material-icons" (click)="toggleEditing(i)">
+                                <span *ngIf="!op.editing">edit</span>
+                                <span *ngIf="op.editing">close</span>
+                              </i>
+                          </div>
+                          <div class="test">
+                              <div *ngIf="!op.editing" [@editingToggler]>{{op.opinion}}</div>
+                              <textarea [(ngModel)]="op.opinion" *ngIf="op.editing" rows="1" [@editingToggler]>{{op.opinion}}</textarea>
+                              <i *ngIf="op.editing" class="material-icons" [@appearingAnim]
+                                  (click)="saveOpinion(i)">save</i>
+                              <i *ngIf="op.editing" class="material-icons" [@appearingAnim]
+                                  (click)="deleteOpinion(i)">delete</i>
+                          </div>
+                      </li>
+                  </div>
+                  <i class="material-icons add_form" (click)="addForm('cons')">add</i>
+                  <span>Agregar Con</span>
+              </div>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <button class="return_action" (click)="getBack()">Volver</button>
+
+</div>

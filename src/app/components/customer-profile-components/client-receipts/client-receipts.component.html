@@ -1,0 +1,131 @@
+<div class="rec_modal modal fade" id="receiptModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                      <img src="assets/images/registration/logo@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid">
+
+                <div class="response">
+
+                    <p class="text">Datos del recibo</p>
+
+                    <form name="form" [formGroup]="form">
+
+                      <div class="form_item form-group">
+
+                          <label for="birthday">Fecha del recibo</label>
+
+                          <input type="date" class="form-control" name="birthday" formControlName="date">
+
+                      </div>
+
+                        <div class="form_item form-group">
+
+                          <div class="upload_documents" (click)="openReceiptFileInput()">
+
+                              <img src="assets/images/client-profile/clip.png" alt="Image User" title="Image User" class="image" width="10">
+
+                              Seleccionar recibo
+
+                          </div>
+
+                          <span class="input_error_right" *ngIf="date_error" [@fadeInOut]>
+                              Revisa la fecha
+                          </span>
+
+                        </div>
+
+                    </form>
+
+                    <a class="action" [class.action_disabled]="!this.isFormValid( )||requestSent" (click)="uploadReceipt(close_upload_modal)">
+                        <span aria-hidden="true">Guardar</span>
+                    </a>
+
+                    <button #close_upload_modal hidden data-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="step_modal modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                <embed #pdf_viewer><br>
+
+                <button type="button" name="button" [class.action_disabled]="requestSent" class="action" (click)="downloadDoc()">Descargar</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<section class="user_profile">
+
+    <app-customer-nav></app-customer-nav>
+
+    <section class="projects container text-center">
+
+        <h3 class="title">Historial de Comprobantes de pago</h3>
+
+        <h1 *ngIf="receipts.length==0" class="empty_message">Aquí aparecerán tus recibos, en el momento no hay ninguno</h1>
+
+        <div class="content_projects row">
+
+            <div class="new_project col-md-4 desktop_action" *ngFor="let rec of receipts; let i = index">
+                <a class="new_link" (click)="showReceipt(i,openModalButton)">
+                    <span>{{rec.day}} {{rec.month}} {{rec.year}}</span>
+                </a>
+            </div>
+
+            <div class="new_project col-md-4 mobile_action" *ngFor="let rec of receipts; let i = index">
+                <a class="new_link" (click)="downloadMobileReceipt(i,ref_link)">
+                    <span>{{rec.day}} {{rec.month}} {{rec.year}}</span>
+                </a>
+            </div>
+
+            <a #ref_link target="_self" download hidden></a>
+
+            <button hidden #openModalButton data-toggle="modal" data-target="#paymentModal"></button>
+
+        </div>
+
+        <button type="button" name="button" class="action" data-toggle="modal" data-target="#receiptModal">Subir Comprobantes de pago</button>
+
+        <input #receipt_file_input type="file" (change)="catchReceiptFile()" (focus)="date_error=false"
+            accept="image/jpeg,image/gif,image/png,application/pdf" hidden/>
+
+    </section>
+
+</section>

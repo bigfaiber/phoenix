@@ -1,0 +1,46 @@
+.noUi-target {
+    background-color: #CACACA;
+    border-radius: 3px;
+    border: none;
+    height: 6px;
+    // width: 82%;
+    // margin: 0 auto;
+    .noUi-base{
+        border-radius: 3px;
+        height: 5px;
+        .noUi-tooltip {
+            background: none;
+            border: none;
+            bottom: 60%;
+            color: $gold;
+            font-family: $font-OpenSans !important;
+            font-size: 13px;
+        }
+        .noUi-connect{
+            background-color: #1A2C35;
+            border-radius: 0;
+        }
+        .noUi-origin{
+            .noUi-handle{
+                background: #1A2C35;
+                border: none;
+                border-radius: 50%;
+                box-shadow: none;
+                height: 15px;
+                margin-left: 5px;
+                top: -5px;
+                width: 15px;
+                &:hover, &:active, &:focus{
+                    outline: none;
+                }
+                &::before, &::after{
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.highcharts-container {
+  // height: 300px !important;
+}

@@ -1,0 +1,46 @@
+<div class="del_modal modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                      <img src="assets/images/registration/logo@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid">
+
+                <div class="response">
+
+                    <p class="text">¿Estás seguro de eliminar este proyecto?</p>
+
+                    <button type="button" name="button" class="action" (click)="deleteProject()" data-dismiss="modal" aria-label="Close">Sí</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<section class="container">
+  <app-project-data
+    [topButtons]="buttonsData"
+    [bottomButtons]="bottomButtons"
+    [project]="project"
+    dataProjectType="1"
+    (topButtonClicked)="buttonClickHandler($event)"
+    (bottomButtonClicked)="bottomButtonClickHandler($event,deleteModal)">
+  </app-project-data>
+
+  <a #ref_link target="_self" download hidden></a>
+  <button #deleteModal data-toggle="modal" data-target="#deleteModal" hidden></button>
+</section>

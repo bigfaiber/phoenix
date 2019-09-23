@@ -1,0 +1,36 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixin.scss';
+
+.projects{
+    min-height: calc(100vh - 255px);
+    padding: 0;
+    .title{
+        font-family: $font-OpenSans-SB;
+        font-size: 25px;
+        margin-bottom: 50px;
+        margin-top: 10%;
+        text-align: center;
+    }
+    .empty_message {
+        color: #E6E6E6;
+        font-family: $font-OpenSans;
+        font-size: 2em;
+        margin-top: 21%;
+        text-align: center;
+    }
+    .content_projects{
+        max-height: 40vh;
+        overflow-y: auto;
+    }
+}
+@media (max-width: 640px){
+    .projects{
+        padding: 20px;
+        .content_projects{
+            margin: 0;
+        }
+        .empty_message {
+            font-size: 7vw;
+        }
+    }
+}

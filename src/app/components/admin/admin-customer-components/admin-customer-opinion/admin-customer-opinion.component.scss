@@ -1,0 +1,162 @@
+@import '../../../../../sass/variables.scss';
+@import '../../../../../sass/mixin.scss';
+
+.wrapper {
+    padding-top: 4vw;
+    .return_action{
+        background-color: #1A2C35;
+        border: none;
+        border-radius: 25px;
+        color: #fff;
+        cursor: pointer;
+        display: inline-block;
+        font-family: $font-OpenSans-B;
+        font-size: 15px;
+        letter-spacing: 0.5px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        padding: 7px 60px 6px 60px;
+        position: relative;
+        &:hover, &:active, &:focus{
+            outline: none;
+            text-decoration: none;
+        }
+    }
+    .opinion_content {
+        legend {
+            font-family: $font-OpenSans-SB;
+            font-size: 25px;
+            margin-bottom: 30px;
+            padding-left: 35px;
+        }
+        .pros_content, .cons_content {
+            border: solid 1px $gold;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            padding: 10px 30px;
+            width: 100%;
+            min-height: 300px;
+            .header {
+              margin-bottom: 20px;
+              img {
+                width: 90px;
+              }
+              h2 {
+                display: inline;
+                vertical-align: middle;
+                font-family: $font-OpenSans-B;
+              }
+            }
+            ul {
+              justify-content: flex-start;
+              font-family: $font-OpenSans;
+              text-align: left;
+            }
+            .overflow_content {
+                max-height: 320px;
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+            .opinion_container {
+                position: relative;
+                text-align: left;
+                width: 100%;
+                li {
+                    min-height: 48px;
+                    max-height: 48px;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    display: flex;
+                    list-style-type: none;
+                    .toggler {
+                        .material-icons {
+                            background: #CCC;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            margin-right: 10px;
+                            padding: 2px;
+                        }
+                    }
+                    .test {
+                        width: 90%;
+                        .material-icons {
+                            cursor: pointer;
+                            margin-left: 10px;
+                        }
+                        div {
+                            height: 39px;
+                            transform-origin: left;
+                        }
+                        textarea {
+                            border: solid 1px #D6D6D6;
+                            border-radius: 10px;
+                            font-family: $font-OpenSans;
+                            font-size: 14px;
+                            outline: none;
+                            padding: 8px 20px;
+                            resize: none;
+                            transform-origin: left;
+                            -webkit-box-shadow: 4px 4px 10px -5px rgba(51,51,51,0.7);
+                            -moz-box-shadow: 4px 4px 10px -5px rgba(51,51,51,0.7);
+                            box-shadow: 4px 4px 10px -5px rgba(51,51,51,0.7);
+                            width: 90%;
+                        }
+                    }
+                }
+            }
+            .add_form {
+                background: #7ab92e;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-right: 10px;
+                padding: 2px;
+                vertical-align: middle;
+            }
+        }
+        .cons_content {
+          .header {
+            img {
+              width: 80px;
+            }
+          }
+        }
+    }
+}
+
+@media ( max-width: 640px ) {
+    .wrapper {
+        padding: 25px 5%;
+        .opinion_content {
+            legend {
+                text-align: center;
+                padding: 0;
+            }
+            .pros_content, .cons_content {
+                padding: 10px 10px;
+                width: 100%;
+                ul {
+                    padding-left: 5px;
+                }
+                .opinion_container {
+                    li {
+                        .test {
+                            display: flex;
+                            textarea {
+                                width: 70%;
+                            }
+                        }
+                    }
+                }
+            }
+            .pros_content {
+                margin-bottom: 15px;
+            }
+        }
+        .return_action {
+            margin-right: 0;
+            display: block;
+            text-align: center;
+            margin: 20px auto 0;
+        }
+    }
+}

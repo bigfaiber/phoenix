@@ -1,0 +1,87 @@
+<section class="banner text-center">
+
+    <div class="links">
+        <span class="items">
+            <span class="item selected" [routerLink]="['/admin','match']">Nuevos Negocios</span>
+            <span class="item" [routerLink]="['/admin','clientes']">Clientes <div class="total_notification_number" *ngIf="total_notifications>0">
+                <span class="clients">{{total_notifications}}</span>
+            </div></span>
+            <span class="item" [routerLink]="['/admin','inversionistas']">Inversionistas</span>
+        </span>
+    </div>
+
+    <h1>Match</h1>
+
+</section>
+
+<div class="matches text-center"
+infinite-scroll
+[infiniteScrollDistance]="scrollDistance"
+[infiniteScrollThrottle]="throttle"
+[scrollWindow]="false"
+(scrolled)="onScrollDown()">
+
+<h1 *ngIf="matches.length==0" class="empty_message">En el momento no hay ningún match</h1>
+
+<div *ngFor="let match of matches; let i = index" class="match row" (click)="seeSinglematch(i)">
+
+    <div class="col-md-4">
+
+        <div class="patch user_detail">
+
+            <img src="assets/phx_logo_01.png" width="40" alt="Image User" title="Image User" class="image img-fluid">
+
+            <div class="detail">
+
+                <p class="name">{{match.investors.length}} Inversionistas Interesados</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4 text-center interested">
+
+        <img class="image_block" src="assets/images/admin-business/negocios@72x.png" alt="">
+
+        <span>{{match.project.dream}}</span>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="user_detail">
+
+            <img *ngIf="match.client.avatar.url!=null" src="{{API_path+match.client.avatar.url}}" width="40"
+            alt="Image User" title="Image User" class="image img-fluid">
+            <img *ngIf="match.client.avatar.url==null" src="assets/images/client-profile/default_avatar.png" width="40"
+            alt="Image User" title="Image User" class="image img-fluid">
+
+            <div class="detail">
+
+                <p class="name">{{match.client.name}} {{match.client.lastname}}</p>
+
+                <div class="stars">
+                    <img src="{{imgPath(i,0)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+                    <img src="{{imgPath(i,1)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+                    <img src="{{imgPath(i,2)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+                    <img src="{{imgPath(i,3)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+                    <img src="{{imgPath(i,4)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="arrow_image">
+
+        <img src="assets/images/admin-business/flecha@72x.png" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+
+    </div>
+
+</div>
+
+</div>

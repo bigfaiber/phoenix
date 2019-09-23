@@ -1,0 +1,300 @@
+<div class="step_modal modal fade" id="step1Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-body modal_content">
+
+                <div class="close-modal" data-dismiss="modal" aria-label="Close" (click)="stopVideo()">
+                  <i class="material-icons">clear</i>
+                </div>
+
+                <iframe #top_video width="100%" height="100%" src="" allowfullscreen>
+                </iframe>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="about_us_content">
+
+    <app-menu-dark></app-menu-dark>
+
+    <div class="wrapper container">
+
+        <section class="welcome">
+
+            <h2 class="title">Bienvenido a Phoenix</h2>
+
+            <p class="welcome_message">
+                En Phoenix nos enfocamos en la transparencia, responsabilidad y el buen manejo de las finanzas. Acá vas a encontrar siempre un aliado que te va a brindar la mejor asesoría para tener un crecimiento financiero responsable y una capacidad de conseguir tus sueños.
+            </p>
+
+            <div class="testimonial" style="margin: 0 auto" (click)="resetTopVideo(openModalButton)">
+
+                <img src="assets/images/videos_thumbnails/thumb_aboutus.png" alt="Testimonio 1" title="Testimonio 1" class="img-fluid">
+
+                <div class="click-video">
+                  <i class="material-icons">play_arrow</i>
+                </div>
+
+            </div>
+
+            <span #openModalButton data-toggle="modal" data-target="#step1Modal"></span>
+
+        </section>
+
+        <section class="steps row" #steps_container>
+
+            <div class="step col-md-4 patch" *ngIf="stepsShowing.step1" [@stepState]>
+
+                <img src="assets/images/about-us/securidad_icon.png" alt="Security Icon" title="Security Icon" class="img-fluid d-none d-md-block">
+                <img src="assets/images/about-us/seguridad_icon_movil.png" alt="Security Icon" title="Security Icon" class="img-fluid d-block d-sm-none">
+
+                <h3 class="step_name">SEGURIDAD</h3>
+
+                <p class="step_description">
+                    Queremos siempre darte la confianza y tranquilidad que necesitas constantemente.
+                </p>
+
+            </div>
+
+            <div class="step col-md-4" *ngIf="stepsShowing.step2" [@stepState]>
+
+                <img src="assets/images/about-us/crecimiento_icon.png" alt="Increase Icon" title="Increase Icon" class="img-fluid d-none d-md-block">
+                <img src="assets/images/about-us/crecimiento_icon_movil.png" alt="Increase Icon" title="Increase Icon" class="img-fluid d-block d-sm-none">
+
+                <h3 class="step_name">CRECIMIENTO</h3>
+
+                <p class="step_description">
+                    Te asesoramos para que crezcas financieramente de forma correcta y aproveches al máximo  tu préstamo.
+                </p>
+
+            </div>
+
+            <div class="step col-md-4" *ngIf="stepsShowing.step3" [@stepState]>
+
+                <img src="assets/images/about-us/suenos_icon.png" alt="Dreams Icon" title="Dreams Icon" class="img-fluid d-none d-md-block">
+                <img src="assets/images/about-us/suenos_icon_movil.png" alt="Dreams Icon" title="Dreams Icon" class="img-fluid d-block d-sm-none">
+
+                <h3 class="step_name">SUEÑOS</h3>
+
+                <p class="step_description">
+                    Trabajamos para que cumplas tus sueños de forma segura.
+                </p>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+
+<section class="phoenix-part">
+
+  <div class="content">
+
+    <div class="title">
+      <h1 class="size"> Todos podemos ser</h1>
+      <h1 class="gold"> parte de phoenix</h1>
+    </div>
+
+    <div class="charts-container">
+
+      <div class="top-border left-border"></div>
+      <div class="top-border right-border"></div>
+
+      <div class="charts container" #stats_container>
+
+        <div class="left-stats">
+
+          <div class="stat-title">
+            Perfil profesional clientes
+          </div>
+
+          <div>
+            <div class="stat" *ngFor="let stati of left_stats; let i=index">
+
+              {{stati.name}}
+
+              <span class="percentage">
+                {{stati.amount}}%
+              </span>
+
+              <div class="fill-bar" [ngStyle]="{width:(animFlags[0]?stati.amount:0)+'%'}"></div>
+
+            </div>
+          </div>
+
+          <div class="stat-title top-space">
+            Perfil profesional inversionistas
+          </div>
+
+          <div>
+            <div class="stat" *ngFor="let stati of left_stats2; let i=index">
+
+              {{stati.name}}
+
+              <span class="percentage">
+                {{stati.amount}}%
+              </span>
+
+              <div class="fill-bar" [ngStyle]="{width:(animFlags[1]?stati.amount:0)+'%'}"></div>
+
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="age-stats">
+
+          <div class="push-bottom">
+
+            <div class="stat-title">
+
+              <img src="assets/images/new-home/Desk/woman.png" width="18px" alt="" *ngIf="animFlags[2]" [@appearingAnimNoDelay]>
+
+              <div class="text">
+                <div class="">
+                  Edad
+                </div>
+                <div class="">
+                  Clientes
+                </div>
+              </div>
+
+              <img src="assets/images/new-home/Desk/man.png" width="15px" alt="" *ngIf="animFlags[2]" [@appearingAnimNoDelay]>
+
+            </div>
+
+            <div>
+              <div class="stat-value" *ngFor="let stati of clients_age; let i=index">
+
+                <div class="left-bar-container">
+                  <div class="bar" [ngStyle]="{width:(animFlags[2]?(stati.left/6)*100:0)+'%'}"></div>
+                </div>
+
+                <div class="values">
+                  {{stati.legend}}
+                </div>
+
+                <div class="right-bar-container">
+                  <div class="bar" [ngStyle]="{width:(animFlags[2]?(stati.right/6)*100:0)+'%'}"></div>
+                </div>
+
+              </div>
+            </div>
+
+
+            <div class="stat-legend">
+
+              <div class="left-legends">
+                <div class="legend">6</div>
+                <div class="legend">5</div>
+                <div class="legend">4</div>
+                <div class="legend">3</div>
+                <div class="legend">2</div>
+                <div class="legend">1</div>
+                <div class="legend"></div>
+              </div>
+
+              <div class="values"></div>
+
+              <div class="right-legends">
+                <div class="legend"></div>
+                <div class="legend">1</div>
+                <div class="legend">2</div>
+                <div class="legend">3</div>
+                <div class="legend">4</div>
+                <div class="legend">5</div>
+                <div class="legend">6</div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div>
+
+            <div class="stat-title">
+
+              <img src="assets/images/new-home/Desk/woman.png" width="18px" alt="" *ngIf="animFlags[3]" [@appearingAnimNoDelay]>
+
+              <div class="text">
+                <div class="">
+                  Edad
+                </div>
+                <div class="">
+                  Inversionistas
+                </div>
+              </div>
+
+              <img src="assets/images/new-home/Desk/man.png" width="15px" alt="" *ngIf="animFlags[3]" [@appearingAnimNoDelay]>
+
+            </div>
+
+            <div>
+              <div class="stat-value" *ngFor="let stati of investors_age; let i=index">
+
+                <div class="left-bar-container">
+                  <div class="bar" [ngStyle]="{width:(animFlags[3]?(stati.left/6)*100:0)+'%'}"></div>
+                </div>
+
+                <div class="values">
+                  {{stati.legend}}
+                </div>
+
+                <div class="right-bar-container">
+                  <div class="bar" [ngStyle]="{width:(animFlags[3]?(stati.right/6)*100:0)+'%'}"></div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="stat-legend">
+
+              <div class="left-legends">
+                <div class="legend">6</div>
+                <div class="legend">5</div>
+                <div class="legend">4</div>
+                <div class="legend">3</div>
+                <div class="legend">2</div>
+                <div class="legend">1</div>
+                <div class="legend"></div>
+              </div>
+
+              <div class="values"></div>
+
+              <div class="right-legends">
+                <div class="legend"></div>
+                <div class="legend">1</div>
+                <div class="legend">2</div>
+                <div class="legend">3</div>
+                <div class="legend">4</div>
+                <div class="legend">5</div>
+                <div class="legend">6</div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<app-footer></app-footer>

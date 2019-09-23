@@ -1,0 +1,95 @@
+<div class="step_modal modal fade" id="closeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                      <img src="assets/images/registration/logo@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid">
+
+                <div class="response">
+
+                    <div class="image">
+                        <img src="assets/images/client-profile/exit_icon.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid d-none d-md-block">
+                        <img src="assets/images/client-profile/exit_icon.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid d-block d-sm-none">
+                    </div>
+
+                    <p class="text">¿Deseas cerrar sesión?</p>
+
+                    <a class="action" data-dismiss="modal" aria-label="Close" (click)="signOut()">
+                        <span aria-hidden="true">Sí</span>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<section class="menu_phoenix">
+    <div class="menu container">
+
+        <nav>
+
+          <div class="brand" routerLink="/inicio">
+            <img src="assets/images/home/logo.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid">
+          </div>
+
+          <div class="hello">
+              <div class="search_input" *ngIf="showSearchBar()" [@slideInFromSide] [@fadeInOut]>
+
+                  <i class="material-icons">search</i>
+
+                  <input #sea class="form-control" type="text" placeholder="Código del proyecto..." (keyup)="updateSearchCode(sea.value)">
+
+              </div>
+
+              <span *ngIf="!showSearchBar()" [@fadeInOutHiAdmin]>Hola admin</span>
+              <div class="toggler" (click)="toggleMenu($event)">
+                  <img src="assets/images/client-profile/default_avatar.png" alt="Image User" title="Image User" class="">
+              </div>
+          </div>
+
+        </nav>
+
+    </div>
+    <button hidden #openModalButton data-toggle="modal" data-target="#closeModal"></button>
+</section>
+
+<nav #right_menu class="right-menu">
+  <ul>
+    <li class="noselect" routerLinkActive="link-active">
+      <i class="material-icons">timeline</i> Google Analytics
+    </li>
+    <li class="noselect" [routerLink]="['/admin','match']" routerLinkActive="link-active">
+      <i class="material-icons">dashboard</i> Dashboard
+    </li>
+    <li class="noselect" [routerLink]="['/admin','proyectos']" routerLinkActive="link-active">
+      <i class="material-icons">grade</i> Proyectos actuales
+    </li>
+    <li class="noselect" [routerLink]="['/admin','historial']" routerLinkActive="link-active">
+      <i class="material-icons">history</i> Historial
+    </li>
+    <li class="noselect" [routerLink]="['/admin','rentabilidad']" routerLinkActive="link-active">
+      <i class="material-icons">attach_money</i> Rentabilidad
+    </li>
+    <li class="noselect" [routerLink]="['/admin','prog-settings']" routerLinkActive="link-active">
+      <i class="material-icons">code</i> Configuraciones
+    </li>
+    <li class="noselect" (click)="openSignOutModal(openModalButton)">
+      <img src="assets/images/admin-business/cerrar@72x.png" alt="Exit Icon" title="Exit Icon" class="image img-fluid"> Cerrar sesión
+    </li>
+  </ul>
+</nav>

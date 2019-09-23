@@ -1,0 +1,176 @@
+<div class="step_modal modal fade" id="faqModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content container">
+
+                <div class="faq_interaction">
+
+                    <div class="" (click)="faqSelection(1)">
+                      <img src="{{faqs[1].imgPath}}" class="faq_image">
+                    </div>
+
+                    <div class="" (click)="faqSelection(0)">
+                      <img src="{{faqs[0].imgPath}}" class="faq_image">
+                    </div>
+
+                    <div class="" (click)="faqSelection(2)">
+                        <img src="{{faqs[2].imgPath}}" class="faq_image">
+                    </div>
+
+                </div>
+
+                <div class="faq_text" [@faqState] *ngIf="faqs[0].state=='showing'">
+
+                    <ol>
+
+                      <div *ngFor="let qt of aboutUsFaq; let i=index">
+                        <li (click)="clickHandler(i,aboutUsFaq)">
+                          {{qt.question}}
+                          <i class="material-icons" [@arrowState]="qt.visible">keyboard_arrow_down</i>
+                        </li><br>
+                        <div [innerHTML]="qt.text" *ngIf="qt.visible=='visible'" [@dropAnim]></div>
+                      </div>
+
+                    </ol>
+
+                </div>
+
+                <div class="faq_text" [@faqState] *ngIf="faqs[1].state=='showing'">
+
+                    <ol>
+
+                      <div *ngFor="let qt of customerFaq; let i=index">
+                        <li (click)="clickHandler(i,customerFaq)">
+                          {{qt.question}}
+                          <i class="material-icons" [@arrowState]="qt.visible">keyboard_arrow_down</i>
+                        </li><br>
+                        <div [innerHTML]="qt.text" *ngIf="qt.visible=='visible'" [@dropAnim]></div>
+                      </div>
+
+                    </ol>
+
+                </div>
+
+                <div class="faq_text" [@faqState] *ngIf="faqs[2].state=='showing'">
+
+                    <ol>
+
+                      <div *ngFor="let qt of investorFaq; let i=index">
+                        <li (click)="clickHandler(i,investorFaq)">
+                          {{qt.question}}
+                          <i class="material-icons" [@arrowState]="qt.visible">keyboard_arrow_down</i>
+                        </li><br>
+                        <div [innerHTML]="qt.text" *ngIf="qt.visible=='visible'" [@dropAnim]></div>
+                      </div>
+
+                    </ol>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<section class="footer">
+
+    <div class="footer_content">
+
+        <div class="row">
+
+            <div class="col-md-12 social_heading">
+
+                <img src="assets/images/social/hand.png" class="hand">
+
+                <div class="top-border left-border"></div>
+                <div class="top-border right-border"></div>
+
+                <h2 class="heading_title">INVITA A UN AMIGO A REALIZAR SUS SUEÑOS.</h2>
+
+                <img src="assets/images/social/whatsapp.png" class="social_image" (click)="uService.shareWhatsapp()">
+                <img src="assets/images/social/facebook.png" class="social_image" (click)="uService.shareFacebook()">
+                <img src="assets/images/social/twitter.png" class="social_image" (click)="uService.shareTwitter()">
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <img src="../../../assets/images/home/logo_footer.png" alt="Logo Phoenix Footer" title="Logo Phoenix Footer" class="logo img-fluid">
+            </div>
+
+            <div class="col-md-3">
+                <ul class="items_footer">
+                    <li>
+                        <a class="item" routerLink="/quienes-somos">PHX</a>
+                    </li>
+
+                    <li>
+                        <a class="item" routerLink="/registro-cliente">Cliente</a>
+                    </li>
+
+                    <li>
+                        <a class="item" routerLink="/registro-inversionista">Inversionista</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 faq" data-toggle="modal" data-target="#faqModal">
+                <img src="assets/images/new-home/Desk/faq.png" class="faq_image">
+                <div class="text">
+                  ¿Preguntas frecuentes?
+                </div>
+            </div>
+
+            <div class="col-md-3 contact_button">
+                <a href="mailto:operaciones@phx.com.co">Contáctanos</a>
+            </div>
+
+        </div>
+
+        <section class="social clearfix">
+
+            <span class="copyright">© {{year}} PHX</span>
+
+            <ul class="social_icons">
+                <li>
+                    <a href="#" class="icon">
+                        <img src="assets/images/social/facebook.png" class="social_image">
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="icon">
+                        <img src="assets/images/social/twitter.png" class="social_image">
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="icon">
+                        <img src="assets/images/social/instagram.png" class="social_image">
+                    </a>
+                </li>
+
+            </ul>
+
+        </section>
+    </div>
+
+</section>

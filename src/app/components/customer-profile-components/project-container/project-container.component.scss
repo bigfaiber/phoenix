@@ -1,0 +1,55 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixin.scss';
+
+.step_modal{
+    background-color: rgba( 26, 44, 53, 0.9 );
+    .modal-dialog{
+        margin: 2% auto;
+        max-width: 85%;
+        .modal-content{
+            background-color: rgba( 0, 0, 0, 0 );
+            border: none;
+            .modal-header{
+                border-bottom: 0;
+                .mat_icon {
+                    vertical-align: middle;
+                }
+                .close{
+                    color: white;
+                    cursor: pointer;
+                    font-size: 25px;
+                    margin: -5px -5px -15px auto;
+                    padding: 6px 11px;
+                    position: relative;
+                    &::before{
+                        content: '';
+                        border: 2px solid;
+                        border-radius: 50%;
+                        height: 100%;
+                        position: absolute;
+                        right: 0;
+                        top: 2px;
+                        width: 100%;
+                    }
+                    &:hover, &:active, &:focus{
+                        outline: none;
+                        text-decoration: none;
+                    }
+                }
+            }
+            .modal_content{
+                padding: 20px;
+                text-align: center;
+                h1 {
+                    color: white;
+                    margin-top: 20%;
+                }
+                embed {
+                    height: 80vh;
+                    max-width: 900px;
+                    width: 90%;
+                }
+            }
+        }
+    }
+}

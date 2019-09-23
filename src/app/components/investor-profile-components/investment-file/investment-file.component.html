@@ -1,0 +1,198 @@
+<div class="step_modal modal fade" id="step1Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                <embed #pdf_viewer type='application/pdf'>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="matches">
+
+    <div class="match row desktop_action" (click)="showAT(openModalButton)">
+
+        <div class="col-md-12">
+
+          <div class="user_detail">
+
+              <div class="profile_pic"></div>
+
+              <div class="detail">
+
+                  <p class="name">Tabla de amortización (programada)</p>
+
+              </div>
+
+          </div>
+
+        </div>
+
+        <div class="arrow_image">
+
+            <img src="assets/images/admin-business/flecha@72x.png" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+
+        </div>
+
+    </div>
+
+    <div class="match row mobile_action" (click)="downloadAT()">
+
+        <div class="col-md-12">
+
+          <div class="user_detail">
+
+              <div class="profile_pic"></div>
+
+              <div class="detail">
+
+                  <p class="name">Tabla de amortización (programada)</p>
+
+              </div>
+
+          </div>
+
+        </div>
+
+        <div class="arrow_image">
+
+            <img src="assets/images/admin-business/flecha@72x.png" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+
+        </div>
+
+    </div>
+
+    <button type="button" name="button" class="return_action" (click)="downloadAT()">Descargar</button>
+
+    <div class="match match_patch row desktop_action" (click)="showProcessAT(openModalButton)">
+
+        <div class="col-md-12">
+
+          <div class="user_detail">
+
+              <div class="profile_pic"></div>
+
+              <div class="detail">
+
+                  <p class="name">Tabla de amortización (activa)</p>
+
+              </div>
+
+          </div>
+
+        </div>
+
+        <div class="arrow_image">
+
+            <img src="assets/images/admin-business/flecha@72x.png" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+
+        </div>
+
+    </div>
+
+    <div class="match match_patch row mobile_action" (click)="downloadProcessAT(downloadLink)">
+
+        <div class="col-md-12">
+
+          <div class="user_detail">
+
+              <div class="profile_pic"></div>
+
+              <div class="detail">
+
+                  <p class="name">Tabla de amortización (activa)</p>
+
+              </div>
+
+          </div>
+
+        </div>
+
+        <div class="arrow_image">
+
+            <img src="assets/images/admin-business/flecha@72x.png" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+
+        </div>
+
+    </div>
+
+    <button type="button" name="button" [class.action_disabled]="project.amortization_table==null" class="return_action"
+        (click)="downloadProcessAT(downloadLink)">Descargar</button>
+    <a href="{{processATUrl()}}" target="_self" download #downloadLink hidden></a>
+
+    <div class="match match_patch row desktop_action" (click)="showWarranty(openModalButton)">
+
+        <div class="col-md-12">
+
+          <div class="user_detail">
+
+              <div class="profile_pic"></div>
+
+              <div class="detail">
+
+                  <p class="name">Garantía</p>
+
+              </div>
+
+          </div>
+
+        </div>
+
+        <div class="arrow_image">
+
+            <img src="assets/images/admin-business/flecha@72x.png" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+
+        </div>
+
+    </div>
+
+    <div class="match match_patch row mobile_action" (click)="downloadWarranty(downloadLink2)">
+
+        <div class="col-md-12">
+
+          <div class="user_detail">
+
+              <div class="profile_pic"></div>
+
+              <div class="detail">
+
+                  <p class="name">Garantía</p>
+
+              </div>
+
+          </div>
+
+        </div>
+
+        <div class="arrow_image">
+
+            <img src="assets/images/admin-business/flecha@72x.png" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+
+        </div>
+
+    </div>
+
+    <button type="button" name="button" [class.action_disabled]="this.project.warranty_file==null" class="return_action"
+        (click)="downloadWarranty(downloadLink2)">Descargar</button>
+    <a href="{{warrantyUrl()}}" target="_self" download #downloadLink2 hidden></a>
+    <button type="button" name="button" class="return_action" (click)="getBack()">Volver</button>
+
+    <button hidden #openModalButton data-toggle="modal" data-target="#step1Modal"></button>
+
+</div>

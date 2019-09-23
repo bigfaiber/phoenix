@@ -1,0 +1,102 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixin.scss';
+
+.projects{
+    min-height: calc(100vh - 255px);
+    padding: 0;
+    .title{
+        font-family: $font-OpenSans-SB;
+        font-size: 25px;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+    .empty_message {
+        color: #E6E6E6;
+        font-family: $font-OpenSans;
+        font-size: 2em;
+        margin-top: 21%;
+        text-align: center;
+    }
+    .content_projects{
+        max-height: 40vh;
+        overflow-y: auto;
+        .project, .new_project{
+            margin-bottom: 30px;
+            position: relative;
+            .project_link, .new_link{
+                background-color: #F2F2F2;
+                border-radius: 3px;
+                color: #000;
+                cursor: pointer;
+                display: block;
+                font-family: $font-OpenSans;
+                height: 100px;
+                padding: 15px 20px 15px;
+                position: relative;
+                .missing-account {
+                  background-color: #0089FF;
+                  border-radius: 3px;
+                  color: white;
+                  font-family: $font-OpenSans-SB;
+                  padding: 2px 8px;
+                  position: absolute;
+                  right: 10px;
+                  top: 10px;
+                }
+                .project_name{
+                    font-size: 0.7vw;
+                    margin-bottom: 5px;
+                    text-align: left;
+                }
+                .approved_value{
+                    bottom: 0px;
+                    font-size: 0.9vw;
+                    position: absolute;
+                    right: 10px;
+                    .value{
+                        float: right;
+                    }
+                }
+                &:hover, &:active, &:focus{
+                    outline: none;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+@media ( max-width: 1400px ) {
+    .projects {
+        .content_projects{
+            .project, .new_project{
+                .project_link, .new_link{
+                    .project_name{
+                        font-size: 1vw;
+                    }
+                    .approved_value{
+                        font-size: 1.2vw;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 640px){
+    .projects{
+      .content_projects{
+          margin: 0;
+          .project, .new_project{
+              .project_link, .new_link{
+                  .project_name{
+                      font-size: 4vw;
+                  }
+                  .approved_value{
+                      font-size: 5vw;
+                  }
+              }
+          }
+      }
+    }
+}

@@ -1,0 +1,26 @@
+<div class="project-link"
+  [class.created-background]="state=='created'"
+  [class.approved-background]="state=='approved'"
+  [class.match-background]="state=='match'">
+
+  <img *ngIf="state=='match'" src="assets/images/client-profile/match.png" class="state-icon">
+  <img *ngIf="state=='approved'" src="assets/images/client-profile/probado.png" class="state-icon">
+
+  <div *ngIf="notification" class="notification"
+    [class.orange-notification]="notification.color=='orange'"
+    [class.red-notification]="notification.color=='red'"
+    [class.blue-notification]="notification.color=='blue'">
+    {{notification.message}}
+  </div>
+  <img *ngIf="state=='created'&&!notification" src="assets/images/client-profile/pendiente.png" class="state-icon">
+
+  <h4 class="project_name">{{dream}}</h4>
+
+  <h5 class="approved_value">
+    ${{money|myCurrency}}
+    <span class="value" *ngIf="state=='match'">Con inversión</span>
+    <span class="value" *ngIf="state=='approved'">Aprobado</span>
+    <span class="value" *ngIf="state=='created'">Pendiente</span>
+  </h5>
+
+</div>

@@ -1,0 +1,147 @@
+<div class="step_modal modal fade" id="closeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                      <img src="assets/images/registration/logo@72x.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid">
+
+                <div class="response">
+
+                    <div class="image">
+                        <img src="assets/images/client-profile/exit_icon.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid d-none d-md-block">
+                        <img src="assets/images/client-profile/exit_icon.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid d-block d-sm-none">
+                    </div>
+
+                    <p class="text">¿Deseas cerrar sesión?</p>
+
+                    <a class="action" data-dismiss="modal" aria-label="Close" (click)="signOut()">
+                        <span aria-hidden="true">Sí</span>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<section class="menu_phoenix">
+    <div class="menu container">
+
+        <nav class="mobile navbar navbar-expand-lg">
+            <a class="navbar-brand" [routerLink]="['/inicio']">
+                <img src="assets/images/home/logo.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuUser" aria-controls="menuUser" aria-expanded="false" aria-label="Toggle navigation">
+                <img #profile_pic2 alt="Image User" title="Image User" class="image img-fluid">
+                <i class="material-icons">keyboard_arrow_down</i>
+            </button>
+            <div class="collapse navbar-collapse" id="menuUser">
+                <ul class="_content_menu navbar-nav mr-auto">
+                    <li class="item">
+                        <a class="nav-link item_menu home" [routerLink]="['/cliente','perfil']">
+                            <i class="material-icons">person</i> Perfil
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a class="nav-link item_menu home" [routerLink]="['/cliente','proscons']">
+                            <i class="material-icons">done_all</i> Pros y Contras
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a class="nav-link item_menu home" [routerLink]="['/cliente','historial']">
+                            <i class="material-icons">history</i> Historial
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a class="nav-link item_menu home" [routerLink]="['/cliente','editar-perfil']">
+                            <i class="material-icons">edit</i> Editar perfil
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a class="nav-link item_menu home" href="#" data-toggle="modal" data-target="#closeModal">
+                            <img src="assets/images/admin-business/cerrar@72x.png" alt="Exit Icon" title="Exit Icon" class="image img-fluid"> Cerrar sesión
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <nav class="desktop navbar navbar-expand-lg ">
+
+            <a class="navbar-brand" [routerLink]="['/inicio']">
+                <img src="assets/images/home/logo.png" alt="Logo Phoenix" title="Logo Phoenix" class="img-fluid">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuUserMobile" aria-controls="menuPhoenix" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="menuUser" (click)="toggleMenu($event)">
+                <div class="hello">
+                    <div class="_menu_action d-none d-sm-block">
+                        <img #profile_pic alt="Image User" title="Image User" class="image img-fluid">
+                    </div>
+                </div>
+                <ul class="_content_menu" *ngIf="showMenu" [@slideIn] [@fadeInOut]>
+                    <li class="item">
+                        <a class="nav-link item_menu home" [routerLink]="['/cliente','perfil']">
+                            <i class="material-icons">person</i> Perfil
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a class="nav-link item_menu home" [routerLink]="['/cliente','proscons']">
+                            <i class="material-icons">done_all</i> Pros y Contras
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a class="nav-link item_menu home" [routerLink]="['/cliente','historial']">
+                            <i class="material-icons">history</i> Historial
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a class="nav-link item_menu home" [routerLink]="['/cliente','editar-perfil']">
+                            <i class="material-icons">edit</i> Editar perfil
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a class="nav-link item_menu home" (click)="openSignOutModal(openModalButton)">
+                            <img src="assets/images/admin-business/cerrar@72x.png" alt="Exit Icon" title="Exit Icon" class="image img-fluid"> Cerrar sesión
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <button hidden #openModalButton data-toggle="modal" data-target="#closeModal"></button>
+</section>
+
+<a class="email-text" href="mailto:operaciones@phx.com.co">
+    <i class="material-icons">email</i>
+    Soporte
+</a>
+
+<div class="social-button fb-share-button" (click)="uService.shareFacebook()">
+    <img src="assets/images/social/face-white.png" alt="">
+    Compartir
+</div>
+
+<div class="social-button  custom-tweet-button" (click)="uService.shareTwitter()">
+    <img src="assets/images/social/twitter-white.png" alt="">
+    Tweet
+</div>

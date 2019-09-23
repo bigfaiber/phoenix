@@ -1,0 +1,31 @@
+<section class="user_profile">
+
+    <app-customer-nav></app-customer-nav>
+
+    <section class="projects container">
+
+        <h3 class="title">Proyectos Finalizados</h3>
+
+        <h1 *ngIf="projects.length==0" class="empty_message">Aquí aparecerán tus proyectos finalizados, en el momento no hay ninguno</h1>
+
+        <div class="content_projects row"
+            infinite-scroll
+            [infiniteScrollDistance]="scrollDistance"
+            [infiniteScrollThrottle]="throttle"
+            [scrollWindow]="false"
+            (scrolled)="onScrollDown()">
+
+            <div class="col-md-4" *ngFor="let proj of projects; let i=index">
+              <app-data-project-link
+                (click)="redirectToProject(i)"
+                bgColor="gold"
+                [money]="proj.money"
+                [data]="proj.parse">
+              </app-data-project-link>
+            </div>
+
+        </div>
+
+    </section>
+
+</section>

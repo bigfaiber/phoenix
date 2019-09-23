@@ -1,0 +1,322 @@
+<div class="form_container text-center">
+
+    <div class="customer_dream_container row">
+
+        <div class="col-md-4">
+
+            <legend>{{customer_data.name}} {{customer_data.lastname}} - {{customer_data.identification}}</legend>
+
+            <div class="wrapper container">
+
+                <div class="registration_form">
+
+                    <form name="form" [formGroup]="form">
+
+                        <div class="form_item form-group">
+
+                            <label for="email">¿Cuál es el sueño?</label>
+
+                            <select formControlName="dream">
+
+                                <option value="0" selected disabled>Selecciona una opción</option>
+
+                                <option value="Capital de trabajo">Capital de trabajo</option>
+
+                                <option value="Unificar deudas">Unificar deudas</option>
+
+                                <option value="Viajar">Viajar</option>
+
+                                <option value="Comprar vehículo">Comprar vehículo</option>
+
+                                <option value="Comprar vivienda">Comprar vivienda</option>
+
+                                <option value="Comprar bienes raíces">Comprar bienes raíces</option>
+
+                                <option value="Tratamiento médico">Tratamiento médico</option>
+
+                                <option value="Estudiar">Estudiar</option>
+
+                                <option value="Iniciar mi negocio">Iniciar mi negocio</option>
+
+                                <option value="Otro">Otro</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="form_item form-group">
+
+                            <textarea rows="4" placeholder="Describe su sueño" formControlName="description"></textarea>
+
+                        </div>
+
+                        <div class="form_item form-group">
+
+                            <label>¿Cuánto necesita?</label>
+
+                            <input #needings type="text" class="form-control" name="password" formControlName="needings" myCurrencyFormatter
+                                    (ngModelChange)="needingsChanged($event)">
+
+                            <span class="input_error_right" *ngIf="form.controls['needings'].hasError('pattern')" [@fadeInOut]>
+                                Sólo puede contener números
+                            </span>
+
+                        </div>
+
+                        <div class="form_item form-group">
+
+                            <label>¿Cuánto puede pagar mensualmente?</label>
+
+                            <input #payment type="text" class="form-control" name="password" formControlName="payment" myCurrencyFormatter
+                                    (ngModelChange)="paymentChanged($event)">
+
+                            <span class="input_error_right" *ngIf="form.controls['payment'].hasError('pattern')" [@fadeInOut]>
+                                Sólo puede contener números
+                            </span>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 lines">
+
+            <div class="wrapper container">
+
+                <div class="registration_form">
+
+                    <form name="form" [formGroup]="form">
+
+                        <div class="form_item form-group">
+
+                            <label for="email">Tiempo (meses)</label>
+
+                            <input type="text" class="form-control" name="password" formControlName="months">
+
+                        </div>
+
+                        <div class="form_item form-group">
+
+                            <label>Tasa de interés</label>
+
+                            <input #rate_input type="text" class="form-control" name="email" formControlName="rate"
+                              (ngModelChange)="rateChanged($event)">
+
+                            <span class="input_error_right" *ngIf="form.controls['rate'].hasError('pattern')" [@fadeInOut]>
+                                Tasa inválida
+                            </span>
+
+                        </div>
+
+                        <!-- <span class="start">Tasa sugerida: {{project_data.recommended_interest|number:'1.0-2'}}.</span> -->
+                        <span class="start">Tasa sugerida: {{showInterestRate()}}</span>
+
+                        <div class="form_item form-group">
+
+                            <label>Garantía</label>
+
+                            <select formControlName="warranties">
+
+                                <option value="0" selected disabled>Selecciona una opción</option>
+
+                                <option value="1">Prenda</option>
+
+                                <option value="2">Hipoteca</option>
+
+                                <option value="3">Pagaré</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="form_item form-group">
+
+                            <label class="investor-label">Inversionista</label>
+
+                            <select formControlName="investor" (ngModelChange)="investorChanged($event)">
+
+                                <option value="-1" selected>Sin inversionista</option>
+
+                                <option *ngFor="let inv of allInvestors" value="{{inv.id}}">{{inv.name}} {{inv.lastname}} - {{inv.identification}}</option>
+
+                            </select>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="wrapper container">
+
+                <div class="registration_form">
+
+                    <form name="form" [formGroup]="form">
+
+                        <div class="form_item form-group">
+
+                            <label>Banco</label>
+
+                            <select formControlName="banks">
+
+                                <option value="0" selected disabled>Selecciona una opción</option>
+
+                                <option value="Banco Agrario">Banco Agrario</option>
+
+                                <option value="Banco AV Villas">Banco AV Villas</option>
+
+                                <option value="Bancamia">Bancamia</option>
+
+                                <option value="BBVA">BBVA</option>
+
+                                <option value="Banco de Bogotá">Banco de Bogotá</option>
+
+                                <option value="Banco Caja Social">Banco Caja Social</option>
+
+                                <option value="Citibank">Citibank</option>
+
+                                <option value="Bancolombia">Bancolombia</option>
+
+                                <option value="Banco Colpatria">Banco Colpatria</option>
+
+                                <option value="Banco Coomeva">Banco Coomeva</option>
+
+                                <option value="Banco Corpbanca">Banco Corpbanca</option>
+
+                                <option value="Davivienda">Davivienda</option>
+
+                                <option value="Banco Falabella">Banco Falabella</option>
+
+                                <option value="Banco Finandina">Banco Finandina</option>
+
+                                <option value="Banco GNB Sudameris">Banco GNB Sudameris</option>
+
+                                <option value="Helm bank">Helm bank</option>
+
+                                <option value="HSBC Colombia">HSBC Colombia</option>
+
+                                <option value="Banco de Occidente">Banco de Occidente</option>
+
+                                <option value="Banco Pichincha">Banco Pichincha</option>
+
+                                <option value="Banco Popular">Banco Popular</option>
+
+                                <option value="Banco Procredito">Banco Procredito</option>
+
+                                <option value="Banco de la República">Banco de la República</option>
+
+                                <option value="Scotiabank">Scotiabank</option>
+
+                                <option value="Banco WWB">Banco WWB</option>
+
+                                <option value="ANIF">ANIF</option>
+
+                                <option value="Asobancaria">Asobancaria</option>
+
+                                <option value="Fogafin">Fogafin</option>
+
+                                <option value="Superfinanciera">Superfinanciera</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="form_item form-group">
+
+                            <label>Tipo de cuenta</label>
+
+                            <select formControlName="account_type">
+
+                                <option value="0" selected disabled>Selecciona una opción</option>
+
+                                <option value="1">Ahorros</option>
+
+                                <option value="2">Corriente</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="form_item form-group">
+
+                            <label>Número de cuenta</label>
+
+                            <input #account_input type="text" class="form-control" name="password" formControlName="account">
+
+                            <span class="input_error_right" *ngIf="form.controls['account'].hasError('pattern')" [@fadeInOut]>
+                                Sólo puede contener números
+                            </span>
+
+                            <span class="input_error_right" *ngIf="!form.controls['account'].hasError('pattern')&&form.controls['account'].hasError('minlength')" [@fadeInOut]>
+                                Mínimo 6 números
+                            </span>
+
+                            <span class="input_error_right" *ngIf="!form.controls['account'].hasError('pattern')&&form.controls['account'].hasError('maxlength')" [@fadeInOut]>
+                                Máximo 14 números
+                            </span>
+
+                        </div>
+
+                        <div class="form_item form-group">
+
+                            <label for="birthday">Fecha de desembolso</label>
+
+                            <input #date_input class="form-control"
+                              formControlName="date"
+                              autocomplete="off"
+                              [matDatepicker]="myDatepicker"
+                              (focus)="myDatepicker.opened=true"
+                              readonly>
+                            <i class="material-icons" (click)="toggleDatePicker(true)">date_range</i>
+                            <mat-datepicker #myDatepicker></mat-datepicker>
+
+                            <span class="input_error_right" *ngIf="form.controls['date'].hasError('required')" [@fadeInOut]>
+                                Fecha requerida para crear
+                            </span>
+
+                        </div>
+
+                        <div class="form_item form-group">
+
+                            <label for="birthday">Fecha de aprobación</label>
+
+                            <input #appdate class="form-control"
+                              formControlName="approved_date"
+                              autocomplete="off"
+                              [matDatepicker]="myDatepicker2"
+                              (focus)="myDatepicker.opened=true"
+                              readonly>
+                            <i class="material-icons" (click)="toggleDatePicker()">date_range</i>
+                            <mat-datepicker #myDatepicker2></mat-datepicker>
+
+                            <span class="input_error_right" *ngIf="form.controls['approved_date'].hasError('required')" [@fadeInOut]>
+                                Fecha requerida para crear
+                            </span>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <button type="button" name="button" class="return_action" (click)="getBack()">Volver</button>
+    <button type="submit" [disabled]="!isFormValid()||requestSent" class="action" (click)="updateProject()">Crear</button>
+
+</div>

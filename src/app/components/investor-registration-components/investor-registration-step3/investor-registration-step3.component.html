@@ -1,0 +1,146 @@
+<div class="wrapper container">
+
+    <div class="registration_form">
+
+        <h3 class="title">Nos gustaría conocerte un poco más</h3>
+
+        <form name="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <div class="form_item form-group">
+
+                        <label class="name">¿Situación laboral?</label>
+
+                        <select class="options" formControlName="labor">
+
+                            <option value="0" disabled selected>Selecciona una opción</option>
+
+                            <option value="1">Desempleado</option>
+
+                            <option value="2">Empleado</option>
+
+                            <option value="3">Independiente</option>
+
+                            <option value="4">Contratista</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form_item form-group">
+
+                        <label class="name">¿Nivel educativo?</label>
+
+                        <select class="options" formControlName="education_level" (ngModelChange)="setCareerValidation($event)">
+
+                            <option value="0" disabled selected>Selecciona una opción</option>
+
+                            <option value="1">Primaria</option>
+
+                            <option value="2">Bachiller</option>
+
+                            <option value="5">Técnico/Tecnólogo</option>
+
+                            <option value="3">Profesional</option>
+
+                            <option value="4">Maestria</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form_item form-group" *ngIf="showCareerSelection()" [@appearingAnimNoDelay]>
+
+                      <label class="name">¿Carrera?</label>
+
+                      <select class="options" formControlName="career">
+
+                          <option value="0" disabled selected>Selecciona una opción</option>
+
+                          <option value="1">Administración</option>
+
+                          <option value="2">Ingeniería</option>
+
+                          <option value="3">Medicina</option>
+
+                          <option value="4">Economía</option>
+
+                          <option value="5">Veterinaria</option>
+
+                          <option value="6">Contabilidad</option>
+
+                          <option value="7">Mercadeo</option>
+
+                          <option value="8">Derecho</option>
+
+                          <option value="9">Arquitectura</option>
+
+                          <option value="10">Diseño</option>
+
+                          <option value="11">Otra</option>
+
+                      </select>
+
+                    </div>
+
+                    <div class="form_item form-group" *ngIf="showTecType()" [@appearingAnimNoDelay]>
+
+                      <label>¿Tipo de técnico?</label>
+
+                      <input type="text" class="form-control" placeholder="Escribe el tipo" autocomplete="off" formControlName="technical_career">
+
+                      <!-- <span class="input_error_right" *ngIf="form.controls['monthly_payment'].hasError('pattern')" [@fadeInOut]>
+                          Sólo puede contener números
+                      </span> -->
+
+                    </div>
+
+                    <div class="form_item form-group">
+
+                        <label>¿Declaras renta?</label><br>
+
+                        <div class="centering_radio" (click)="submitButton.name">
+
+                            <label class="right_margin make_block">Si</label>
+
+
+                            <input #f1 class="check_box" type="radio" name="answer2" id="ans12">
+
+                            <label #rent_yes for="ans12"></label>
+
+
+
+
+                            <label class="right_margin left_margin make_block">No</label>
+
+
+                            <input #f2 class="check_box" type="radio" name="answer2" id="ans22">
+
+                            <label #rent_no for="ans22"></label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button #submitButton type="button" [disabled]="!isFormValid()" class="action" (click)="onSubmit()">Siguiente</button>
+
+        </form>
+
+        <a class="stepwizard_button step_selected"></a>
+
+        <a class="stepwizard_button step_selected"></a>
+
+        <a class="stepwizard_button step_selected"></a>
+
+        <a class="stepwizard_button"></a>
+
+    </div>
+
+</div>

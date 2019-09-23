@@ -1,0 +1,249 @@
+@import '../../../../../sass/variables.scss';
+@import '../../../../../sass/mixin.scss';
+
+.balance_modal{
+    background-color: rgba( 26, 44, 53, 0.9 );
+    .modal-dialog{
+        margin: 5% auto;
+        max-width: 610px;
+        .modal-content{
+            .modal-header{
+                border-bottom: 0;
+                .mat_icon {
+                    vertical-align: middle;
+                }
+                .close{
+                    border-color: #1A2C35;
+                    cursor: pointer;
+                    font-size: 25px;
+                    margin: -5px -5px -15px auto;
+                    padding: 6px 11px;
+                    position: relative;
+                    &::before{
+                        content: '';
+                        border: 2px solid;
+                        border-radius: 50%;
+                        height: 100%;
+                        position: absolute;
+                        right: 0;
+                        top: 2px;
+                        width: 100%;
+                    }
+                    &:hover, &:active, &:focus{
+                        outline: none;
+                        text-decoration: none;
+                    }
+                }
+            }
+            .modal_content{
+                padding: 20px;
+                text-align: center;
+                .response{
+                    padding: 30px 0 30px;
+                    text-align: center;
+                    form{
+                        font-family: $font-OpenSans-SB;
+                        margin: 15px 0 0;
+                        padding: 20px 7%;
+                        position: relative;
+                        .form_item{
+                            position: relative;
+                            text-align: left;
+                            label{
+                                color: #1b2c35;
+                                font-size: 14px;
+                                margin: 10px 0 5px;
+                                padding-left: 20px;
+                                text-align: left;
+                                &.name{
+                                    margin: 0;
+                                }
+                                &.ans{
+                                    margin: 0;
+                                }
+                            }
+                            input{
+                                background-color: #F7F7F7;
+                                border: 0px;
+                                border-radius: 20px;
+                                display: inline-block;
+                                font-family: $font-OpenSans;
+                                font-size: 14px;
+                                padding: 8px 20px;
+                                width: 100%;
+                                &:hover, &:active, &:focus{
+                                    outline: none;
+                                    text-decoration: none;
+                                }
+                            }
+                            select {
+                                background-color: #F7F7F7;
+                                border: 0px;
+                                border-radius: 20px;
+                                color: #1A2C35;
+                                font-family: $font-OpenSans;
+                                font-size: 14px;
+                                outline: none;
+                                padding: 8px 20px;
+                                width: 100%;
+                                &.options{
+                                    border-radius: 20px;
+                                    height: 35px;
+                                    margin-top: 5px;
+                                }
+                            }
+                            select::-ms-expand {
+                                display: none;
+                            }
+                            .input_error_right {
+                                bottom: -20px;
+                                color: red;
+                                font-family: $font-OpenSans;
+                                font-size: 12px;
+                                position: absolute;
+                                right: 0px;
+                            }
+                        }
+                    }
+                    .image{
+                        display: inline-block;
+                        width: 20%;
+                    }
+                    .text{
+                        display: block;
+                        font-family: $font-OpenSans;
+                        font-size: 15px;
+                        font-weight: bold;
+                        margin: 30px 0px 0px 0px;
+                        padding: 0 20%;
+                    }
+                    .upload_documents {
+                        background-color: #1A2C35;
+                        border: none;
+                        border-radius: 30px;
+                        color: white;
+                        cursor: pointer;
+                        margin-top: 10px;
+                        padding: 8px 20px;
+                        text-align: center;
+                        img {
+                            margin-right: 10px;
+                            width: 20px;
+                        }
+                        &:hover, &:active, &:focus{
+                            outline: none;
+                            text-decoration: none;
+                        }
+                    }
+                    .action{
+                        background-color: $gold;
+                        border: none;
+                        border-radius: 25px;
+                        color: #fff;
+                        cursor: pointer;
+                        display: inline-block;
+                        font-family: Arial;
+                        font-size: 15px;
+                        letter-spacing: 0.5px;
+                        margin-right: 15px;
+                        margin-top: 60px;
+                        padding: 7px 50px 6px 50px;
+                        position: relative;
+                        &:hover, &:active, &:focus{
+                            outline: none;
+                            text-decoration: none;
+                        }
+
+                        -webkit-transition: background-color 100ms linear;
+                        -ms-transition: background-color 100ms linear;
+                        transition: background-color 100ms linear;
+                    }
+                    .action_disabled{
+                        background-color: #A6A6A6;
+                        cursor: default;
+
+                        -webkit-transition: background-color 200ms linear;
+                        -ms-transition: background-color 200ms linear;
+                        transition: background-color 200ms linear;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.del_modal{
+    background-color: rgba( 26, 44, 53, 0.9 );
+    .modal-dialog{
+        margin: 5% auto;
+        max-width: 410px;
+        .modal-content{
+            .modal-header{
+                border-bottom: 0;
+                .mat_icon {
+                    vertical-align: middle;
+                }
+                .close{
+                    border-color: #1A2C35;
+                    cursor: pointer;
+                    font-size: 25px;
+                    margin: -5px -5px -15px auto;
+                    padding: 6px 11px;
+                    position: relative;
+                    &::before{
+                        content: '';
+                        border: 2px solid;
+                        border-radius: 50%;
+                        height: 100%;
+                        position: absolute;
+                        right: 0;
+                        top: 2px;
+                        width: 100%;
+                    }
+                    &:hover, &:active, &:focus{
+                        outline: none;
+                        text-decoration: none;
+                    }
+                }
+            }
+            .modal_content{
+                padding: 20px;
+                text-align: center;
+                .response{
+                    padding: 70px 0 30px;
+                    text-align: center;
+                    .image{
+                        display: inline-block;
+                        width: 20%;
+                    }
+                    .text{
+                        display: inline-block;
+                        font-family: $font-OpenSans;
+                        font-size: 15px;
+                        font-weight: bold;
+                        margin: 30px 0px 70px 0px;
+                        padding: 0 20%;
+                    }
+                    .action{
+                        background-color: $gold;
+                        border: none;
+                        border-radius: 25px;
+                        color: #fff;
+                        cursor: pointer;
+                        display: inline-block;
+                        font-family: Arial;
+                        font-size: 15px;
+                        letter-spacing: 0.5px;
+                        margin-top: 40px;
+                        padding: 7px 40px 6px;
+                        position: relative;
+                        &:hover, &:active, &:focus{
+                            outline: none;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

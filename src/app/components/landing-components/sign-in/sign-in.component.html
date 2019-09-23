@@ -1,0 +1,73 @@
+<div class="sign_in_content">
+
+    <app-menu></app-menu>
+
+    <section class="sign_in">
+
+        <!-- <img src="../../../assets/images/optimized/img_header_desktop_1.jpg" alt="Background SignIn" title="Background SignIn" class="img-fluid d-none d-md-block">
+        <img src="../../../assets/images/optimized/img_header_movil_1.jpg" alt="Background SignIn" title="Background SignIn" class="img-fluid d-block d-sm-none"> -->
+
+        <div class="sign_in_form">
+
+            <h2 class="title">Bienvenido a  <span>Phoenix</span></h2>
+
+            <span class="banner_info">Inicia sesión con tu e-mail</span>
+
+            <div *ngIf="dead_session" class="alert alert-danger" [@fadeInOut]>
+                Tu sesión ha caducado
+            </div>
+
+            <form>
+
+                <div class="form_item form-group">
+
+                    <label for="email">Email</label>
+
+                    <input #email type="email" class="form-control" name="email">
+
+                </div>
+
+                <div class="form_item form-group">
+
+                    <label for="email">Contraseña</label>
+
+                    <input #password type="password" class="form-control" name="password">
+
+                </div>
+
+                <div class="form_item form-group">
+
+                    <label>Perfil</label><br>
+
+                    <select #rol>
+
+                        <option value="Client" selected>Cliente</option>
+
+                        <option value="Investor">Inversionista</option>
+
+                    </select>
+
+                </div>
+
+                <div class="credentials_error" *ngIf="invalidCredentials" [@fadeInOut]>
+                    Credenciales inválidas
+                </div>
+
+                <button  type="submit" [class.action_disabled]="requestSent" class="action" (click)="signIn()">Ingresar</button>
+
+            </form>
+
+            <a class="forget_password" routerLink="/password-request">¿Olvidaste tu contraseña?</a>
+
+            <p class="start">¿Aún no tienes cuenta?</p>
+            <p class="start"><a class="register" routerLink="/registro-cliente">Regístrate como cliente</a></p>
+            <p class="start"><a class="register" routerLink="/registro-inversionista">Regístrate como inversionista</a></p>
+
+
+        </div>
+
+    </section>
+
+</div>
+
+<app-footer></app-footer>

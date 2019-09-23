@@ -1,0 +1,31 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixin.scss';
+
+.customer_registration_content{
+    background-image: url('../../../../assets/images/home/phx_web_inicio_bg_desktop.png');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    display: block;
+    padding-top: 40px;
+    position: relative;
+}
+
+@media (max-width: 575px) {
+    .customer_registration_content:before{
+      content: "";
+      background-image: url('../../../../assets/images/home/phx_web_inicio_bg_mobile.png');
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      opacity: 0.4;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: -1;
+    }
+    .customer_registration_content{
+        background-image: none;
+        padding-top: 0px;
+    }
+}

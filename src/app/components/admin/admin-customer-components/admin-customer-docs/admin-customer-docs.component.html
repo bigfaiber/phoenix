@@ -1,0 +1,61 @@
+<div class="step_modal modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                <embed #pdf_viewer><br>
+
+                <button type="button" name="button" [class.action_disabled]="requestSent" class="action" (click)="downloadDoc()">Descargar</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="matches text-center">
+
+    <div class="match row" *ngFor="let doc of documents; let i = index" (click)="showDocument(omb,i)">
+
+        <div class="col-md-12">
+
+          <div class="user_detail">
+
+              <div class="profile_pic"></div>
+
+              <div class="detail">
+
+                  <p class="name">{{doc.document_type}}</p>
+
+              </div>
+
+          </div>
+
+        </div>
+
+        <div class="arrow_image">
+
+            <img src="assets/images/admin-business/flecha@72x.png" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+
+        </div>
+
+    </div>
+
+    <button #omb hidden data-toggle="modal" data-target="#paymentModal" type="button" name="button"></button>
+
+    <button type="button" name="button" class="return_action" (click)="getBack()">Volver</button>
+
+</div>

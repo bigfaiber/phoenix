@@ -1,0 +1,106 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixin.scss';
+
+.phoenix-menu {
+  background-color: white;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+  .menu-content {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 23px;
+    .dinamic-content {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      .menu-toggler {
+        display: none;
+        .material-icons {
+          cursor: pointer;
+          font-size: 46px;
+        }
+      }
+    }
+    .nav {
+      ul {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        li {
+          list-style-type: none;
+          margin: 0 10px;
+          a {
+            border: solid 2px $dark-blue;
+            border-radius: 30px;
+            color: $dark-blue;
+            font-family: $font-OpenSans-SB;
+            font-size: 14px;
+            padding: 7px 22px;
+            &:hover, &:focus, &:active{
+                outline: none;
+                text-decoration: none;
+            }
+          }
+          .gold-link {
+            color: $gold;
+            border-color: $gold;
+          }
+          .active-link {
+            color: white;
+            background-color: $dark-blue;
+          }
+          .profile-link {
+            border: none;
+            img {
+              border: solid 2px $dark-blue;
+              border-radius: 50%;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media ( max-width: 992px ) {
+  .phoenix-menu {
+    .menu-content {
+      flex-direction: column;
+      padding-bottom: 10px;
+      .dinamic-content {
+        width: 100%;
+        .menu-toggler {
+          display: block;
+        }
+      }
+      .nav {
+        margin-top: 15px;
+        ul {
+          display: block;
+          li {
+            a {
+              border: none;
+              border-radius: 0;
+              display: block;
+              font-family: $font-OpenSans;
+              font-size: 16px;
+              padding: 10px 0;
+              text-align: center;
+              width: 100vw;
+            }
+          }
+        }
+      }
+    }
+  }
+}

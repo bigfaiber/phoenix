@@ -1,0 +1,84 @@
+<section class="banner text-center">
+
+    <div class="links">
+        <span class="items">
+            <span class="item" [routerLink]="['/admin','match']">Nuevos Negocios</span>
+            <span class="item selected" [routerLink]="['/admin','clientes']">
+                Clientes
+                <div class="total_notification_number" *ngIf="meta.new_clients+meta.new_projects>0">
+                    <span class="clients">{{meta.new_clients+meta.new_projects}}</span>
+                </div>
+            </span>
+            <span class="item" [routerLink]="['/admin','inversionistas']">Inversionistas</span>
+        </span>
+    </div>
+
+    <button type="button" name="button" [class.button_selected]="clientState=='new'" class="return_action" (click)="onNewSelection()">
+        Nuevos clientes
+        <div class="notification_number" *ngIf="meta.new_clients>0">
+            <span class="number">{{meta.new_clients}}</span>
+        </div>
+    </button>
+    <button type="button" name="button" [class.button_selected]="clientState=='old'" class="return_action" (click)="onOldSelection()">
+        Clientes actuales
+        <div class="notification_number" *ngIf="meta.new_projects>0">
+            <span class="number">{{meta.new_projects}}</span>
+        </div>
+    </button>
+    <button type="button" name="button" [class.button_selected]="clientState=='eval'" class="return_action" (click)="onEvalSelection()">
+        En evaluación
+    </button>
+    <button type="button" name="button" [class.button_selected]="clientState=='unfit'" class="return_action" (click)="onUnfitSelection()">
+        Rechazado
+    </button>
+
+</section>
+
+<div class="matches text-center"
+    infinite-scroll
+    [infiniteScrollDistance]="scrollDistance"
+    [infiniteScrollThrottle]="throttle"
+    [scrollWindow]="false"
+    (scrolled)="onScrollDown()">
+
+    <h1 *ngIf="customers.length==0" class="empty_message">Sin clientes</h1>
+
+    <div class="match row" *ngFor="let cust of customers; let i = index" (click)="showProfile(i)">
+
+        <div class="col-md-12">
+
+          <div class="user_detail">
+
+              <img *ngIf="cust.avatar.url!=null" width="45" src="{{API_path+cust.avatar.url}}" alt="Image User" title="Image User" class="image img-fluid">
+              <img *ngIf="cust.avatar.url==null" width="45" src="assets/images/client-profile/default_avatar.png"
+                  alt="Image User" title="Image User" class="image img-fluid">
+
+              <div class="detail">
+
+                  <p class="name">{{cust.name}} {{cust.lastname}}</p>
+
+                  <div class="stars">
+                      <img src="{{imgPath(0,i)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+                      <img src="{{imgPath(1,i)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+                      <img src="{{imgPath(2,i)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+                      <img src="{{imgPath(3,i)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+                      <img src="{{imgPath(4,i)}}" alt="Image Star Fill" title="Image Star Fill" class="img-fluid">
+                  </div>
+
+              </div>
+
+          </div>
+
+        </div>
+
+        <div class="arrow_image">
+
+            <img src="assets/images/admin-business/flecha@72x.png" alt="Image Star Fill" title="Image Star Fill" class="image img-fluid">
+
+        </div>
+
+        <span *ngIf="cust.has_project" class="new">Nuevo Proyecto</span>
+
+    </div>
+
+</div>

@@ -1,0 +1,88 @@
+<div class="investor_registration_content">
+
+    <app-menu-dark></app-menu-dark>
+
+    <div class="wrapper container">
+
+        <div class="registration_form">
+
+            <h2 class="title">Invertir en <span>Phoenix</span> es pensar en tu  <span>futuro</span></h2>
+
+            <span class="banner_info">Conviértete en socio y descubre una nueva forma de generar mejores ingresos de forma segura.</span>
+
+            <form name="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <div class="form_item form-group">
+
+                            <label for="email">¿Cuánto deseas invertir?</label>
+
+                            <input #investment type="text" class="form-control" name="email" formControlName="investment" myCurrencyFormatter
+                                    (ngModelChange)="setCalcs()" autocomplete="off">
+
+                            <span class="input_error_right" *ngIf="form.controls['investment'].hasError('pattern')" [@fadeInOut]>
+                                Debe ser numérico
+                            </span>
+
+                        </div>
+
+                        <div class="form_item form-group">
+
+                            <label for="email">¿Cuánto tiempo? (meses)</label>
+
+                            <input #time type="text" class="form-control" name="password" formControlName="time" (ngModelChange)="setCalcs()"
+                                autocomplete="off">
+
+                            <span class="input_error_right" *ngIf="form.controls['time'].hasError('pattern')" [@fadeInOut]>
+                                Debe ser numérico
+                            </span>
+
+                        </div>
+
+                        <div class="form_item form-group">
+
+                            <label for="email">Pagos mensuales</label>
+
+                            <input #payments type="text" class="form-control" name="password" myCurrencyFormatter readonly>
+
+                        </div>
+
+                        <div class="form_item form-group">
+
+                            <label for="email">Rentabilidad de proyecto</label>
+
+                            <input #efectiveness type="text" class="form-control" name="password" readonly myCurrencyFormatter>
+
+                        </div>
+
+                        <span class="start">*Estos valores son aproximaciones que pueden variar al momento de realizar las operaciones financieras.</span>
+
+                        <div class="form_item form-group">
+
+                            <label for="email">Tasa de interés*</label>
+
+                            <input type="text" class="form-control" formControlName="rate" readonly>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button type="submit" [class.action_disabled]="!isFormValid( )" (click)="onSubmit()" class="action">Invertir</button>
+
+            </form>
+
+            <p class="start">*La tasa puede variar dependiendo de cada perfil de cliente.</p>
+
+        </div>
+
+    </div>
+
+
+    <app-footer></app-footer>
+
+</div>

@@ -1,0 +1,43 @@
+@import '../../../../../sass/variables.scss';
+@import '../../../../../sass/mixin.scss';
+
+.all-content {
+  padding: 3vw 0;
+  .title {
+    color: $gold;
+    font-family: $font-OpenSans-SB;
+    margin: 30px 0;
+    text-align: center;
+  }
+  .sub-title {
+    color: $dark-blue;
+    font-family: $font-OpenSans;
+    margin: 25px 0;
+  }
+  .options-table {
+    margin: 20px 0;
+    .td-content {
+      margin-left: 15px;
+      vertical-align: middle;
+      .action {
+        background-color: $gold;
+        border-radius: 25px;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        font-family: Arial;
+        font-size: 15px;
+        letter-spacing: 0.5px;
+        padding: 7px 40px 6px;
+        &:hover, &:active, &:focus{
+            outline: none;
+            text-decoration: none;
+        }
+        &:disabled {
+            background-color: #A6A6A6;
+            cursor: not-allowed;
+        }
+      }
+    }
+  }
+}

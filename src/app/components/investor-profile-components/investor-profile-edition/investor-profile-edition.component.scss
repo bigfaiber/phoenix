@@ -1,0 +1,399 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixin.scss';
+
+section {
+    text-align: center;
+    .profile_container {
+        display: inline-block;
+        padding: 20px 0px;
+        .info {
+            margin-bottom: 20px;
+            h2 {
+                color: #666666;
+                font-family: $font-OpenSans;
+                text-align: left;
+            }
+        }
+        .picture {
+            padding: 0px;
+        }
+        .editable_data {
+            .update_alert {
+                background-color: #4CC179;
+                color: #1A2C35;
+                font-family: $font-OpenSans;
+                font-size: 0.9em;
+                text-align: left;
+                padding: 5px 6%;
+                .check_icon {
+                    background-color: #1A2C35;
+                    border-radius: 50%;
+                    color: #4CC179;
+                    margin-right: 15px;
+                    vertical-align: middle;
+                }
+            }
+            form {
+                font-family: $font-OpenSans-SB;
+                padding: 10px 7%;
+                position: relative;
+                .form_item{
+                    margin-bottom: 7px;
+                    position: relative;
+                    text-align: left;
+                    position: relative;
+                    label{
+                        color: #1A2C35;
+                        display: block;
+                        font-size: 14px;
+                        margin: 20px 0 10px;
+                        padding-left: 20px;
+                        text-align: left;
+                    }
+                    input{
+                        background-color: white;
+                        border: solid 1px #B1B1B1;
+                        border-radius: 30px;
+                        display: inline-block;
+                        font-family: $font-OpenSans;
+                        font-size: 14px;
+                        padding: 8px 20px;
+                        width: 100%;
+                    }
+                }
+                .input_error_right {
+                    bottom: -20px;
+                    color: red;
+                    font-family: $font-OpenSans;
+                    font-size: 12px;
+                    position: absolute;
+                    right: 13px;
+                }
+                .input_error_left {
+                    bottom: -20px;
+                    color: red;
+                    font-family: $font-OpenSans;
+                    font-size: 12px;
+                    position: absolute;
+                    left: 13px;
+                }
+            }
+            .upload_documents {
+                background-color: #1A2C35;
+                border-radius: 30px;
+                color: white;
+                cursor: pointer;
+                margin-top: 48px;
+                padding: 8px 20px;
+                img {
+                    margin-right: 10px;
+                }
+            }
+            .action {
+                background-color: $gold;
+                border: none;
+                border-radius: 25px;
+                color: #fff;
+                cursor: pointer;
+                display: inline-block;
+                font-size: 15px;
+                letter-spacing: 0.5px;
+                margin-top: 25px;
+                padding: 10px 50px 10px 50px;
+                position: relative;
+                width: 100%;
+                &:hover, &:active, &:focus{
+                    outline: none;
+                    text-decoration: none;
+                }
+
+                -webkit-transition: background-color 100ms linear;
+                -ms-transition: background-color 100ms linear;
+                transition: background-color 100ms linear;
+            }
+            .action_disabled{
+                background-color: #A6A6A6;
+                cursor: default;
+
+                -webkit-transition: background-color 200ms linear;
+                -ms-transition: background-color 200ms linear;
+                transition: background-color 200ms linear;
+            }
+            .return_action {
+                background-color: white;
+                border: solid 1px #1A2C35;
+                border-radius: 25px;
+                color: #1A2C35;
+                cursor: pointer;
+                display: inline-block;
+                font-size: 15px;
+                letter-spacing: 0.5px;
+                margin-top: 30px;
+                padding: 8px 50px 8px 50px;
+                position: relative;
+                width: 100%;
+                &:hover, &:active, &:focus{
+                    outline: none;
+                    text-decoration: none;
+                }
+                i {
+                    vertical-align: middle;
+                }
+            }
+        }
+        .user_detail {
+            background-color: #fff;
+            margin-top: 20px;
+            text-align: center;
+            .detail {
+                display: inline-block;
+                margin-left: 10px;
+                margin-top: -172px;
+                padding: 0 15px;
+                position: relative;
+                text-align: left;
+                vertical-align: middle;
+                .name {
+                    font-size: 1.7vw;
+                    margin: 0;
+                }
+                .stars {
+                    text-align: left;
+                }
+            }
+            .user_image_container {
+                display: inline-block;
+                .upload {
+                    color: #2E3190;
+                    cursor: pointer;
+                    font-family: $font-OpenSans;
+                    margin-top: 10px;
+                }
+                .user_image {
+                    border-radius: 50%;
+                    display: inline-block;
+                    padding: 10px;
+                    position: relative;
+                }
+            }
+        }
+        .accounts_container {
+          margin-top: 4vw;
+          .title {
+            color: $gold;
+            font-family: $font-OpenSans;
+          }
+          .empty {
+            color: #D6D6D6;
+            margin: 30px 0;
+            width: 100%;
+          }
+          .all-accounts {
+            margin: 30px 0;
+            .bank-card-container {
+              margin-bottom: 20px;
+              .bank-card {
+                background-color: white;
+                font-family: $font-OpenSans;
+                padding: 10px 20px;
+                position: relative;
+                -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+                -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+                box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+                .edit-button {
+                  position: absolute;
+                  right: 10px;
+                  bottom: 5px;
+                  text-align: right;
+                  i {
+                    cursor: pointer;
+                    transition: .2s;
+                  }
+                }
+                .new {
+                  background-color: $gold;
+                  border-radius: 5px;
+                  color: white;
+                  font-family: $font-OpenSans-SB;
+                  padding: 0 4px 4px;
+                  position: absolute;
+                  right: -36px;
+                  top: 22px;
+                  transform: rotate(90deg);
+                  z-index: -5;
+                }
+                form {
+                  .form_item{
+                      margin-bottom: 7px;
+                      position: relative;
+                      text-align: left;
+                      label{
+                          color: #1b2c35;
+                          display: block;
+                          font-size: 14px;
+                          margin: 20px 0 10px;
+                          text-align: center;
+                      }
+                      .investor-label {
+                        color: $gold;
+                      }
+                      input{
+                          border-radius: 20px;
+                          color: #1b2c35;
+                          font-family: $font-OpenSans-SB;
+                          font-size: 14px;
+                          text-align: center;
+                          padding: 0px 20px;
+                          width: 90%;
+                          -webkit-box-shadow: 4px 4px 10px -5px rgba(51,51,51,0.7);
+                          -moz-box-shadow: 4px 4px 10px -5px rgba(51,51,51,0.7);
+                          box-shadow: 4px 4px 10px -5px rgba(51,51,51,0.7);
+                      }
+                      select {
+                          background-color: white;
+                          border: solid 1px #D6D6D6;
+                          border-radius: 20px;
+                          color: #1b2c35;
+                          font-family: $font-OpenSans-SB;
+                          font-size: 14px;
+                          outline: none;
+                          padding: 0px 10px;
+                          text-align: center;
+                          width: 100%;
+
+                          -webkit-box-shadow: 4px 4px 10px -5px rgba(51,51,51,0.7);
+                          -moz-box-shadow: 4px 4px 10px -5px rgba(51,51,51,0.7);
+                          box-shadow: 4px 4px 10px -5px rgba(51,51,51,0.7);
+                      }
+                      select::-ms-expand {
+                          display: none;
+                      }
+                      textarea {
+                          border: solid 1px #D6D6D6;
+                          border-radius: 10px;
+                          font-family: $font-OpenSans;
+                          font-size: 14px;
+                          margin-top: 25px;
+                          outline: none;
+                          padding: 8px 20px;
+                          resize: none;
+                          -webkit-box-shadow: 4px 4px 10px -5px rgba(51,51,51,0.7);
+                          -moz-box-shadow: 4px 4px 10px -5px rgba(51,51,51,0.7);
+                          box-shadow: 4px 4px 10px -5px rgba(51,51,51,0.7);
+                          width: 100%;
+                      }
+                      .input_error_right {
+                          bottom: -14px;
+                          color: red;
+                          font-family: $font-OpenSans;
+                          font-size: 10px;
+                          position: absolute;
+                          right: 23px;
+                      }
+                      .input_error_left {
+                          bottom: -20px;
+                          color: red;
+                          font-family: $font-OpenSans;
+                          font-size: 12px;
+                          position: absolute;
+                          left: 13px;
+                      }
+                  }
+                }
+                table {
+                  width: 100%;
+                  tr {
+                    height: 32px;
+                    td {
+                      text-align: left;
+                      .data {
+                        margin-left: 5%;
+                      }
+                      &:first-child {
+                        color: $gold;
+                        width: 118px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .action {
+            background-color: $gold;
+            border-radius: 25px;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-family: Arial;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            margin: 10px auto 25px;
+            padding: 7px 40px 6px;
+            &:hover, &:active, &:focus{
+                outline: none;
+                text-decoration: none;
+            }
+            &:disabled {
+                background-color: #A6A6A6;
+                cursor: not-allowed;
+            }
+          }
+          .new_account_form {
+            border: solid 1px $gold;
+            border-radius: 15px;
+            margin:0 auto 40px;
+            max-width: 400px;
+            padding: 0 30px;
+          }
+        }
+    }
+}
+
+@media ( max-width: 1400px ) {
+    section {
+        .profile_container {
+            .editable_data {
+                .upload_documents {
+                    font-size: 0.9em;
+                    padding: 8px 10px;
+                }
+                .action {
+                    padding: 10px 25px 10px 25px;
+                }
+                .return_action {
+                    padding: 8px 25px 8px 25px;
+                }
+            }
+        }
+    }
+}
+
+@media ( max-width: 640px ) {
+    section .profile_container{
+        .user_detail{
+            .user_image_container{
+                display: block;
+                margin: 0 auto;
+            }
+            .detail{
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+                .stars{
+                    text-align: center;
+                }
+                .name {
+                    font-size: 7vw;
+                }
+            }
+            .upload{
+                margin-left: 0;
+                text-align: center;
+            }
+        }
+    }
+    section .profile_container .info h2{
+        text-align: center;
+    }
+}

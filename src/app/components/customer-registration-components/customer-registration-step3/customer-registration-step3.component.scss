@@ -1,0 +1,405 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixin.scss';
+
+.wrapper{
+    color: #fff;
+    margin-bottom: 70px;
+    margin-top: 6px;
+    position: relative;
+    text-align: center;
+    .registration_form{
+        background-color: rgba(255,255,255,1);
+        border: 1px solid $gold;
+        border-radius: 10px;
+        margin: 0px auto;
+        padding: 40px;
+        text-align: center;
+        width: 85%;
+        ._underline {
+            text-decoration: underline;
+        }
+        .question {
+            border: 1px solid black;
+            border-radius: 50%;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 7px;
+            vertical-align: middle;
+            width: 12px;
+        }
+        .title{
+            color: #1b2c35;
+            font-family: $font-OpenSans-B;
+            font-size: 23px;
+            margin: 0;
+            padding: 0 5%;
+        }
+        .banner_info{
+            color: #1b2c35;
+            display: block;
+            font-family: $font-OpenSans;
+            font-size: 15px;
+            margin: 0 auto;
+            margin-top: 60px;
+            width: 75%;
+            span {
+                font-weight: bold;
+            }
+        }
+        form{
+            font-family: $font-OpenSans-SB;
+            margin: 15px 0 0;
+            padding: 20px 7%;
+            position: relative;
+            .set-title {
+              color: black;
+            }
+            .mb {
+              margin: 20px 0;
+            }
+            .items{
+                padding: 10px 0;
+                .select {
+                    margin-top: 0px;
+                }
+                .form_item{
+                    position: relative;
+                    padding-right: 50px;
+                    text-align: left;
+                    .input_error_right {
+                        bottom: -20px;
+                        color: red;
+                        font-family: $font-OpenSans;
+                        font-size: 12px;
+                        position: absolute;
+                        right: 10%;
+                    }
+                    .input_error_left {
+                        bottom: -20px;
+                        color: red;
+                        font-family: $font-OpenSans;
+                        font-size: 12px;
+                        position: absolute;
+                        left: 10%;
+                    }
+                    .make_inline {
+                        display: inline;
+                    }
+                    input[type=radio] {
+                        display: none;
+                    }
+                    input[type=radio] + label {
+                        background-color: white;
+                        border: 1px solid $gold;
+                        border-radius: 50%;
+                        display: inline-block;
+                        height: 15px;
+                        padding: 0 0 0 0px;
+                        vertical-align: middle;
+                        width: 15px;
+                    }
+                    input[type=radio]:checked + label {
+                        background-color: $gold;
+                    }
+                    .right_margin {
+                        margin-right: 5px;
+                    }
+                    .left_margin {
+                        margin-left: 25px;
+                    }
+                    .make_block{
+                        margin-right: 10px;
+                    }
+                    label{
+                        color: #1b2c35;
+                        font-size: 14px;
+                        margin: 10px 0 5px;
+                        padding-left: 15px;
+                        text-align: left;
+                        &.name{
+                            margin: 0;
+                        }
+                        &.ans{
+                            margin: 0;
+                        }
+                    }
+                    input{
+                        background-color: #F7F7F7;
+                        border: 0px;
+                        border-radius: 20px;
+                        color: #1A2C35;
+                        font-family: $font-OpenSans;
+                        font-size: 14px;
+                        margin-left: 10px;
+                        margin-top: 5px;
+                        min-height: 35px;
+                        outline: none;
+                        padding: 6px 20px;
+                        -webkit-transition: background-color 100ms linear;
+                        -ms-transition: background-color 100ms linear;
+                        transition: background-color 100ms linear;
+                    }
+                    .input_disabled {
+                        background-color: #999;
+
+                        -webkit-transition: background-color 200ms linear;
+                        -ms-transition: background-color 200ms linear;
+                        transition: background-color 200ms linear;
+                    }
+                    input:placeholder-shown {
+                        font-size: 12px;
+                    }
+                    .input_size {
+                        width: 65%;
+                    }
+                    select {
+                        background-color: #F7F7F7;
+                        border: 0px;
+                        border-radius: 20px;
+                        color: #1A2C35;
+                        font-family: $font-OpenSans;
+                        font-size: 14px;
+                        margin-left: 10px;
+                        outline: none;
+                        padding: 8px 20px;
+                        width: 100%;
+                        &.options{
+                            border-radius: 20px;
+                            height: 35px;
+                            margin-top: 5px;
+                        }
+                    }
+                    select::-ms-expand {
+                        display: none;
+                    }
+                    .check_box {
+                        background-color: white;
+                        border: 1px solid $gold;
+                        border-radius: 50%;
+                        height: 12px;
+                        outline: none;
+                        vertical-align: middle;
+                        width: 12px;
+                    }
+                    .check_box:checked {
+                        background-color: #1A2C35;
+                    }
+                }
+            }
+            .dynamic_form_item {
+                position: relative;
+                .remove_input {
+                    color: black;
+                    cursor: pointer;
+                    font-size: 0.8em;
+                    position: absolute;
+                    right: 22px;
+                    top: 26px;
+                }
+                .remove_input_patch {
+                    right: 30px;
+                }
+            }
+            .action{
+                background-color: $gold;
+                border: none;
+                border-radius: 25px;
+                color: #fff;
+                cursor: pointer;
+                font-family: Arial;
+                font-size: 15px;
+                letter-spacing: 0.5px;
+                margin-top: 40px;
+                padding: 7px 50px 6px 50px;
+                position: relative;
+                transition: 100ms;
+                &:hover, &:active, &:focus{
+                    outline: none;
+                    text-decoration: none;
+                }
+                &:disabled {
+                    background-color: #A6A6A6;
+                    cursor: not-allowed;
+                }
+            }
+            .add_action{
+                background-color: $gold;
+                border: none;
+                border-radius: 25px;
+                color: #fff;
+                cursor: pointer;
+                margin-left: 10px;
+                font-family: Arial;
+                font-size: 12px;
+                letter-spacing: 0.5px;
+                padding: 5px 13px 5px 7px;
+                position: relative;
+                &:hover, &:active, &:focus{
+                    outline: none;
+                    text-decoration: none;
+                }
+                .mat_icon {
+                    font-size: 19px;
+                    vertical-align: middle;
+                }
+            }
+        }
+        .stepwizard_button {
+            background-color: #F2F2F2;
+            border: 1px solid $gold;
+            border-radius: 50px;
+            cursor: pointer;
+            height: 10px;
+            margin: 20px 2px 0px 0px;
+            outline: none;
+            width: 10px;
+            display: inline-block;
+        }
+        .step_selected {
+            background-color: #1A2C35;
+        }
+        .start{
+            color: #1b2c35;
+            font-family: $font-OpenSans;
+            font-size: 13px;
+            margin: 20px 0 0;
+            position: relative;
+        }
+    }
+}
+
+@media (max-width: 640px) {
+    .wrapper{
+        margin-bottom: 0;
+        margin-top: 0;
+        padding-left: 0px;
+        padding-right: 0px;
+        &::before{
+            bottom: 0;
+            content: '';
+            height: calc(100% - 300px);
+            left: 0;
+            position: absolute;
+            width: 100%;
+            z-index: -1;
+        }
+        .registration_form{
+            background-color: rgba( 0, 0, 0, 0 );
+            border: none;
+            padding: 40px 0px;
+            width: 95%;
+            .title{
+                font-size: 21px;
+            }
+            .banner_info{
+                font-size: 15px;
+                width: 80%;
+            }
+            form{
+                margin: 0;
+                padding: 0px;
+                position: relative;
+                .items{
+                    .form_item {
+                        margin-bottom: 5px;
+                        margin-top: 15px;
+                        padding: 0 30px;
+                        .input_error_right, .input_error_left {
+                            position: relative;
+                            left: unset;
+                            bottom: unset;
+                            display: block;
+                            padding: 0px 50px;
+                        }
+                        .centering_radio {
+                            text-align: center;
+                        }
+                        .right_margin {
+                            margin-right: 5px;
+                        }
+                        .left_margin {
+                            margin-left: 15px;
+                        }
+                        label.make_block {
+                            display: inline;
+                            font-size: 0.8em;
+                        }
+                        label {
+                            font-size: 1em;
+                            display: block;
+                            text-align: center;
+                        }
+                        select{
+                            &.options{
+                                height: 40px;
+                                margin: 10px 0 0 5%;
+                                width: 90%;
+                            }
+                        }
+                        input {
+                            border: 1px solid #CCCCCC;
+                            border-radius: 30px;
+                            display: inline-block;
+                            font-size: 16px;
+                            margin-top: 10px;
+                            min-height: 40px;
+                            margin: 10px 0 0 5%;
+                            width: 90%;
+                        }
+                        input[type=radio] + label {
+                            top: 44px;
+                        }
+                        input:placeholder-shown {
+                            font-size: 14px;
+                        }
+                        .input_size {
+                            font-size: 14px;
+                            margin-bottom: 10px;
+                        }
+                        .make_inline {
+                            display: block;
+                            font-size: 1.1em;
+                            margin-bottom: 30px;
+                            text-align: center;
+                        }
+                    }
+                    .select {
+                        margin-top: 0px;
+                    }
+                }
+                .fix_height {
+                    height: auto;
+                    .input_error_right {
+                        bottom: 132px;
+                    }
+                }
+                .action {
+                    font-size: 19px;
+                    margin-bottom: 20px;
+                    margin-top: 15px;
+                    width: 83%;
+                }
+                .add_action {
+                    display: inline-block;
+                    height: 40px;
+                    margin-left: 5%;
+                    padding: 6px 20px;
+                    width: 90%;
+                    i.mat_icon {
+                        font-size: 28px;
+                        vertical-align: top;
+                    }
+                    span {
+                        display: inline-block;
+                        font-size: 19px;
+                    }
+                }
+            }
+            .stepwizard_button{
+                height: 13px;
+                width: 13px;
+                margin: 20px 5px 0 0;
+            }
+        }
+    }
+}

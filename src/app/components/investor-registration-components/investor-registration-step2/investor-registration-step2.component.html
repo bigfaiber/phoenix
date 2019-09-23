@@ -1,0 +1,6 @@
+<app-step-two
+  [invalidCode]="invalidCode"
+  (formSubmitted)="onSubmit($event)"
+  (modalOk)="nextStep()"
+  (newCode)="resendCode()">
+</app-step-two>

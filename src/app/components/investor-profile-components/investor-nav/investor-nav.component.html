@@ -1,0 +1,91 @@
+<div class="step_modal modal fade" id="step1Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-body modal_content">
+
+                <div class="close-modal" data-dismiss="modal" aria-label="Close" (click)="stopVideo()">
+                  <i class="material-icons">clear</i>
+                </div>
+
+                <iframe #top_video width="100%" height="100%" src="" allowfullscreen>
+                </iframe>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<span #openModalButton data-toggle="modal" data-target="#step1Modal"></span>
+
+<section class="user_profile">
+
+    <div class="head">
+
+          <div class="user_detail">
+
+            <div class="profile">
+              <div class="image">
+                <!-- <img #profile_pic src="assets/images/client-profile/default_avatar.png" alt="Image User" title="Image User" class="image img-fluid"> -->
+                <img #profile_pic width="150" alt="Image User" title="Image User" class="user_image img-fluid">
+              </div>
+
+              <div class="detail">
+
+                <p class="name">{{user_data.name}} {{user_data.lastname}}</p>
+                <p class="limit"><span>Tope:</span> ${{user_data.maximum|number}}</p>
+
+              </div>
+            </div>
+
+            <div class="testimonial" style="margin: 0 auto" (click)="resetTopVideo(openModalButton)">
+
+                <img src="assets/images/videos_thumbnails/investor_tutorial.png" alt="Testimonio 1" title="Testimonio 1" class="img-fluid">
+
+                <div class="click-video">
+                  <i class="material-icons">play_arrow</i>
+                </div>
+
+            </div>
+
+
+          </div>
+
+          <div class="graph-content">
+
+              <div *ngIf="!showProfsChart()" [chart]="chart"></div>
+
+              <app-profitabilities-chart [hidden]="!showProfsChart()" #profitabilitiesChart [height]="270" [description]="1">
+              </app-profitabilities-chart>
+
+          </div>
+
+    </div>
+
+    <app-missing-docs [user_data]="user_data" type="investor" #missing_ref></app-missing-docs>
+    <app-missing-account [user_data]="user_data"></app-missing-account>
+
+</section>
+
+<section class="banner text-center">
+
+    <div class="links">
+        <span class="items">
+            <span class="item" [routerLink]="['/inversionista','perfil']" routerLinkActive="selected">Proyectos disponibles</span>
+            <span class="item" [routerLink]="['/inversionista','mis-inversiones']" routerLinkActive="selected">
+              Mis inversiones
+              <div class="notification" [@notfState]="notificationState" *ngIf="missingAccount()>0">
+                {{missingAccount()}}
+              </div>
+            </span>
+            <span class="item" [routerLink]="['/inversionista','balance']" routerLinkActive="selected">Balance</span>
+        </span>
+    </div>
+
+</section>

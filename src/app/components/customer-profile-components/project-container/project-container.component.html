@@ -1,0 +1,38 @@
+<div class="step_modal modal fade" id="step1Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons mat_icon">clear</i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body modal_content">
+
+                <embed #pdf_viewer type='application/pdf'>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<section class="container">
+  <app-project-data
+    [topButtons]="buttonsData"
+    [bottomButtons]="bottomButtons"
+    [project]="project"
+    (topButtonClicked)="buttonClickHandler($event,openModalButton,ref_link)"
+    (bottomButtonClicked)="bottomButtonClickHandler($event)">
+  </app-project-data>
+
+  <a #ref_link target="_self" download hidden></a>
+  <button #openModalButton data-toggle="modal" data-target="#step1Modal" hidden></button>
+</section>

@@ -1,0 +1,13 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixin.scss';
+
+.text {
+  color: $gold;
+  text-align: center;
+}
+
+@media ( max-width: 575px ) {
+  .text {
+    margin-bottom: 15px;
+  }
+}
