@@ -4,6 +4,13 @@
 @import "~nouislider/distribute/nouislider.min.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+.banner{
+  padding: 0px 15%;
+  padding-bottom: 10px;
+}
+.links{
+  margin: 0px;
+}
 body {
     margin: 0;
     padding-top: 104px;
