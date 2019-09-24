@@ -57,27 +57,6 @@
         }
     }
     .return_action {
-        background-color: white;
-        border: solid 2px #1A2C35;
-        border-radius: 25px;
-        color: #1A2C35;
-        cursor: pointer;
-        display: inline-block;
-        font-family: $font-OpenSans-SB;
-        font-size: 15px;
-        letter-spacing: 0.5px;
-        margin-right: 15px;
-        margin-top: 30px;
-        padding: 8px 20px 8px 20px;
-        position: relative;
-        width: 175px;
-        &:hover, &:active, &:focus{
-            outline: none;
-            text-decoration: none;
-        }
-        i {
-            vertical-align: middle;
-        }
 
         -webkit-transition: background-color 100ms linear;
         -ms-transition: background-color 100ms linear;
