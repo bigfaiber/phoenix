@@ -6,7 +6,7 @@ import { Title } from '@angular/platform-browser';
 @Injectable()
 export class DataService {
 
-  API_path = 'https://api.phx.com.co';
+  API_path = 'http://localhost:3000';
   // API_path = 'http://35.231.77.182';
 
   show_bird = new Subject<any>( );
@@ -42,8 +42,9 @@ export class DataService {
   constructor( private router: Router, private titleService: Title ) {
     this.show_bird.next( false )
     var user_data: any = JSON.parse( localStorage.getItem( 'user_data' ) )
-    if ( user_data != null && user_data.session_data != null && user_data.session_data.auth_token != null )
+    if ( user_data != null && user_data.session_data != null && user_data.session_data.auth_token != null ) {
       this.updateUserAndSessionData( user_data.session_data.auth_token, user_data.user_data )
+    }
     else {
       // console.log( "No auth_token found!" )
     }
