@@ -12,8 +12,6 @@ export class SessionService {
     dataService.auth_token$.subscribe(
       res => {
         this.auth_token = res
-        console.log(res)
-        console.log('test')
       }
     )
   }

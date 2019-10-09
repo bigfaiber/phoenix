@@ -44,7 +44,6 @@ export class DataService {
     var user_data: any = JSON.parse( localStorage.getItem( 'user_data' ) )
     if ( user_data != null && user_data.session_data != null && user_data.session_data.auth_token != null ) {
       this.updateUserAndSessionData( user_data.session_data.auth_token, user_data.user_data )
-      console.log('test2')
     }
     else {
       // console.log( "No auth_token found!" )
