@@ -79,12 +79,12 @@ export class AdminManagementService {
   }
 
   getInvestor( investor_id ) {
-      return this.http.get( this.API_path + '/investors/' + investor_id )
+      return this.http.get( this.API_path + '/investors/' + investor_id, this.headers() )
           .map( ( res: Response ) => res );
   }
 
   getAllInvestors( ) {
-      return this.http.get( this.API_path + '/investors' )
+      return this.http.get( this.API_path + '/investors', this.headers() )
           .map( ( res: Response ) => res );
   }
 
