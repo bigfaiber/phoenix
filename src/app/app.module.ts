@@ -123,6 +123,7 @@ import { MyCurrencyPipe } from './pipes/currency/my-currency.pipe';
 import { MyCurrencyFormatterDirective } from './directives/currency/my-currency-formatter.directive';
 
 /* Services */
+import { AuthService } from './auth.service';
 import { DataService } from './services/data-service/data.service';
 import { CustomerRegistrationService } from './services/customer-registration/customer-registration.service';
 import { InvestorRegistrationService } from './services/investor-registration/investor-registration.service';

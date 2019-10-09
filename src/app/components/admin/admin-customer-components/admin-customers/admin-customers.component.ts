@@ -225,6 +225,7 @@ export class AdminCustomersComponent implements OnInit, OnDestroy {
 
   showProfile( index ) {
       localStorage.setItem( 'admin_customer_profile', JSON.stringify( this.customers[ index ] ) )
+      console.log(this.customers[index])
       localStorage.setItem( 'came_from', window.location.pathname )
       this.router.navigate( [ 'admin', 'perfil-cliente' ] )
   }

@@ -65,8 +65,17 @@ export class AdminManagementService {
   }
 
   getCustomer( customer_id ) {
-      return this.http.get( this.API_path + '/clients/' + customer_id )
+      return this.http.get( this.API_path + '/clients/' + customer_id, this.headers() )
           .map( ( res: Response ) => res );
+  }
+
+  headers(){
+    const headers = new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.auth_token
+    });
+    const options = new RequestOptions( { headers: headers } );
+      return options;
   }
 
   getInvestor( investor_id ) {
