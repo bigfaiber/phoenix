@@ -23,6 +23,14 @@ export class InvestorManagementService {
       return this.http.get( this.API_path + '/investors/' + id )
           .map( ( res: Response ) => res )
   }
+  headers(){
+    const headers = new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.auth_token
+    });
+    const options = new RequestOptions( { headers: headers } );
+      return options;
+  }
 
   getProjects( page ) {
     const headers = new Headers({
@@ -122,7 +130,7 @@ export class InvestorManagementService {
   }
 
   getAllProjects( page ) {
-    return this.http.get( this.API_path + '/projects?page=' + page )
+    return this.http.get( this.API_path + '/projects?page=' + page, this.headers() )
       .map( ( res: Response ) => res )
   }
 
@@ -136,7 +144,7 @@ export class InvestorManagementService {
       path = path + 'time_end=' + termUpper + '&'
       path = path + 'page=' + page
 
-      return this.http.get( path )
+      return this.http.get( path, this.headers() )
         .map( ( res: Response ) => res )
   }
 
@@ -162,7 +170,7 @@ export class InvestorManagementService {
   }
 
   getReceipts( project_id ) {
-    return this.http.get( this.API_path + '/projects/' + project_id )
+    return this.http.get( this.API_path + '/projects/' + project_id, this.headers() )
         .map( ( res: Response ) => res )
   }
 
@@ -175,7 +183,7 @@ export class InvestorManagementService {
   }
 
   getProjectById( id ) {
-      return this.http.get( this.API_path + '/projects/' + id )
+      return this.http.get( this.API_path + '/projects/' + id, this.headers() )
           .map( ( res: Response ) => res );
   }
 
