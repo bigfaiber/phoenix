@@ -6,8 +6,8 @@ import { Title } from '@angular/platform-browser';
 @Injectable()
 export class DataService {
 
-  API_path = 'http://localhost:3000';
-  // API_path = 'http://35.231.77.182';
+  // API_path = 'http://localhost:3000';
+  API_path = 'https://api.phx.com.co';
 
   show_bird = new Subject<any>( );
   showBird$ = this.show_bird.asObservable( );
