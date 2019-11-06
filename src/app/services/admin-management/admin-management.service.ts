@@ -94,9 +94,11 @@ export class AdminManagementService {
           'Authorization': 'Bearer ' + this.auth_token
       });
       const options = new RequestOptions( { headers: headers } );
+      
+    return this.http.get( this.API_path + '/clients/new-clients?page=' + page, options )
+    .map( ( res: Response ) => res );
 
-      return this.http.get( this.API_path + '/clients/new-clients?page=' + page, options )
-          .map( ( res: Response ) => res );
+        
   }
 
   getOldCustomers( page ) {

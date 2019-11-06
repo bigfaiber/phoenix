@@ -29,7 +29,7 @@ export class AdminCustomersComponent implements OnInit, OnDestroy {
   clientState = "new"
 
   customers = []
-
+  myCustomers = []
   API_path;
 
   total_notifications = 0
@@ -75,7 +75,7 @@ export class AdminCustomersComponent implements OnInit, OnDestroy {
       }
   }
 
-  retrieveOldCustomers( page ) {
+  retrieveOldCustomers( page) {
       this.requestSent = true
       this.dataService.updateShowBird( true )
       this.adminManService.getOldCustomers( this.page ).subscribe(
@@ -83,6 +83,7 @@ export class AdminCustomersComponent implements OnInit, OnDestroy {
               UtilitiesService.debug( res.json( ) )
               this.meta = res.json( ).meta
               this.customers = this.customers.concat( res.json( ).clients )
+              this.onSearchChange(this.searchVal())
               this.dataService.updateUserAndSessionData( res.headers.get( 'token' ), null )
               this.total_notifications = this.meta.new_projects + this.meta.new_clients
               localStorage.setItem( 'total_notifications', String( this.total_notifications ) )
@@ -107,6 +108,7 @@ export class AdminCustomersComponent implements OnInit, OnDestroy {
               UtilitiesService.debug( res.json( ) )
               this.meta = res.json( ).meta
               this.customers = this.customers.concat( res.json( ).clients )
+              this.onSearchChange(this.searchVal())
               this.dataService.updateUserAndSessionData( res.headers.get( 'token' ), null )
               this.total_notifications = this.meta.new_projects + this.meta.new_clients
               localStorage.setItem( 'total_notifications', String( this.total_notifications ) )
@@ -134,6 +136,7 @@ export class AdminCustomersComponent implements OnInit, OnDestroy {
                 new_projects: this.meta.new_projects
               }, res.json( ).meta )
               this.customers = this.customers.concat( res.json( ).clients )
+              this.onSearchChange(this.searchVal())
               this.dataService.updateUserAndSessionData( res.headers.get( 'token' ), null )
               this.requestSent = false
           },
@@ -159,6 +162,7 @@ export class AdminCustomersComponent implements OnInit, OnDestroy {
                 new_projects: this.meta.new_projects
               }, res.json( ).meta )
               this.customers = this.customers.concat( res.json( ).clients )
+              this.onSearchChange(this.searchVal())
               this.dataService.updateUserAndSessionData( res.headers.get( 'token' ), null )
               this.requestSent = false
           },
@@ -171,6 +175,23 @@ export class AdminCustomersComponent implements OnInit, OnDestroy {
               this.dataService.updateShowBird( false )
           }
       )
+  }
+
+  onSearchChange(val){
+      val = val.toLowerCase()
+    if (val === ""){
+        this.myCustomers = this.customers
+    }
+    this.myCustomers = this.customers.filter( cust => cust.name.toLowerCase().includes(val) || cust.lastname.toLowerCase().includes(val) || cust.email.toLowerCase().includes(val) )
+  }
+
+  reset(){
+    (<HTMLInputElement>document.getElementById("filter")).value = ""
+    this.myCustomers = this.customers
+  }
+
+  searchVal(){
+    return  (<HTMLInputElement>document.getElementById("filter")).value.toLowerCase()
   }
 
   onNewSelection( ) {
@@ -210,11 +231,11 @@ export class AdminCustomersComponent implements OnInit, OnDestroy {
   }
 
   imgPath( c, index ) {
-      var dec = this.customers[ index ].rating - Math.floor( this.customers[ index ].rating )
+      var dec = this.myCustomers[ index ].rating - Math.floor( this.myCustomers[ index ].rating )
 
-      if ( c > this.customers[ index ].rating )
+      if ( c > this.myCustomers[ index ].rating )
           return "assets/images/client-profile/star_empty.png"
-      if ( c < Math.floor( this.customers[ index ].rating ) )
+      if ( c < Math.floor( this.myCustomers[ index ].rating ) )
           return "assets/images/client-profile/star_fill.png"
       else
           if ( dec < 0.5 )
