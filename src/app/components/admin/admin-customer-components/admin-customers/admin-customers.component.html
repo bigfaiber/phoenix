@@ -41,9 +41,11 @@
     [scrollWindow]="false"
     (scrolled)="onScrollDown()">
 
-    <h1 *ngIf="customers.length==0" class="empty_message">Sin clientes</h1>
+    <div><input id="filter" (input)="onSearchChange($event.target.value)"><button class="reset" (click)="reset()">x</button></div>
+    <h1 *ngIf="myCustomers.length==0" class="empty_message">Sin clientes</h1>
+    
+    <div class="match row" *ngFor="let cust of myCustomers; let i = index" (click)="showProfile(i)">
 
-    <div class="match row" *ngFor="let cust of customers; let i = index" (click)="showProfile(i)">
 
         <div class="col-md-12">
 
