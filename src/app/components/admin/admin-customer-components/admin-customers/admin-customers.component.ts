@@ -178,12 +178,15 @@ export class AdminCustomersComponent implements OnInit, OnDestroy {
   }
 
   onSearchChange(val){
-      val = val.toLowerCase()
+    this.myCustomers = []
     if (val === ""){
         this.myCustomers = this.customers
-    }
-    this.myCustomers = this.customers.filter( cust => cust.name.toLowerCase().includes(val) || cust.lastname.toLowerCase().includes(val) || cust.email.toLowerCase().includes(val) )
-  }
+    } else {
+        val.toLowerCase().split(' ').forEach(name => {
+            this.myCustomers = this.customers.filter( cust => cust.name.toLowerCase().includes(name) || cust.lastname.toLowerCase().includes(name) ) 
+            })
+        }
+    };
 
   reset(){
     (<HTMLInputElement>document.getElementById("filter")).value = ""

@@ -89,13 +89,34 @@
         transition: background-color 200ms linear;
     }
 }
+.searchBar{
+    display: flex;
+    position: relative;
+
+}
+.searchBarInput {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: none;
+    margin-bottom: 12px;
+    outline: none;
+}
 
 .reset {
+    font-size: 1.3rem;
+    position: absolute;
+    right: 1vw;
     background:transparent;
     border: none;
-    position: relative;
-    right: 26px;
-    color:lightgray;
+    color:#bb9a67;
+    outline: none;
+    padding: 8px 20px 10px 25px;
+    margin-bottom: 12px;
+
+}
+.reset:hover {
+    cursor: pointer;
 }
 
 .matches {

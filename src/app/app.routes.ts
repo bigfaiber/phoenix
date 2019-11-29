@@ -370,8 +370,18 @@ const APP_ROUTES: Routes = [
                 canActivate: [ AdminGuard ]
             },
             {
+                path: 'crear-cliente',
+                component: AdminMatchComponent,
+                canActivate: [ AdminGuard ]
+            },
+            {
                 path: 'perfil-inversionista',
                 component: AdminInvestorProfileComponent,
+                canActivate: [ AdminGuard ]
+            },
+            {
+                path: 'crear-inversionista',
+                component: AdminMatchComponent,
                 canActivate: [ AdminGuard ]
             },
             {
