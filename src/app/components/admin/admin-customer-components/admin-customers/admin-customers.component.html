@@ -16,7 +16,7 @@
     <button type="button" name="button" [class.button_selected]="clientState=='new'" class="return_action" (click)="onNewSelection()">
         Nuevos clientes
         <div class="notification_number" *ngIf="meta.new_clients>0">
-            <span class="number">{{meta.new_clients}}</span>
+            <span class="number">{{meta.new_clients}}</span>              
         </div>
     </button>
     <button type="button" name="button" [class.button_selected]="clientState=='old'" class="return_action" (click)="onOldSelection()">
@@ -41,11 +41,11 @@
     [scrollWindow]="false"
     (scrolled)="onScrollDown()">
 
-    <div><input id="filter" (input)="onSearchChange($event.target.value)"><button class="reset" (click)="reset()">x</button></div>
+    <div class ="searchBar"><input type="text" class="searchBarInput" id="filter" placeholder="buscar cliente" (input)="onSearchChange($event.target.value)"><button class="reset" (click)="reset()">x</button></div>
+
     <h1 *ngIf="myCustomers.length==0" class="empty_message">Sin clientes</h1>
     
     <div class="match row" *ngFor="let cust of myCustomers; let i = index" (click)="showProfile(i)">
-
 
         <div class="col-md-12">
 
