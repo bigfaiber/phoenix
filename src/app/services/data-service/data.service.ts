@@ -7,7 +7,8 @@ import { Title } from '@angular/platform-browser';
 export class DataService {
 
   // API_path = 'http://localhost:3000';
-  API_path = 'https://api.phx.com.co';
+  API_path = 'https://phxapi.herokuapp.com';
+  // API_path = 'https://api.phx.com.co';
 
   show_bird = new Subject<any>( );
   showBird$ = this.show_bird.asObservable( );
