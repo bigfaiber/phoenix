@@ -33,7 +33,7 @@
 
                             <label for="email">¿Cuánto tiempo? (meses)</label>
 
-                            <input #time type="text" class="form-control" name="password" formControlName="time" (ngModelChange)="setCalcs()"
+                            <input #time type="text" class="form-control" name="time" formControlName="time" (ngModelChange)="setCalcs()"
                                 autocomplete="off">
 
                             <span class="input_error_right" *ngIf="form.controls['time'].hasError('pattern')" [@fadeInOut]>
@@ -46,7 +46,7 @@
 
                             <label for="email">Pagos mensuales</label>
 
-                            <input #payments type="text" class="form-control" name="password" myCurrencyFormatter readonly>
+                            <input #payments type="text" class="form-control" name="payments" formControlName="payments" myCurrencyFormatter readonly >
 
                         </div>
 
@@ -54,7 +54,7 @@
 
                             <label for="email">Rentabilidad de proyecto</label>
 
-                            <input #efectiveness type="text" class="form-control" name="password" readonly myCurrencyFormatter>
+                            <input #efectiveness type="text" class="form-control" name="efectiveness" formControlName="efectiveness" readonly myCurrencyFormatter>
 
                         </div>
 

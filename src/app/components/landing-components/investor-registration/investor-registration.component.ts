@@ -35,9 +35,11 @@ export class InvestorRegistrationComponent implements OnInit {
   @ViewChild( 'efectiveness' ) efectiveness_input: any;
 
   form = new FormGroup({
-      investment: new FormControl( null, [ Validators.required, Validators.pattern( "[0-9]+" ) ] ),
-      time: new FormControl( null, [ Validators.required, Validators.pattern( "[0-9]+" ) ] ),
-      rate: new FormControl( "1.5", [] ),
+    investment: new FormControl( null, [ Validators.required, Validators.pattern( "[0-9]+" ) ] ),
+    time: new FormControl( null, [ Validators.required, Validators.pattern( "[0-9]+" ) ] ),
+    payments: new FormControl( null, [ Validators.required] ),
+    efectiveness: new FormControl( null, [ Validators.required] ),
+    rate: new FormControl( "1.5", [] ),
   });
 
   rate = 0.015;
@@ -64,28 +66,31 @@ export class InvestorRegistrationComponent implements OnInit {
   }
 
   calcPayments( investment, time ) {
-      if ( investment == "" || time == "" )
-          return ""
-      var fee = investment * ( this.rate * Math.pow( ( 1 + this.rate ), time ) / ( Math.pow( 1 + this.rate, time ) - 1 ) );
-      return Math.round( fee / 5000.0 ) * 5000
+    if ( investment == "" || time == "" )
+        return ""
+    var fee = investment * ( this.rate * Math.pow( ( 1 + this.rate ), time ) / ( Math.pow( 1 + this.rate, time ) - 1 ) );
+    return Math.round( fee / 5000.0 ) * 5000
   }
 
   calcEfectiveness( investment, payments, time ) {
-      if ( investment == "" || payments == "" || time == "" )
-          return ""
-      return ( payments * time ) - investment
+    if ( investment == "" || payments == "" || time == "" )
+        return ""
+    return ( payments * time ) - investment
   }
 
-  setCalcs( ) {
-      this.payments_input.nativeElement.value =
-          this.cuPipe.transform( this.calcPayments( this.cuPipe.parse( this.investment_input.nativeElement.value ),
-                              this.cuPipe.parse( this.time_input.nativeElement.value ) ) )
-
-      var value = this.calcEfectiveness( this.cuPipe.parse( this.cuPipe.parse( this.investment_input.nativeElement.value ) ),
-                          this.cuPipe.parse( this.payments_input.nativeElement.value ), this.cuPipe.parse( this.time_input.nativeElement.value ) )
-
-      this.efectiveness_input.nativeElement.value =
-        this.cuPipe.transform( Number( value ) * 0.95 )
+  setCalcs() {
+    let investment = this.cuPipe.parse( this.investment_input.nativeElement.value )
+    let time = this.cuPipe.parse( this.time_input.nativeElement.value )
+    
+    let paymentCalculated = this.calcPayments( investment, time )
+    
+    let payments = this.cuPipe.transform( paymentCalculated )
+    this.form.get( 'payments' ).setValue( payments )
+    
+    var value = this.calcEfectiveness( investment, paymentCalculated, time )
+    
+    let efectiveness = this.cuPipe.transform( Number( value ) * 0.95 )
+    this.form.get( 'efectiveness' ).setValue( efectiveness )
   }
 
   isFormValid( ) {
@@ -97,12 +102,10 @@ export class InvestorRegistrationComponent implements OnInit {
           /* TODO: Check user active session pending!! */
           UtilitiesService.debug( "Customer is not logged in, redirecting to registration form..." )
           localStorage.setItem( 'investor_dream', JSON.stringify({
-              investment: this.cuPipe.parse( this.investment_input.nativeElement.value ),
-              time: this.time_input.nativeElement.value,
-              payments: this.calcPayments( this.cuPipe.parse( this.investment_input.nativeElement.value ),
-                                  this.cuPipe.parse( this.time_input.nativeElement.value ) ),
-              efectiveness: this.calcEfectiveness( this.cuPipe.parse( this.cuPipe.parse( this.investment_input.nativeElement.value ) ),
-                                  this.cuPipe.parse( this.payments_input.nativeElement.value ), this.cuPipe.parse( this.time_input.nativeElement.value ) ),
+              investment: this.cuPipe.parse( this.form.get( 'investment' ).value ),
+              time: this.cuPipe.parse( this.form.get( 'time' ).value ),
+              payments: this.cuPipe.parse( this.form.get( 'payments' ).value ),
+              efectiveness: this.cuPipe.parse( this.form.get( 'efectiveness' ).value ),
               rate: this.rate
           }))
           UtilitiesService.debug( JSON.parse( localStorage.getItem( 'investor_dream' ) ) )
