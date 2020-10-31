@@ -113,6 +113,7 @@ export class CustomerRegistrationComponent implements OnInit {
   }
 
   paymentChanged( val ) {
+    console.log(this.form.get( 'months' ))
     this.form.get( 'months' ).setValue( this.calcTime( this.cuPipe.parse( this.form.get( 'needings' ).value ), val ) )
   }
 
